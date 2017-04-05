@@ -40,8 +40,20 @@ const signOut = () => {
   }
 }
 
+const changePW = (data, playerID, playerToken) => {
+  return $.ajax({
+    url: config.apiOrigin + '/change-password/' + playerID,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + playerToken
+    },
+    data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
-  signOut
+  signOut,
+  changePW
 }

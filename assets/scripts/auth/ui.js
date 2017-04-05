@@ -45,11 +45,27 @@ const signOutSuccess = () => {
   if (players.player1 === undefined && players.player2 === undefined) {
     $('.signOutNav').hide()
   }
+  $('.signUpModal').modal('hide')
+  $('.signUpNav').hide()
+}
+
+const changePWSuccess = (data) => {
+  $('#changePWModal').modal('hide')
+  $('.pl').text('Your password has successfully been changed')
+}
+
+const changePWFailure = (error) => {
+  $('#changePWModal').modal('hide')
+  console.error(error)
+  $('.pl').text('There was an error - please try again')
+  $('.changePWNav').modal('hide')
 }
 
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInFailure,
-  signOutSuccess
+  signOutSuccess,
+  changePWSuccess,
+  changePWFailure
 }
