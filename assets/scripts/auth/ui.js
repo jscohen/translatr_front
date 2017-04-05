@@ -1,12 +1,21 @@
 'use strict'
 
-// const store = require('../store')
+const players = require('./players')
 
 const signUpSuccess = (data) => {
-  console.log("WAT")
-  console.log(data.user.email + ' is now signed up!')
-  $('.pl').text('Hello ' + data.user.email)
   $('.signUpModal').modal('hide')
+  $('.signUpNav').hide()
+  if (players.player1 === undefined) {
+    players.player1 = data.user
+    $('.pl').text('Hello ' + data.user.email + ' you have entered the game as player 1 (X)')
+    $('.pl1name').text(data.user.email)
+  } else if (players.player2 === undefined) {
+    players.player2 = data.user
+    $('.pl').text('Hello ' + data.user.email + ' you have entered the game as player 2 (O)')
+    $('.pl2name').text(data.user.email)
+  } else {
+    $('pl').text('Hello ' + data.user.email + ' ,you are signed up but the game is already full')
+  }
 }
 
 const signUpFailure = (error) => {
