@@ -1,3 +1,26 @@
-.gameLabel {
+.game-label {
   margin-top: 5px;
+}
+
+.box {
+  border: 2px solid $black;
+  height: 125px;
+}
+
+.container-board {
+  margin-left: 5%;
+  margin-top: 75px;
+  width: 50%;
+}
+
+nav {
+  overflow: hidden;
+}
+
+.container {
+  width: 75%
+}
+
+.btn {
+  margin-top: 65px;
 }

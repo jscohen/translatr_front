@@ -1,30 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags unless you know what you are doing -->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags unless you know what you are doing -->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body class="container-fluid">
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-          <h1 class="gameLabel">Tic Tac Toe Game</h1>
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h1 class="game-label">Tic Tac Toe Game</h1>
         </div>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a class="navbar-brand" href="#">Sign Up</a></li>
-            <li><a class="navbar-brand" href="#">Sign In</a></li>
-            <li><a class="navbar-brand" href="#">Change Password</a></li>
-            <li><a class="navbar-brand" href="#">Sign Out</a></li>
-          </ul>
-        </div>
-      </nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="navbar-brand" href="#">Sign Up</a></li>
+          <li><a class="navbar-brand" href="#">Sign In</a></li>
+          <li><a class="navbar-brand" href="#">Change Password</a></li>
+          <li><a class="navbar-brand" href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="container-fluid">
+  <div class="navbar nnavbar-left">
+      <button class="btn btn-primary btn-lg" id="newgame">Start a New Game</button>
+      <button class="btn btn-primary btn-lg" id="cheatmode">Cheat Mode</button>
+  </div>
+</div>
 
-    </body>
+  <div class="container-board">
+    <div class="row">
+      <div class="col-xs-4 box" id="cell1">Cell 1</div>
+      <div class="col-xs-4 box" id="cell2">Cell 2</div>
+      <div class="col-xs-4 box" id="cell3">Cell 3</div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4 box" id="cell4">Cell 4</div>
+      <div class="col-xs-4 box" id="cell5">Cell 5</div>
+      <div class="col-xs-4 box" id="cell6">Cell 6</div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4 box" id="cell7">Cell 7</div>
+      <div class="col-xs-4 box" id="cell8">Cell 8</div>
+      <div class="col-xs-4 box" id="cell9">Cell 9</div>
+    </div>
+  </div>
+
+</body>
+
 </html>
