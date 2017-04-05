@@ -11,7 +11,7 @@ const signUpSuccess = (data) => {
 
 const signUpFailure = (error) => {
   console.error(error)
-  $('.pl').text('You are already signed in!')
+  $('.pl').text('You are already signed up!')
   $('.signUpModal').modal('hide')
 }
 
