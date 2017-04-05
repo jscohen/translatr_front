@@ -21,6 +21,8 @@
           <h1 class="game-label">Tic Tac Toe Game</h1>
         </div>
         <ul class="nav navbar-nav navbar-right">
+          <li>  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sign Up</button>
+          </li>
           <li><a class="navbar-brand" href="#">Sign Up</a></li>
           <li><a class="navbar-brand" href="#">Sign In</a></li>
           <li><a class="navbar-brand" href="#">Change Password</a></li>
@@ -30,11 +32,11 @@
     </nav>
   </header>
   <div class="container-fluid">
-  <div class="navbar nnavbar-left">
+    <div class="navbar nnavbar-left">
       <button class="btn btn-primary btn-lg" id="newgame">Start a New Game</button>
       <button class="btn btn-primary btn-lg" id="cheatmode">Cheat Mode</button>
+    </div>
   </div>
-</div>
 
   <div class="container-board">
     <div class="row">
@@ -75,6 +77,29 @@
       <div class="log col-xs-4 box">Player 2 Stats</div>
     </div>
   </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="exampleModalLabel">Sign Up</h4>
+        </div>
+        <div class="modal-body">
+          <form class="signup">
+            <input type="text" name="credentials[email]" id="sign-up-email" placeholder="Enter Email/Username">
+            <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Enter Password">
+            <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Confirm PW">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-primary" name="submit" value="Sign Up">
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </body>
 
