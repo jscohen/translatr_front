@@ -4,6 +4,7 @@ const newGameSuccess = (data) => {
   console.log('New Game Created')
   games.game = data
   console.log(games)
+  games.gameStarted = true
 }
 
 const newGameFailure = (error) => {

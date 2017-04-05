@@ -4,4 +4,8 @@ const games = {
 
 }
 
-module.export = games
+const gameStarted = false
+
+module.export = {
+  games, gameStarted
+}
