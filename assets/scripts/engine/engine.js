@@ -10,8 +10,15 @@ const startNewGame = function () {
   .catch(ui.newGameFailure)
 }
 
+const getGame = function () {
+  event.preventDefault()
+  api.getGame().then(ui.getGameSuccess)
+  .catch(ui.getGameFailure)
+}
+
 const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
+  $('#gamestatus').on('submit', getGame)
 }
 
 module.exports = {
