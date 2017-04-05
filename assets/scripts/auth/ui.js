@@ -24,7 +24,14 @@ const signUpFailure = (error) => {
   $('.signUpModal').modal('hide')
 }
 
+const signInFailure = (error) => {
+  console.error(error)
+  $('.pl').text('You are already signed in.')
+  $('.signUpModal').modal('hide')
+}
+
 module.exports = {
   signUpSuccess,
-  signUpFailure
+  signUpFailure,
+  signInFailure
 }

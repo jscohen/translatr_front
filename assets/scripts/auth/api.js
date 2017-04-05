@@ -5,8 +5,6 @@
 const config = require('../config')
 
 const signUp = (data) => {
-  console.log(data)
-  console.log('BOO!')
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
     method: 'POST',
@@ -14,6 +12,15 @@ const signUp = (data) => {
   })
 }
 
+const signIn = (data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/sign-in',
+    method: 'POST',
+    data
+  })
+}
+
 module.exports = {
-  signUp
+  signUp,
+  signIn
 }
