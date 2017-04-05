@@ -1,5 +1,9 @@
-const newGameSuccess = () => {
+const games = require('./games.js')
+
+const newGameSuccess = (data) => {
   console.log('New Game Created')
+  games.game = data
+  console.log(games)
 }
 
 const newGameFailure = (error) => {
@@ -7,7 +11,7 @@ const newGameFailure = (error) => {
 }
 
 const getGameSuccess = (data) => {
-  console.log('Got Created')
+  console.log('Got Games')
   console.log(data)
 }
 
@@ -15,9 +19,14 @@ const getGameFailure = (error) => {
   console.error(error)
 }
 
+const destroyGamesSuccess = () => {
+  console.log('Games Destroyed')
+}
+
 module.exports = {
   newGameSuccess,
   newGameFailure,
   getGameSuccess,
-  getGameFailure
+  getGameFailure,
+  destroyGamesSuccess
 }

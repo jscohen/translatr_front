@@ -46,7 +46,7 @@ const signOutSuccess = () => {
     $('.signOutNav').hide()
   }
   $('.signUpModal').modal('hide')
-  $('.signUpNav').hide()
+  $('.signUpNav').show()
 }
 
 const changePWSuccess = (data) => {

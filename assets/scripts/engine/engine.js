@@ -16,9 +16,16 @@ const getGame = function () {
   .catch(ui.getGameFailure)
 }
 
+const killGames = function () {
+  event.preventDefault()
+  api.killGames().then(ui.destroyGamesSuccess)
+  .catch(ui.destroyGamesFailure)
+}
+
 const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
   $('#gamestatus').on('submit', getGame)
+  $('#kill-games').on('submit', killGames)
 }
 
 module.exports = {
