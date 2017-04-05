@@ -37,32 +37,35 @@
       </div>
     </nav>
   </header>
-  <div class="container-fluid">
-    <div class="navbar nnavbar-left">
-      <button class="btn btn-primary btn-lg" id="newgame">Start a New Game</button>
+  <div class="game-buttons">
+    <form id="newgame">
+      <input type="submit" class="btn btn-primary btn-lg" id="game-button" value="Start a New Game">
+    </form>
+    <form id="gamestatus">
+      <input type="submit" class="btn btn-primary btn-lg" id="game-status" value="Game Status">
+    </form>
       <button class="btn btn-primary btn-lg" id="cheatmode">Cheat Mode</button>
-    </div>
   </div>
 
   <h3>Game log: <span class="pl"></span></h3>
 
   <div class="container-board">
     <div class="row">
-      <div class="col-xs-4 box" id="cell1">Cell 1</div>
-      <div class="col-xs-4 box" id="cell2">Cell 2</div>
-      <div class="col-xs-4 box" id="cell3">Cell 3</div>
+      <div class="col-xs-4 box gamecell" id="cell1">Cell 1</div>
+      <div class="col-xs-4 box gamecell" id="cell2">Cell 2</div>
+      <div class="col-xs-4 box gamecell" id="cell3">Cell 3</div>
     </div>
 
     <div class="row">
-      <div class="col-xs-4 box" id="cell4">Cell 4</div>
-      <div class="col-xs-4 box" id="cell5">Cell 5</div>
-      <div class="col-xs-4 box" id="cell6">Cell 6</div>
+      <div class="col-xs-4 box gamecell" id="cell4">Cell 4</div>
+      <div class="col-xs-4 box gamecell" id="cell5">Cell 5</div>
+      <div class="col-xs-4 box gamecell" id="cell6">Cell 6</div>
     </div>
 
     <div class="row">
-      <div class="col-xs-4 box" id="cell7">Cell 7</div>
-      <div class="col-xs-4 box" id="cell8">Cell 8</div>
-      <div class="col-xs-4 box" id="cell9">Cell 9</div>
+      <div class="col-xs-4 box gamecell" id="cell7">Cell 7</div>
+      <div class="col-xs-4 box gamecell" id="cell8">Cell 8</div>
+      <div class="col-xs-4 box gamecell" id="cell9">Cell 9</div>
     </div>
   </div>
 
