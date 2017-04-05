@@ -21,7 +21,7 @@
           <h1 class="game-label">Tic Tac Toe Game</h1>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li>  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sign Up</button>
+          <li><button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#exampleModal">Sign Up</button>
           </li>
           <li><a class="navbar-brand" href="#">Sign Up</a></li>
           <li><a class="navbar-brand" href="#">Sign In</a></li>
@@ -37,6 +37,8 @@
       <button class="btn btn-primary btn-lg" id="cheatmode">Cheat Mode</button>
     </div>
   </div>
+
+  <h2 class="pl">TEST</h2>
 
   <div class="container-board">
     <div class="row">
@@ -78,7 +80,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal fade signUpModal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -86,15 +88,15 @@
           <h4 class="modal-title" id="exampleModalLabel">Sign Up</h4>
         </div>
         <div class="modal-body">
-          <form class="signup">
+          <form id="sign-up">
             <input type="text" name="credentials[email]" id="sign-up-email" placeholder="Enter Email/Username">
             <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Enter Password">
             <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Confirm PW">
+            <input type="submit" class="btn btn-primary" name="submit" value="Sign Up">
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-primary" name="submit" value="Sign Up">
         </div>
       </div>
     </div>
