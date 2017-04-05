@@ -21,11 +21,16 @@
           <h1 class="game-label">Tic Tac Toe Game</h1>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li class="signUpNav"><button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#exampleModal">Sign Up</button>
+          <li class="signUpNav"><button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#signUpModal">Sign Up</button>
           </li>
-          <li><a class="navbar-brand" href="#">Sign In</a></li>
+          <li class="signInNav"><button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#signInModal">Sign In</button>
+          </li>
           <li><a class="navbar-brand" href="#">Change Password</a></li>
-          <li><a class="navbar-brand" href="#">Sign Out</a></li>
+          <li class="signOutNav">
+            <form id="sign-out">
+              <input type="submit" class="btn btn-primary" name="submit" value="Sign Out">
+            </form>
+          </li>
         </ul>
       </div>
     </nav>
@@ -79,7 +84,7 @@
     </div>
   </div>
 
-  <div class="modal fade signUpModal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal fade signUpModal" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -100,6 +105,27 @@
       </div>
     </div>
   </div>
+
+    <div class="modal fade signUpModal" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">Sign Up</h4>
+          </div>
+          <div class="modal-body">
+            <form id="sign-in">
+              <input type="text" name="credentials[email]" id="sign-in-email" placeholder="Enter Email/Username">
+              <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Enter Password">
+              <input type="submit" class="btn btn-primary" name="submit" value="Sign In">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 </body>
