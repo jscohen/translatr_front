@@ -29,27 +29,8 @@ const onSignOut = function (event) {
 const onChangePW = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
-  console.log(player.player1.token)
-  const getID = function () {
-    if (player.player2 !== undefined) {
-      return player.player2.id
-    } else if (player.player1 !== undefined) {
-      return player.player1.id
-    }
-  }
-
-  const getToken = function () {
-    if (player.player2 !== undefined) {
-      return player.player2.token
-    } else if (player.player1 !== undefined) {
-      return player.player1.token
-    }
-  }
-  const playerID = getID()
-  const playerToken = getToken()
-  console.log(playerID)
-  console.log(playerToken)
+  const playerID = player.player.id
+  const playerToken = player.player.token
   api.changePW(data, playerID, playerToken).then(ui.changePWSuccess)
   .catch(ui.changePWFailure)
 }

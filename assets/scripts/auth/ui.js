@@ -5,17 +5,9 @@ const players = require('./players')
 const signUpSuccess = (data) => {
   $('.signUpModal').modal('hide')
   $('.signUpNav').hide()
-  if (players.player1 === undefined) {
-    players.player1 = data.user
-    $('.pl').text('Hello ' + data.user.email + ' you have entered the game as player 1 (X)')
-    $('.pl1name').text(players.player1.email)
-  } else if (players.player2 === undefined) {
-    players.player2 = data.user
-    $('.pl').text('Hello ' + data.user.email + ' you have entered the game as player 2 (O)')
-    $('.pl2name').text(data.user.email)
-  } else {
-    $('pl').text('Hello ' + data.user.email + ' ,you are signed up but the game is already full')
-  }
+  players.player = data.user
+  $('.pl').text('Hello ' + data.user.email)
+  console.log(players.player)
   $('.signOutNav').show()
 }
 
@@ -33,20 +25,8 @@ const signInFailure = (error) => {
 
 const signOutSuccess = () => {
   console.log('sign out success ran with no returns')
-  console.log(players.player1.id)
-  if (players.player2 !== undefined) {
-    players.player2 = undefined
-    $('.pl').text('Player 2 has signed out')
-  } else if (players.player1.id !== undefined) {
-    console.log('woot')
-    players.player1 = undefined
-    $('.pl').text('Player 1 has signed out')
-  }
-  if (players.player1 === undefined && players.player2 === undefined) {
-    $('.signOutNav').hide()
-  }
-  $('.signUpModal').modal('hide')
-  $('.signUpNav').show()
+  $('.pl').text(players.player.email + ' has signed out')
+  players.player = undefined
 }
 
 const changePWSuccess = (data) => {
