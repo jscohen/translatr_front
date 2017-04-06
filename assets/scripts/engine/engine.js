@@ -2,7 +2,7 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
 const games = require('./games.js')
-const whosTurn = 'player1'
+const players = require('../auth/players.js')
 
 const startNewGame = function () {
   event.preventDefault()
@@ -24,7 +24,7 @@ const killGames = function () {
 }
 
 const playTurn = function () {
-  if (games.gameStarted && whosTurn === 'player1') {
+  if (games.gameStarted) {
     $(this).html('<h1>X</h1>')
     let cellNum = $(this).attr('id')
     cellNum = getCellNum(cellNum)
@@ -57,6 +57,14 @@ const p2joinGame = function () {
   }
   api.joinGame().then(ui.joinGameSuccess)
   .catch(ui.joinGameFailure)
+}
+
+const player1Turn = function (isTrue) {
+  if (isTrue === undefined) {
+    return true
+  } else {
+    return isTrue
+  }
 }
 
 const addHandlers = () => {
