@@ -5,9 +5,15 @@ const players = require('./players')
 const signUpSuccess = (data) => {
   $('.signUpModal').modal('hide')
   $('.signUpNav').hide()
-  players.player = data.user
-  $('.pl').text('Hello ' + data.user.email)
-  console.log(players.player)
+  if (players.player1 === undefined) {
+    players.player1 = data.user
+    $('.pl').text('Hello ' + players.player1.email)
+    console.log(players.player1)
+  } else if (players.player2 === undefined) {
+    players.player2 = data.user
+    $('.pl').text('Hello ' + players.player2.email)
+    console.log(players.player2)
+  }
   $('.signOutNav').show()
 }
 

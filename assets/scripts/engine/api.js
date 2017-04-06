@@ -8,7 +8,7 @@ const newGame = () => {
     url: config.apiOrigin + '/games/',
     method: 'POST',
     headers: {
-      Authorization: 'Token token=' + players.player.token
+      Authorization: 'Token token=' + players.player1.token
     }
   })
 }
@@ -18,7 +18,7 @@ const getGame = () => {
     url: config.apiOrigin + '/games/' + games.game.game.id,
     method: 'GET',
     headers: {
-      Authorization: 'Token token=' + players.player.token
+      Authorization: 'Token token=' + players.player1.token
     }
   })
 }
@@ -28,7 +28,7 @@ const killGames = () => {
     url: config.apiOrigin + '/games/',
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + players.player.token
+      Authorization: 'Token token=' + players.player1.token
     }
   })
 }
@@ -39,7 +39,7 @@ const joinGame = () => {
     url: config.apiOrigin + '/games/' + games.game.game.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + players.player.token
+      Authorization: 'Token token=' + players.player2.token
     }
   })
 }
