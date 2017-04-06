@@ -21,10 +21,40 @@ nav {
   width: 75%
 }
 
-.btn {
-  margin-top: 65px;
+.btn-top {
+  margin-left: 5px;
+  margin-top: 10px;
 }
 
 .game-buttons {
   margin-top: 100px;
+}
+
+.navbar-right {
+  margin-left: 10px;
+}
+
+form {
+  display: inline;
+}
+
+.btn-lg {
+  background-color: #aaceaa;
+  color: #fffaaa;
+}
+
+#cell0, #cell1, #cell2 {
+  border-top: 0px white;
+}
+
+#cell0, #cell3, #cell6 {
+  border-left: 0px white;
+}
+
+#cell2, #cell5, #cell8 {
+  border-right: 0px white;
+}
+
+#cell6, #cell7, #cell8 {
+  border-bottom: 0px white;
 }
