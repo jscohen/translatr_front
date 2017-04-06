@@ -23,29 +23,63 @@ const killGames = function () {
   .catch(ui.destroyGamesFailure)
 }
 
+const counter = 1
+let turn = 1
+
 const playTurn = function () {
-  if (games.gameStarted) {
-    $(this).html('<h1>X</h1>')
-    let cellNum = $(this).attr('id')
-    cellNum = getCellNum(cellNum)
-    const gameArr = games.game.game.cells
-    const array = addCell(cellNum, gameArr)
-    console.log(array)
-    console.log(games.game.game)
-  } else {
+  if (players.player2 === undefined) {
+    $('.pl').text('You need two players to play')
     return false
   }
+  const X = 'X'
+  const O = 'O'
+  let cell = $(this).attr('id')
+  cell = '#' + cell
+  const gameArr = games.game.game.cells
+  console.log(turn)
+  if (games.gameStarted && turn % 2 === 1) {
+    doTurn(cell, '<h1>X</h1>', gameArr, turn, X)
+    $('.pl').text(players.player1.email + ' played an X in ' + cell)
+    console.log(turn)
+  } else if (games.gameStarted && turn % 2 === 0) {
+    console.log(turn)
+    doTurn(cell, '<h1>O</h1>', gameArr, turn, O)
+    $('.pl').text(players.player2.email + ' played an O in ' + cell)
+  }
+  turn = whoseTurn(turn)
+}
+
+const whoseTurn = function (counter) {
+  counter = counter + 1
+  return counter
+}
+
+const doTurn = function (cell, value, gameArr, turn, letter) {
+  $(cell).html(value)
+  styleCell(cell, letter)
+  cell = getCellNum(cell)
+  const array = addCell(cell, gameArr, letter)
+  games.game.game.cells = array
+  return whoseTurn(turn)
 }
 
 const getCellNum = function (cell) {
-  cell = cell.substring(4)
+  cell = cell.substring(5)
   cell = cell / 1
   return cell
 }
 
-const addCell = function (cellNum, array) {
-  array[cellNum] = 'X'
+const addCell = function (cellNum, array, letter) {
+  array[cellNum] = letter
   return array
+}
+
+const styleCell = function (cell, letter) {
+  if (letter === 'X') {
+    $(cell).css('background-color', '#fff')
+  } else {
+    $(cell).css('background-color', '#ccc')
+  }
 }
 
 const p2joinGame = function () {
@@ -57,14 +91,6 @@ const p2joinGame = function () {
   }
   api.joinGame().then(ui.joinGameSuccess)
   .catch(ui.joinGameFailure)
-}
-
-const player1Turn = function (isTrue) {
-  if (isTrue === undefined) {
-    return true
-  } else {
-    return isTrue
-  }
 }
 
 const addHandlers = () => {
