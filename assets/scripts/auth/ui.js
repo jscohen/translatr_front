@@ -15,6 +15,7 @@ const signUpSuccess = (data) => {
     console.log(players.player2)
   }
   $('.signOutNav').show()
+  $('.changePWNav').show()
 }
 
 const signUpFailure = (error) => {
@@ -31,8 +32,12 @@ const signInFailure = (error) => {
 
 const signOutSuccess = () => {
   console.log('sign out success ran with no returns')
-  $('.game-log').text(players.player.email + ' has signed out')
-  players.player = undefined
+  $('.game-log').text('You have signed out')
+  if (players.player2 === undefined) {
+    players.player1 = undefined
+  } else {
+    players.player2 = undefined
+  }
 }
 
 const changePWSuccess = (data) => {

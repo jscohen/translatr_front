@@ -3,7 +3,7 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
-const player = require('./players')
+const players = require('./players')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -29,8 +29,15 @@ const onSignOut = function (event) {
 const onChangePW = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  const playerID = player.player.id
-  const playerToken = player.player.token
+  let playerID = 0
+  let playerToken = ''
+  if (players.player2 === undefined) {
+    playerID = players.player1.id
+    playerToken = players.player1.token
+  } else {
+    playerID = players.player2.id
+    playerToken = players.player2.token
+  }
   api.changePW(data, playerID, playerToken).then(ui.changePWSuccess)
   .catch(ui.changePWFailure)
 }

@@ -19,6 +19,7 @@ const engine = require('./engine/engine.js')
 $(() => {
   authEvents.addHandlers()
   $('.signOutNav').hide()
+  $('.changePWNav').hide()
   engine.addHandlers()
 })
 require('./example')
