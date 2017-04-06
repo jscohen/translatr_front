@@ -2,7 +2,6 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
 const games = require('./games.js')
-const players = require('../auth/players.js')
 
 const startNewGame = function () {
   event.preventDefault()
@@ -26,13 +25,26 @@ const killGames = function () {
 
 const playTurn = function () {
   if (games.gameStarted) {
-    console.log('clicked')
     $(this).html('<h1>X</h1>')
-    const cellNum = $(this).attr('id')
-    console.log(cellNum)
+    let cellNum = $(this).attr('id')
+    cellNum = getCellNum(cellNum)
+    const gameArr = games.game.game.cells
+    const array = addCell(cellNum, gameArr)
+    console.log(array)
   } else {
     return false
   }
+}
+
+const getCellNum = function (cell) {
+  cell = cell.substring(4)
+  cell = cell / 1
+  return cell
+}
+
+const addCell = function (cellNum, array) {
+  array[cellNum] = 'X'
+  return array
 }
 
 const addHandlers = () => {
