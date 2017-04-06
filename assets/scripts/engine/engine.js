@@ -114,16 +114,30 @@ const didYouWin = function (gameArr, letter, style) {
     gameover(letter, style)
   } else if (gameArr[2] === letter && gameArr[4] === letter && gameArr[6] === letter) {
     gameover(letter, style)
+  } else {
+    checkForCatsGame(letter, style, gameArr)
   }
+  return false
+}
+
+const checkForCatsGame = function (letter, style, gameArr) {
+  for (let i = 0; i < gameArr.length; i++) {
+    if (gameArr[i] === '') {
+      return false
+    }
+  }
+  $('.pl').text('Its a cats game!  Try again!')
 }
 
 const gameover = function (letter, style) {
   if (letter === 'X') {
     $('.pl').text(players.player1.email + ' is the winner!')
     $('.gamecell').css('background-color', style)
+    $('.gamecell').empty()
   } else {
     $('.pl').text(players.player2.email + ' is the winner!')
     $('.gamecell').css('background-color', style)
+    $('.gamecell').empty()
   }
 }
 
