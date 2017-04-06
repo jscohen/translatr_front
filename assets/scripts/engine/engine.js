@@ -49,6 +49,7 @@ const addCell = function (cellNum, array) {
 }
 
 const p2joinGame = function () {
+  event.preventDefault()
   console.log('Join Game Started')
   if (games.game.game === undefined) {
     $('.pl').text('You need to start a game first!')
