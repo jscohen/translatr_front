@@ -21,23 +21,13 @@ const signIn = (data) => {
 }
 
 const signOut = () => {
-  if (players.player2) {
-    return $.ajax({
-      url: config.apiOrigin + '/sign-out/' + players.player2.id,
-      method: 'DELETE',
-      headers: {
-        Authorization: 'Token token=' + players.player2.token
-      }
-    })
-  } else if (players.player1) {
-    return $.ajax({
-      url: config.apiOrigin + '/sign-out/' + players.player1.id,
-      method: 'DELETE',
-      headers: {
-        Authorization: 'Token token=' + players.player1.token
-      }
-    })
-  }
+  return $.ajax({
+    url: config.apiOrigin + '/sign-out/' + players.player.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + players.player.token
+    }
+  })
 }
 
 const changePW = (data, playerID, playerToken) => {

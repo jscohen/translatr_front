@@ -2,10 +2,10 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
 const games = require('./games.js')
+const whosTurn = 'player1'
 
 const startNewGame = function () {
   event.preventDefault()
-  console.log('clicked')
   $('.gamecell').empty()
   api.newGame().then(ui.newGameSuccess)
   .catch(ui.newGameFailure)
@@ -24,13 +24,14 @@ const killGames = function () {
 }
 
 const playTurn = function () {
-  if (games.gameStarted) {
+  if (games.gameStarted && whosTurn === 'player1') {
     $(this).html('<h1>X</h1>')
     let cellNum = $(this).attr('id')
     cellNum = getCellNum(cellNum)
     const gameArr = games.game.game.cells
     const array = addCell(cellNum, gameArr)
     console.log(array)
+    console.log(games.game.game)
   } else {
     return false
   }
@@ -47,11 +48,22 @@ const addCell = function (cellNum, array) {
   return array
 }
 
+const p2joinGame = function () {
+  console.log('Join Game Started')
+  if (games.game.game === undefined) {
+    $('.pl').text('You need to start a game first!')
+    return false
+  }
+  api.joinGame().then(ui.joinGameSuccess)
+  .catch(ui.joinGameFailure)
+}
+
 const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
   $('#gamestatus').on('submit', getGame)
   $('#kill-games').on('submit', killGames)
   $('.gamecell').on('click', playTurn)
+  $('#join-game').on('submit', p2joinGame)
 }
 
 module.exports = {
