@@ -3,7 +3,7 @@ const engine = require('./engine.js')
 
 const newGameSuccess = (data) => {
   console.log('New Game Created')
-  $('.pl').text('Game started!  Lets Go!')
+  $('.game-log').text('Game started!  Lets Go!')
   games.game = data
   console.log(games)
   games.gameStarted = true

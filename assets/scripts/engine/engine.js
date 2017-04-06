@@ -28,7 +28,10 @@ let turn = 1
 
 const playTurn = function () {
   if (players.player2 === undefined) {
-    $('.pl').text('You need two players to play')
+    $('.game-log').text('You need two players to play')
+    return false
+  } else if (games.game.game === undefined) {
+    $('.game-log').text('Please click the start game button to play')
     return false
   }
   const X = 'X'
@@ -38,16 +41,23 @@ const playTurn = function () {
   let cell = $(this).attr('id')
   cell = '#' + cell
   const gameArr = games.game.game.cells
+  const cheatMode = $('.cheatMode').text()
   console.log(turn)
   if (games.gameStarted && turn % 2 === 1) {
     doTurn(cell, '<h1>X</h1>', gameArr, turn, X)
-    $('.pl').text(players.player1.email + ' played an X in ' + cell)
+    $('.game-log').text(players.player1.email + ' played an X in ' + cell)
     console.log(turn)
+    if (cheatMode === 'Cheater!!') {
+      checkCheatMode(gameArr, X)
+    }
     didYouWin(gameArr, X, p1Color)
   } else if (games.gameStarted && turn % 2 === 0) {
     console.log(turn)
     doTurn(cell, '<h1>O</h1>', gameArr, turn, O)
-    $('.pl').text(players.player2.email + ' played an O in ' + cell)
+    $('.game-log').text(players.player2.email + ' played an O in ' + cell)
+    if (cheatMode === 'Cheater!!') {
+      checkCheatMode(gameArr, O)
+    }
     didYouWin(gameArr, O, p2Color)
   }
   turn = whoseTurn(turn)
@@ -90,7 +100,7 @@ const p2joinGame = function () {
   event.preventDefault()
   console.log('Join Game Started')
   if (games.game.game === undefined) {
-    $('.pl').text('You need to start a game first!')
+    $('.game-log').text('You need to start a game first!')
     return false
   }
   api.joinGame().then(ui.joinGameSuccess)
@@ -126,18 +136,101 @@ const checkForCatsGame = function (letter, style, gameArr) {
       return false
     }
   }
-  $('.pl').text('Its a cats game!  Try again!')
+  $('.game-log').text('Its a cats game!  Try again!')
 }
 
 const gameover = function (letter, style) {
   if (letter === 'X') {
-    $('.pl').text(players.player1.email + ' is the winner!')
+    $('.game-log').text(players.player1.email + ' is the winner!')
     $('.gamecell').css('background-color', style)
     $('.gamecell').empty()
+    $('.gamecell').off('click', playTurn)
   } else {
-    $('.pl').text(players.player2.email + ' is the winner!')
+    $('.game-log').text(players.player2.email + ' is the winner!')
     $('.gamecell').css('background-color', style)
     $('.gamecell').empty()
+    $('.gamecell').off('click', playTurn)
+  }
+}
+
+const activateCheatMode = function (event) {
+  console.log('test')
+  event.preventDefault()
+  $('.game-log').text('Hmmm....some shenanigans may be going on here...')
+  $('.cheatMode').text('Cheater!!')
+  return true
+}
+
+const checkCheatMode = function (gameArr, letter) {
+  if (gameArr[0] === letter && gameArr[1] === letter && gameArr[2] === '') {
+    $('#cell2').css('background-color', 'green')
+    $('#cell2').text('Click me to win!!!<')
+  } else if (gameArr[0] === letter && gameArr[2] === letter && gameArr[1] === '') {
+    $('#cell1').css('background-color', 'green')
+    $('#cell1').text('Click me to win!!!')
+  } else if (gameArr[0] === '' && gameArr[1] === letter && gameArr[2] === letter) {
+    $('#cell0').css('background-color', 'green')
+    $('#cell0').text('Click me to win!!!')
+  } else if (gameArr[0] === letter && gameArr[3] === letter && gameArr[6] === '') {
+    $('#cell6').css('background-color', 'green')
+    $('#cell6').text('Click me to win!!!')
+  } else if (gameArr[0] === letter && gameArr[6] === letter && gameArr[3] === '') {
+    $('#cell3').css('background-color', 'green')
+    $('#cell3').text('Click me to win!!!')
+  } else if (gameArr[3] === letter && gameArr[6] === letter && gameArr[0] === '') {
+    $('#cell0').css('background-color', 'green')
+    $('#cell0').text('Click me to win!!!')
+  } else if (gameArr[0] === letter && gameArr[4] === letter && gameArr[8] === '') {
+    $('#cell8').css('background-color', 'green')
+    $('#cell8').text('Click me to win!!!')
+  } else if (gameArr[1] === letter && gameArr[4] === letter && gameArr[7] === '') {
+    $('#cell7').css('background-color', 'green')
+    $('#cell7').text('Click me to win!!!')
+  } else if (gameArr[4] === letter && gameArr[7] === letter && gameArr[1] === '') {
+    $('#cell1').css('background-color', 'green')
+    $('#cell1').text('Click me to win!!!')
+  } else if (gameArr[1] === letter && gameArr[7] === letter && gameArr[4] === '') {
+    $('#cell4').css('background-color', 'green')
+    $('#cell4').text('Click me to win!!!')
+  } else if (gameArr[2] === letter && gameArr[5] === letter && gameArr[8] === '') {
+    $('#cell8').css('background-color', 'green')
+    $('#cell8').text('Click me to win!!!')
+  } else if (gameArr[5] === letter && gameArr[8] === letter && gameArr[2] === '') {
+    $('#cell2').css('background-color', 'green')
+    $('#cell2').text('Click me to win!!!')
+  } else if (gameArr[2] === letter && gameArr[8] === letter && gameArr[5] === '') {
+    $('#cell5').css('background-color', 'green')
+    $('#cell5').text('Click me to win!!!')
+  } else if (gameArr[3] === letter && gameArr[4] === letter && gameArr[5] === '') {
+    $('#cell5').css('background-color', 'green')
+    $('#cell5').text('Click me to win!!!')
+  } else if (gameArr[5] === letter && gameArr[4] === letter && gameArr[3] === '') {
+    $('#cell3').css('background-color', 'green')
+    $('#cell3').text('Click me to win!!!')
+  } else if (gameArr[3] === letter && gameArr[3] === letter && gameArr[4] === '') {
+    $('#cell4').css('background-color', 'green')
+    $('#cell4').text('Click me to win!!!')
+  } else if (gameArr[6] === letter && gameArr[7] === letter && gameArr[8] === '') {
+    $('#cell8').css('background-color', 'green')
+    $('#cell8').text('Click me to win!!!')
+  } else if (gameArr[7] === letter && gameArr[8] === letter && gameArr[6] === '') {
+    $('#cell6').css('background-color', 'green')
+    $('#cell6').text('Click me to win!!!')
+  } else if (gameArr[8] === letter && gameArr[6] === letter && gameArr[7] === '') {
+    $('#cell7').css('background-color', 'green')
+    $('#cell7').text('Click me to win!!!')
+  } else if (gameArr[2] === letter && gameArr[4] === letter && gameArr[6] === '') {
+    $('#cell6').css('background-color', 'green')
+    $('#cell6').text('Click me to win!!!')
+  } else if (gameArr[6] === letter && gameArr[4] === letter && gameArr[2] === '') {
+    $('#cell2').css('background-color', 'green')
+    $('#cell2').text('Click me to win!!!')
+  } else if (gameArr[2] === letter && gameArr[6] === letter && gameArr[4] === '') {
+    $('#cell4').css('background-color', 'green')
+    $('#cell4').text('Click me to win!!!')
+  } else {
+    $('.game-log').text('No dice yet, cheater')
+    return false
   }
 }
 
@@ -147,6 +240,7 @@ const addHandlers = () => {
   $('#kill-games').on('submit', killGames)
   $('.gamecell').on('click', playTurn)
   $('#join-game').on('submit', p2joinGame)
+  $('#cheat').on('submit', activateCheatMode)
 }
 
 module.exports = {
