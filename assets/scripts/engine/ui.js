@@ -33,6 +33,7 @@ const joinGameSuccess = () => {
 }
 
 const joinGameFailure = (error) => {
+  console.log('There was an error')
   console.error(error)
 }
 
