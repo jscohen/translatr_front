@@ -7,6 +7,7 @@ const players = require('../auth/players.js')
 const startNewGame = function () {
   event.preventDefault()
   $('.gamecell').empty()
+  $('.gamecell').css('background-color', 'white')
   api.newGame().then(ui.newGameSuccess)
   .catch(ui.newGameFailure)
 }
@@ -23,7 +24,6 @@ const killGames = function () {
   .catch(ui.destroyGamesFailure)
 }
 
-const counter = 1
 let turn = 1
 
 const playTurn = function () {
@@ -33,6 +33,8 @@ const playTurn = function () {
   }
   const X = 'X'
   const O = 'O'
+  const p1Color = '#eeceff'
+  const p2Color = '#aabbcc'
   let cell = $(this).attr('id')
   cell = '#' + cell
   const gameArr = games.game.game.cells
@@ -41,10 +43,12 @@ const playTurn = function () {
     doTurn(cell, '<h1>X</h1>', gameArr, turn, X)
     $('.pl').text(players.player1.email + ' played an X in ' + cell)
     console.log(turn)
+    didYouWin(gameArr, X, p1Color)
   } else if (games.gameStarted && turn % 2 === 0) {
     console.log(turn)
     doTurn(cell, '<h1>O</h1>', gameArr, turn, O)
     $('.pl').text(players.player2.email + ' played an O in ' + cell)
+    didYouWin(gameArr, O, p2Color)
   }
   turn = whoseTurn(turn)
 }
@@ -76,9 +80,9 @@ const addCell = function (cellNum, array, letter) {
 
 const styleCell = function (cell, letter) {
   if (letter === 'X') {
-    $(cell).css('background-color', '#fff')
+    $(cell).css('background-color', '#eeceff')
   } else {
-    $(cell).css('background-color', '#ccc')
+    $(cell).css('background-color', '#aabbcc')
   }
 }
 
@@ -91,6 +95,36 @@ const p2joinGame = function () {
   }
   api.joinGame().then(ui.joinGameSuccess)
   .catch(ui.joinGameFailure)
+}
+
+const didYouWin = function (gameArr, letter, style) {
+  if (gameArr[0] === letter && gameArr[0] === gameArr[1] && gameArr[1] === gameArr[2]) {
+    gameover(letter, style)
+  } else if (gameArr[1] === letter && gameArr[4] === letter && gameArr[7] === letter) {
+    gameover(letter, style)
+  } else if (gameArr[0] === letter && gameArr[3] === letter && gameArr[6] === letter) {
+    gameover(letter, style)
+  } else if (gameArr[2] === letter && gameArr[5] === letter && gameArr[8] === letter) {
+    gameover(letter, style)
+  } else if (gameArr[3] === letter && gameArr[4] === letter && gameArr[5] === letter) {
+    gameover(letter, style)
+  } else if (gameArr[6] === letter && gameArr[7] === letter && gameArr[8] === letter) {
+    gameover(letter, style)
+  } else if (gameArr[0] === letter && gameArr[4] === letter && gameArr[8] === letter) {
+    gameover(letter, style)
+  } else if (gameArr[2] === letter && gameArr[4] === letter && gameArr[6] === letter) {
+    gameover(letter, style)
+  }
+}
+
+const gameover = function (letter, style) {
+  if (letter === 'X') {
+    $('.pl').text(players.player1.email + ' is the winner!')
+    $('.gamecell').css('background-color', style)
+  } else {
+    $('.pl').text(players.player2.email + ' is the winner!')
+    $('.gamecell').css('background-color', style)
+  }
 }
 
 const addHandlers = () => {
