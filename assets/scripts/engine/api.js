@@ -44,9 +44,21 @@ const joinGame = () => {
   })
 }
 
+const updateGame = () => {
+  console.log('Updating Game')
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + games.game.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + players.player2.token
+    }
+  })
+}
+
 module.exports = {
   newGame,
   getGame,
   killGames,
-  joinGame
+  joinGame,
+  updateGame
 }

@@ -3,6 +3,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const games = require('./games.js')
 const players = require('../auth/players.js')
+const getFormFields = require(`../../../lib/get-form-fields`)
 
 const startNewGame = function () {
   event.preventDefault()
@@ -51,6 +52,7 @@ const playTurn = function () {
       checkCheatMode(gameArr, X)
     }
     didYouWin(gameArr, X, p1Color)
+    updateGame(cell, X)
   } else if (games.gameStarted && turn % 2 === 0) {
     console.log(turn)
     doTurn(cell, '<h1>O</h1>', gameArr, turn, O)
@@ -59,6 +61,7 @@ const playTurn = function () {
       checkCheatMode(gameArr, O)
     }
     didYouWin(gameArr, O, p2Color)
+    updateGame()
   }
   turn = whoseTurn(turn)
 }
@@ -66,6 +69,12 @@ const playTurn = function () {
 const whoseTurn = function (counter) {
   counter = counter + 1
   return counter
+}
+
+const updateGame = function () {
+  const data = getFormFields(this)
+  api.updateGame(data).this(ui.updateGameSuccess)
+  .catch(ui.updateGameFail)
 }
 
 const doTurn = function (cell, value, gameArr, turn, letter) {
@@ -241,6 +250,7 @@ const addHandlers = () => {
   $('.gamecell').on('click', playTurn)
   $('#join-game').on('submit', p2joinGame)
   $('#cheat').on('submit', activateCheatMode)
+  $('.updateGame').on('submit', updateGame)
 }
 
 module.exports = {

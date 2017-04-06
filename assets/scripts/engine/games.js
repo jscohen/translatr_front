@@ -4,6 +4,14 @@ const games = {
 
 }
 
+const gameUpdate = {
+  'cell': {
+    'index': 0,
+    'value': ''
+  },
+  'over': false
+}
+
 const gameStarted = false
 
 const array = []
@@ -11,5 +19,6 @@ const array = []
 module.export = {
   games,
   gameStarted,
-  array
+  array,
+  gameUpdate
 }

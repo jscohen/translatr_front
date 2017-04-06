@@ -37,6 +37,15 @@ const joinGameFailure = (error) => {
   console.error(error)
 }
 
+const updateGameSuccess = (game) => {
+  console.log(game)
+  console.log('Game Updated')
+}
+
+const updateGameFail = (error) => {
+  console.error(error)
+}
+
 module.exports = {
   newGameSuccess,
   newGameFailure,
@@ -44,5 +53,7 @@ module.exports = {
   getGameFailure,
   destroyGamesSuccess,
   joinGameSuccess,
-  joinGameFailure
+  joinGameFailure,
+  updateGameSuccess,
+  updateGameFail
 }
