@@ -7,6 +7,7 @@
 
   <!-- Do not add `link` tags unless you know what you are doing -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 
   <!-- Do not add `script` tags unless you know what you are doing -->
   <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
@@ -18,7 +19,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <h1 class="game-label">Tic Tac Toe Game</h1>
+          <h1 class="game-label">Jon's Tic Tac Toe Game</h1>
         </div>
         <ul class="nav navbar-nav navbar-right">
           <li class="signUpNav"><button type="button" class="btn btn-primary btn-top" data-toggle="modal" data-dismiss="modal" data-target="#signUpModal">Sign Up</button>
@@ -37,37 +38,52 @@
       </div>
     </nav>
   </header>
-  <nav class="navbar navbar-default">
-  <div class="game-buttons">
-    <form id="newgame">
-      <input type="submit" class="btn btn-primary btn-lg" id="game-button" value="Start a New Game">
-    </form>
-    <form id="gamestatus">
-      <input type="submit" class="btn btn-primary btn-lg" id="game-status" value="Game Status">
-    </form>
-    <form id="kill-games">
-      <input type="submit" class="btn btn-primary btn-lg" id="game-kill" value="Clear Games">
-    </form>
-    <form id="join-game">
-      <input type="submit" class="btn btn-primary btn-lg" id="game-join" value="Join Current Game">
-    </form>
+
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Game Menu</button>
+    <span class="caret"></span>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>
+          <form id="newgame">
+            <input type="submit" class="btn btn-primary btn-lg" id="game-button" value="Start New Game">
+          </form>
+        </li>
+        <li>
+          <form id="gamestatus">
+            <input type="submit" class="btn btn-primary btn-lg" id="game-status" value="Game Status">
+          </form>
+        </li>
+        <li>
+          <form id="kill-games">
+            <input type="submit" class="btn btn-primary btn-lg" id="game-kill" value="Clear Games">
+          </form>
+        </li>
+        <li>
+          <form id="join-game">
+            <input type="submit" class="btn btn-primary btn-lg" id="game-join" value="Join Current Game">
+          </form>
+        </li>
+        <li>
+            <form id="cheat">
+              <button class="btn btn-primary btn-lg" id="cheatmode">Cheat Mode</button>
+            </form>
+        </li>
+    </ul>
   </div>
-</nav>
+
 
   <h3>Game log: <span class="game-log"></span></h3>
   <h3><span class="cheatMode"></span></h3>
-  <form id="cheat">
-    <button class="btn btn-primary btn-lg" id="cheatmode">Cheat Mode</button>
-  </form>
 
   <div class="container-board">
     <div class="row">
-      <div class="col-xs-4 box gamecell" id="cell0">
-        <form>
-          <input name="game[cell][index]" type="text" class="divform" value="0">Cell 1
+      <div class="col-xs-4 box gamecell" id="cell0">Cell 1
+        <!--  <form>
+          <input name="game[cell][index]" type="text" class="divform" value="0">
           <input name="game[cell][value]" type="text" class="divform" id="cell0Input">
           <input name="game[over]" type="text" class="divform" value="">
         </form>
+      -->
       </div>
       <div class="col-xs-4 box gamecell" id="cell1">Cell 2</div>
       <div class="col-xs-4 box gamecell" id="cell2">Cell 3</div>

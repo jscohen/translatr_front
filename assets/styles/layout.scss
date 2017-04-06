@@ -63,3 +63,34 @@ form {
   height: 0;
   width: 0;
 }
+
+navbar-fixed-top {
+  overflow: hidden;
+}
+
+@media (max-width: 500px) {
+  .game-buttons {
+    margin-left:50px;
+    margin-top: 200px;
+  }
+  .btn-lg {
+    height: 60%;
+    font: 70%;
+    width: 30%;
+  }
+}
+
+.cheatButton {
+  margin-left: 50px;
+  width: 80%;
+}
+
+.cheatButton form button {
+  font: 70%;
+  height: 60%;
+  width: 70%;
+}
+
+.dropdown {
+  margin-top: 100px;
+}
