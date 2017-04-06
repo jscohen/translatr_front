@@ -52,7 +52,7 @@ const playTurn = function () {
       checkCheatMode(gameArr, X)
     }
     didYouWin(gameArr, X, p1Color)
-    updateGame(cell, X)
+    // updateGame(cell, X)
   } else if (games.gameStarted && turn % 2 === 0) {
     console.log(turn)
     doTurn(cell, '<h1>O</h1>', gameArr, turn, O)
@@ -61,7 +61,7 @@ const playTurn = function () {
       checkCheatMode(gameArr, O)
     }
     didYouWin(gameArr, O, p2Color)
-    updateGame()
+    // updateGame()
   }
   turn = whoseTurn(turn)
 }
