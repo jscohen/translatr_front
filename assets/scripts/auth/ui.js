@@ -4,7 +4,6 @@ const players = require('./players')
 
 const signUpSuccess = (data) => {
   $('.signUpModal').modal('hide')
-  $('.signUpNav').hide()
   if (players.player1 === undefined) {
     players.player1 = data.user
     $('.game-log').text('Hello ' + players.player1.email)
