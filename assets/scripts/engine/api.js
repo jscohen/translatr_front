@@ -23,16 +23,6 @@ const getGame = () => {
   })
 }
 
-const killGames = () => {
-  return $.ajax({
-    url: config.apiOrigin + '/games/',
-    method: 'DELETE',
-    headers: {
-      Authorization: 'Token token=' + players.player1.token
-    }
-  })
-}
-
 const joinGame = () => {
   console.log('Join Game Going')
   return $.ajax({
@@ -59,7 +49,6 @@ const updateGame = (data) => {
 module.exports = {
   newGame,
   getGame,
-  killGames,
   joinGame,
   updateGame
 }
