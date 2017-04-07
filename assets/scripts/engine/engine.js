@@ -151,17 +151,6 @@ const styleCell = function (cell, letter) {
   }
 }
 
-const p2joinGame = function () {
-  event.preventDefault()
-  console.log('Join Game Started')
-  if (games.game.game === undefined) {
-    $('.game-log').text('You need to start a game first!')
-    return false
-  }
-  api.joinGame().then(ui.joinGameSuccess)
-  .catch(ui.joinGameFailure)
-}
-
 const didYouWin = function (gameArr, letter, style) {
   if (gameArr[0] === letter && gameArr[0] === gameArr[1] && gameArr[1] === gameArr[2]) {
     return gameover(letter, style)
@@ -295,7 +284,6 @@ const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
   $('#gamestatus').on('submit', getGame)
   $('.gamecell').on('click', playTurn)
-  $('#join-game').on('submit', p2joinGame)
   $('#cheat').on('submit', activateCheatMode)
   $('.updateGame').on('submit', updateGame)
 }
