@@ -49,19 +49,21 @@
           </form>
         </li>
         <li>
+          <form id="gamestatus">
+            <input type="submit" class="btn btn-primary btn-lg" id="game-status" value="See your win total">
+          </form>
         </li>
         <li>
             <form id="cheat">
               <button class="btn btn-primary btn-lg" id="cheatmode">Cheat Mode</button>
             </form>
         </li>
+        <li>
+          <form id="get-a-game">
+            <input type="submit" class="btn btn-primary btn-lg" id="getgame" value="See Results of any Game">
+            <input type="text" name="gameid[id]" placeholder="Enter Game ID">
+          </form>
     </ul>
-  </div>
-
-  <div class="statsContainer">
-    <form id="gamestatus">
-      <input type="submit" class="btn btn-primary btn-lg" id="game-status" value="See your win total">
-    </form>
   </div>
 
   <h3>Game log: <span class="game-log"></span></h3>
@@ -85,21 +87,6 @@
       <div class="col-xs-4 box gamecell" id="cell6"></div>
       <div class="col-xs-4 box gamecell" id="cell7"></div>
       <div class="col-xs-4 box gamecell" id="cell8"></div>
-    </div>
-  </div>
-
-  <div class="container-board">
-    <div class="row">
-      <div class="col-xs-4 box pl1name">
-        Player 1
-      </div>
-      <div class="col-xs-4 box pl2name">
-        Player 2
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-4 box">Player 1 Stats</div>
-      <div class="log col-xs-4 box">Player 2 Stats</div>
     </div>
   </div>
 

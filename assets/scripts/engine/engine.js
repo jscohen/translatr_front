@@ -4,6 +4,7 @@ const ui = require('./ui.js')
 const games = require('./games.js')
 const players = require('../auth/players.js')
 const watcher = require('../watch/gameWatcher')
+const getFormFields = require(`../../../lib/get-form-fields`)
 
 const startNewGame = function () {
   event.preventDefault()
@@ -291,15 +292,42 @@ const checkCheatMode = function (gameArr, letter) {
   }
 }
 
+const getAGame = function () {
+  event.preventDefault()
+  if (players.player1 === undefined) {
+    $('.game-log').text('You must sign in to get game results')
+    return false
+  }
+  const data = getFormFields(this)
+  const gameID = data.gameid.id
+  api.getAGame(gameID).then(ui.gameIDSuccess)
+  .catch(ui.gameIDFailure)
+}
+
+const showAGame = function (arr, id, player1, player2) {
+  const xWinner = didYouWin(arr, 'X')
+  const oWinner = didYouWin(arr, 'O')
+
+  if (xWinner) {
+    $('.game-log').text('Game #' + id + ' was between ' + player1 + ' and ' + player2 + '.  ' + player1 + ' was victorious')
+  } else if (oWinner) {
+    $('.game-log').text('Game #' + id + ' was between ' + player1 + ' and ' + player2 + '.  ' + player2 + ' was victorious')
+  } else {
+    $('.game-log').text('Game #' + id + ' was between ' + player1 + ' and ' + player2 + '.  The game was a draw')
+  }
+}
+
 const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
   $('#gamestatus').on('submit', getGame)
   $('.gamecell').on('click', playTurn)
   $('#cheat').on('submit', activateCheatMode)
   $('.updateGame').on('submit', updateGame)
+  $('#get-a-game').on('submit', getAGame)
 }
 
 module.exports = {
   addHandlers,
-  getWins
+  getWins,
+  showAGame
 }
