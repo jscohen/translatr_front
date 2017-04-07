@@ -23,6 +23,16 @@ const getGame = () => {
   })
 }
 
+const getStats = (player) => {
+  return $.ajax({
+    url: config.apiOrigin + '/games/',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + player.token
+    }
+  })
+}
+
 const joinGame = () => {
   console.log('Join Game Going')
   return $.ajax({
@@ -50,5 +60,6 @@ module.exports = {
   newGame,
   getGame,
   joinGame,
-  updateGame
+  updateGame,
+  getStats
 }
