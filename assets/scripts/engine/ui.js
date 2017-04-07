@@ -20,6 +20,7 @@ const newGameFailure = (error) => {
 const getGameSuccess = (data) => {
   console.log('Got Games')
   console.log(data)
+  return data
 }
 
 const getGameFailure = (error) => {
