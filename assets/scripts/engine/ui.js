@@ -14,8 +14,8 @@ const newGameSuccess = (data) => {
 }
 
 // Log an error if a new game can't be created
-const newGameFailure = (error) => {
-  console.error(error)
+const newGameFailure = () => {
+  $('.game-log').text('Something went wrong creating your game!')
 }
 
 // If you successfully got the list of games, go the the getWins function to log the number of wins
@@ -25,8 +25,8 @@ const getGameSuccess = (data) => {
 }
 
 // Error handler for failure to get game list
-const getGameFailure = (error) => {
-  console.error(error)
+const getGameFailure = () => {
+  $('.game-log').text('Something went wrong getting your games')
 }
 
 // If player 2 joined succesfully, set the local game object and log it
@@ -36,8 +36,8 @@ const joinGameSuccess = () => {
 }
 
 // Log an error if join game fails
-const joinGameFailure = (error) => {
-  console.error(error)
+const joinGameFailure = () => {
+  $('.game-log').text('Player 2 could not join')
 }
 
 // When the game gets updated on the API, do nothing
@@ -45,8 +45,9 @@ const updateGameSuccess = (game) => {
   return true
 }
 
-const updateGameFail = (error) => {
-  console.error(error)
+const updateGameFail = () => {
+  $('.game-log').text('Game update failed!')
+  return false
 }
 
 // For individual games, go to the showAGame function to
@@ -63,8 +64,7 @@ const gameIDSuccess = (data) => {
 }
 
 // If the Game ID is wrong, log the failure
-const gameIDFailure = (error) => {
-  console.error(error)
+const gameIDFailure = () => {
   $('.game-log').text('Did you type in the incorrect game number?')
 }
 
