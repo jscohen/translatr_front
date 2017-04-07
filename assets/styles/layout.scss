@@ -70,7 +70,7 @@ navbar-fixed-top {
 
 @media (max-width: 500px) {
   .game-buttons {
-    margin-left:50px;
+    margin-left: 50px;
     margin-top: 200px;
   }
   .btn-lg {
@@ -93,4 +93,8 @@ navbar-fixed-top {
 
 .dropdown {
   margin-top: 100px;
+}
+
+.statsContainer {
+  float: right;
 }

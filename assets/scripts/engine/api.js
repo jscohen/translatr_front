@@ -13,12 +13,12 @@ const newGame = () => {
   })
 }
 
-const getGame = () => {
+const getGame = (token) => {
   return $.ajax({
-    url: config.apiOrigin + '/games/' + games.game.game.id,
+    url: config.apiOrigin + '/games/',
     method: 'GET',
     headers: {
-      Authorization: 'Token token=' + players.player1.token
+      Authorization: 'Token token=' + token
     }
   })
 }

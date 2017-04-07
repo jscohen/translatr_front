@@ -16,9 +16,24 @@ const startNewGame = function () {
 }
 
 const getGame = function () {
-  event.preventDefault()
-  api.getGame().then(ui.getGameSuccess)
-  .catch(ui.getGameFailure)
+  if (players.player2 !== undefined) {
+    event.preventDefault()
+    api.getGame(players.player2.token).then(ui.getGameSuccess)
+    .catch(ui.getGameFailure)
+    const games = api.getGame(players.player2.token).then(ui.getGameSuccess)
+        .catch(ui.getGameFailure)
+    getWins(games)
+  } else if (players.player1 !== undefined) {
+    event.preventDefault()
+    api.getGame(players.player1.token).then(ui.getGameSuccess)
+    .catch(ui.getGameFailure)
+    const games = api.getGame(players.player1.token).then(ui.getGameSuccess)
+        .catch(ui.getGameFailure)
+    getWins(games)
+  } else {
+    $('.game-log').text('You must sign in to get your stats')
+    return false
+  }
 }
 
 let turn = 1
@@ -254,14 +269,6 @@ const checkCheatMode = function (gameArr, letter) {
   }
 }
 
-const getStats = function () {
-  event.preventDefault()
-  if (players.player1 !== undefined) {
-    api.getStats(players.player1).then(ui.getStatsSuccess)
-    .catch(ui.getStatsFail)
-  }
-}
-
 const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
   $('#gamestatus').on('submit', getGame)
@@ -269,7 +276,6 @@ const addHandlers = () => {
   $('#join-game').on('submit', p2joinGame)
   $('#cheat').on('submit', activateCheatMode)
   $('.updateGame').on('submit', updateGame)
-  $('#get-stats').on('submit', getStats)
 }
 
 module.exports = {
