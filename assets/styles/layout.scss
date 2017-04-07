@@ -18,7 +18,7 @@ nav {
 }
 
 .container {
-  width: 75%
+  width: 75%;
 }
 
 .btn-top {
@@ -39,24 +39,24 @@ form {
 }
 
 .btn-lg {
-  background-color: #aaceaa;
-  color: #fffaaa;
+  background-color: $btn-background;
+  color: $btn-color;
 }
 
 #cell0, #cell1, #cell2 {
-  border-top: 0px white;
+  border-top: 0 $white;
 }
 
 #cell0, #cell3, #cell6 {
-  border-left: 0px white;
+  border-left: 0 $white;
 }
 
 #cell2, #cell5, #cell8 {
-  border-right: 0px white;
+  border-right: 0 $white;
 }
 
 #cell6, #cell7, #cell8 {
-  border-bottom: 0px white;
+  border-bottom: 0 $white;
 }
 
 .divform {
@@ -73,6 +73,7 @@ navbar-fixed-top {
     margin-left: 50px;
     margin-top: 200px;
   }
+
   .btn-lg {
     font: 70%;
     height: 60%;
@@ -80,23 +81,8 @@ navbar-fixed-top {
   }
 }
 
-.cheatButton {
-  margin-left: 50px;
-  width: 80%;
-}
-
-.cheatButton form button {
-  font: 70%;
-  height: 60%;
-  width: 70%;
-}
-
 .dropdown {
   margin-top: 100px;
-}
-
-.statsContainer {
-  float: right;
 }
 
 .game-log {
