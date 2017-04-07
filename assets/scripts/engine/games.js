@@ -1,3 +1,5 @@
+// See the players.js documentation
+
 'use strict'
 
 const games = {

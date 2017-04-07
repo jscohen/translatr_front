@@ -3,77 +3,76 @@ const games = require('./games.js')
 const api = require('./api')
 const players = require('../auth/players.js')
 
+// Success function for new game Created
+// Log the creation of the game and set local game object variable to true
+// Call the Join Game function to a second API call that adds player 2 to the game
 const newGameSuccess = (data) => {
-  console.log('New Game Created')
   $('.game-log').text('Game started!  Lets Go!')
   games.game = data
-  console.log(games)
   games.gameStarted = true
   api.joinGame().then(joinGameSuccess).catch(joinGameFailure)
 }
 
+// Log an error if a new game can't be created
 const newGameFailure = (error) => {
   console.error(error)
 }
 
+// If you successfully got the list of games, go the the getWins function to log the number of wins
 const getGameSuccess = (data) => {
   const engine = require('./engine.js')
-  console.log('test')
-  console.log(engine)
   engine.getWins(data)
 }
 
+// Error handler for failure to get game list
 const getGameFailure = (error) => {
   console.error(error)
 }
 
-const destroyGamesSuccess = () => {
-  console.log('Games Destroyed')
-}
-
+// If player 2 joined succesfully, set the local game object and log it
 const joinGameSuccess = () => {
-  console.log('Player 2 Joined')
   games.game.game.player_o = players.player2
-  console.log(games.game.game)
+  $('.game-log').text(players.player2.email + ' is now in the game')
 }
 
+// Log an error if join game fails
 const joinGameFailure = (error) => {
-  console.log('There was an error')
   console.error(error)
 }
 
+// When the game gets updated on the API, do nothing
 const updateGameSuccess = (game) => {
-  console.log(game)
-  console.log('Game Updated')
+  return true
 }
 
 const updateGameFail = (error) => {
-  console.log('fail')
   console.error(error)
 }
 
+// For individual games, go to the showAGame function to
+// show the result of that game
 const gameIDSuccess = (data) => {
   const engine = require('./engine.js')
+
   const arr = data.game.cells
-  console.log(arr)
   const id = data.game.id
-  console.log(id)
   const player1 = data.game.player_x.email
-  console.log(player1)
   const player2 = data.game.player_o.email
-  console.log(player2)
+
   engine.showAGame(arr, id, player1, player2)
 }
 
+// If the Game ID is wrong, log the failure
 const gameIDFailure = (error) => {
   console.error(error)
+  $('.game-log').text('Did you type in the incorrect game number?')
 }
+
 module.exports = {
   newGameSuccess,
   newGameFailure,
   getGameSuccess,
   getGameFailure,
-  destroyGamesSuccess,
   joinGameSuccess,
   joinGameFailure,
   updateGameSuccess,
