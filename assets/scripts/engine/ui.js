@@ -1,5 +1,5 @@
+'use strict'
 const games = require('./games.js')
-const engine = require('./engine.js')
 const api = require('./api')
 const players = require('../auth/players.js')
 
@@ -9,7 +9,6 @@ const newGameSuccess = (data) => {
   games.game = data
   console.log(games)
   games.gameStarted = true
-  console.log(engine)
   api.joinGame().then(joinGameSuccess).catch(joinGameFailure)
 }
 
@@ -18,8 +17,10 @@ const newGameFailure = (error) => {
 }
 
 const getGameSuccess = (data) => {
-  console.log('Got Games')
-  console.log(data)
+  const engine = require('./engine.js')
+  console.log('test')
+  console.log(engine)
+  engine.getWins(data)
 }
 
 const getGameFailure = (error) => {
