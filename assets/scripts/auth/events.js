@@ -21,6 +21,10 @@ const onSignIn = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
+  if (players.player1 === undefined) {
+    $('.game-log').text('No one is signed in')
+    return false
+  }
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
