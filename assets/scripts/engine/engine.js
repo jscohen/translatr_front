@@ -293,6 +293,19 @@ const getAGame = function () {
   .catch(ui.gameIDFailure)
 }
 
+const showAGame = function (arr, id, player1, player2) {
+  const xWinner = didYouWin(arr, 'X')
+  const oWinner = didYouWin(arr, 'O')
+
+  if (xWinner) {
+    $('.game-log').text('Game #' + id + ' was between ' + player1 + ' and ' + player2 + '.  ' + player1 + ' was victorious')
+  } else if (oWinner) {
+    $('.game-log').text('Game #' + id + ' was between ' + player1 + ' and ' + player2 + '.  ' + player2 + ' was victorious')
+  } else {
+    $('.game-log').text('Game #' + id + ' was between ' + player1 + ' and ' + player2 + '.  The game was a draw')
+  }
+}
+
 const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
   $('#gamestatus').on('submit', getGame)
@@ -304,5 +317,6 @@ const addHandlers = () => {
 
 module.exports = {
   addHandlers,
-  getWins
+  getWins,
+  showAGame
 }

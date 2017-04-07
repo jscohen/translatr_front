@@ -52,6 +52,22 @@ const updateGameFail = (error) => {
   console.error(error)
 }
 
+const gameIDSuccess = (data) => {
+  const engine = require('./engine.js')
+  const arr = data.game.cells
+  console.log(arr)
+  const id = data.game.id
+  console.log(id)
+  const player1 = data.game.player_x.email
+  console.log(player1)
+  const player2 = data.game.player_o.email
+  console.log(player2)
+  engine.showAGame(arr, id, player1, player2)
+}
+
+const gameIDFailure = (error) => {
+  console.error(error)
+}
 module.exports = {
   newGameSuccess,
   newGameFailure,
@@ -61,5 +77,7 @@ module.exports = {
   joinGameSuccess,
   joinGameFailure,
   updateGameSuccess,
-  updateGameFail
+  updateGameFail,
+  gameIDSuccess,
+  gameIDFailure
 }
