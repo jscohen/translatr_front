@@ -1,9 +1,10 @@
 'use strict'
 
 const players = require('./players.js')
-
 const config = require('../config')
 
+// Sign up AJAX Call
+// Takes in form data and creates a new user in the game-api
 const signUp = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
@@ -12,6 +13,8 @@ const signUp = (data) => {
   })
 }
 
+// Sign in AJAX Call
+// Takes credentials entered in the sign-in modal and creates a new user
 const signIn = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/sign-in/',
@@ -20,6 +23,9 @@ const signIn = (data) => {
   })
 }
 
+// Sign out method signs out the current players
+// If there are two players, the other will be signed in
+// Identifies the player by checking if there is a second player
 const signOut = () => {
   if (players.player2 === undefined) {
     return $.ajax({
@@ -40,6 +46,8 @@ const signOut = () => {
   }
 }
 
+// Change password AJAX call: takes input from modal and patches the players'
+// record on the server with the new pw
 const changePW = (data, playerID, playerToken) => {
   return $.ajax({
     url: config.apiOrigin + '/change-password/' + playerID,
@@ -51,6 +59,7 @@ const changePW = (data, playerID, playerToken) => {
   })
 }
 
+// Exports all of these functions for future use
 module.exports = {
   signUp,
   signIn,

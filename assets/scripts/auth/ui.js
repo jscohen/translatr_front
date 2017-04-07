@@ -1,34 +1,40 @@
+// This file is responsible for the success and failure functions of the API Calls
+// Errors and success messages are written to the game log
+
 'use strict'
 
 const players = require('./players')
 
+// This function runs on a successful sign up or sign-in
 const signUpSuccess = (data) => {
+  // Hide the modal after its use
   $('.signUpModal').modal('hide')
+
+  // Check to see which player is signing in and greet that player
   if (players.player1 === undefined) {
     players.player1 = data.user
     $('.game-log').text('Hello ' + players.player1.email)
-    console.log(players.player1)
   } else if (players.player2 === undefined) {
     players.player2 = data.user
     $('.game-log').text('Hello ' + players.player2.email)
-    console.log(players.player2)
   }
+  // Sice someone is signed in, we need the sign out and change pw buttons to show
   $('.signOutNav').show()
   $('.changePWNav').show()
 }
 
-const signUpFailure = (error) => {
-  console.error(error)
+// This function runs if there is a problem with sign up
+const signUpFailure = () => {
   $('.game-log').text('You are already signed up, or entered the wrong password, or you have not signed up yet')
 }
 
-const signInFailure = (error) => {
-  console.error(error)
+// This function runs if there is a probelm with sign in
+const signInFailure = () => {
   $('.game-log').text('You are already signed up, or entered the wrong password, or you have not signed up yet')
 }
 
+// This function runs if you sign out successfully
 const signOutSuccess = () => {
-  console.log('sign out success ran with no returns')
   $('.game-log').text('You have signed out')
   if (players.player2 === undefined) {
     players.player1 = undefined
@@ -37,18 +43,20 @@ const signOutSuccess = () => {
   }
 }
 
+// This function runs if change passwords succeeds
 const changePWSuccess = (data) => {
   $('#changePWModal').modal('hide')
   $('.game-log').text('Your password has successfully been changed')
 }
 
-const changePWFailure = (error) => {
+// This function runs if change password fails
+const changePWFailure = () => {
   $('#changePWModal').modal('hide')
-  console.error(error)
   $('.game-log').text('There was an error - please try again')
   $('.changePWNav').modal('hide')
 }
 
+// Export these functions for use
 module.exports = {
   signUpSuccess,
   signUpFailure,

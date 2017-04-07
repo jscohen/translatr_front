@@ -1,10 +1,16 @@
 'use strict'
 
+// Getting required files.  getFormFields is used to get data from forms
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 const players = require('./players')
 
+// Sign Up function
+// Takes data from a modal, accessed via getFormFields
+// The event has preventDefault which stops the page from refreshing
+// Then the API is called with the form data, executing a success function
+// if it works, and a failure function if there is an error
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
@@ -12,6 +18,8 @@ const onSignUp = function (event) {
   .catch(ui.signUpFailure)
 }
 
+// Sign in function
+// See comments for Sign Up Function
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
@@ -19,6 +27,10 @@ const onSignIn = function (event) {
   .catch(ui.signInFailure)
 }
 
+// Sing Out FUnction
+// Takes input from the sign out button on the homepage
+// Returns a log message and aborts if no one is signed in
+// Calls API to Delete the user
 const onSignOut = function (event) {
   event.preventDefault()
   if (players.player1 === undefined) {
@@ -30,6 +42,10 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
+// Change Password function
+// Get password data from the modal
+// Assigns player ID and token to a variable depending on who is changing the PW
+// Calls the ChangePW function in the API with a PATCH to enter in the new PW
 const onChangePW = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
@@ -46,6 +62,7 @@ const onChangePW = function (event) {
   .catch(ui.changePWFailure)
 }
 
+// Click handlers get input from the html elements when they are clicked
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
@@ -53,6 +70,7 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePW)
 }
 
+// Exports for use in main index file
 module.exports = {
   addHandlers
 }
