@@ -1,5 +1,7 @@
 const games = require('./games.js')
 const engine = require('./engine.js')
+const api = require('./api')
+const players = require('../auth/players.js')
 
 const newGameSuccess = (data) => {
   console.log('New Game Created')
@@ -8,6 +10,7 @@ const newGameSuccess = (data) => {
   console.log(games)
   games.gameStarted = true
   console.log(engine)
+  api.joinGame().then(joinGameSuccess).catch(joinGameFailure)
 }
 
 const newGameFailure = (error) => {
@@ -29,6 +32,7 @@ const destroyGamesSuccess = () => {
 
 const joinGameSuccess = () => {
   console.log('Player 2 Joined')
+  games.game.game.player_o = players.player2
   console.log(games.game.game)
 }
 
