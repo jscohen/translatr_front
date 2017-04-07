@@ -20,14 +20,12 @@ const signUpSuccess = (data) => {
 
 const signUpFailure = (error) => {
   console.error(error)
-  $('.game-log').text('You are already signed up!')
-  $('.signUpModal').modal('hide')
+  $('.game-log').text('You are already signed up, or entered the wrong password, or you have not signed up yet')
 }
 
 const signInFailure = (error) => {
   console.error(error)
-  $('.game-log').text('You are already signed in.')
-  $('.signUpModal').modal('hide')
+  $('.game-log').text('You are already signed up, or entered the wrong password, or you have not signed up yet')
 }
 
 const signOutSuccess = () => {
