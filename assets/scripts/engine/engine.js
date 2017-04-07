@@ -3,6 +3,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const games = require('./games.js')
 const players = require('../auth/players.js')
+const watcher = require('../watch/gameWatcher')
 
 const startNewGame = function () {
   event.preventDefault()
@@ -45,6 +46,16 @@ const playTurn = function () {
   } else if (games.gameStarted !== true) {
     $('.game-log').text('Please click the start game button to play')
     return false
+  }
+  const gameWatcher = watcher.resourceWatcher('http://localhost:7165/:id/watch', {
+    Authorization: 'Token token=' + players.player1.token,
+    timeout: 120
+  })
+
+  gameWatcher.on('change', test)
+
+  const test = function () {
+    console.log('testing testing')
   }
   const X = 'X'
   const O = 'O'
