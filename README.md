@@ -24,7 +24,7 @@ Tic-tac-toe is build in node.js with the premade game-api in rails.  It is a sin
 
 My implementatiom of tic-tac-toe has a few interesting features.  Firstly, you can cheat.  If you click the cheat mode button, any winning patterns available on the board will be shown to you.  In addition, you can easily access your games history through the See Your Win Total button.  Clicking this button will show you how many games you've won.  In addition, you can get an overview of any game you've played by entering a game ID in the game menu and clicking the See Results of Any Game button.
 
-The game functions via a log that shows every action the users take and displays warnings, issues and victory messages.  The log is inserted via jQuery into an empty '<span>' element inside an '<h3>'' element.
+The game functions via a log that shows every action the users take and displays warnings, issues and victory messages.  The log is inserted via jQuery into an empty '<span>' element inside an '<h3>' element.
 
 ## Project Planning
 
