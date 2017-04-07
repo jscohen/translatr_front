@@ -18,22 +18,22 @@ const startNewGame = function () {
 const getGame = function () {
   if (players.player2 !== undefined) {
     event.preventDefault()
-    api.getGame(players.player2.token).then(ui.getGameSuccess)
-    .catch(ui.getGameFailure)
-    const games = api.getGame(players.player2.token).then(ui.getGameSuccess)
-        .catch(ui.getGameFailure)
-    getWins(games)
+    const game = api.getGame(players.player2.token)
+    console.log(game)
+    getWins(game)
   } else if (players.player1 !== undefined) {
     event.preventDefault()
     api.getGame(players.player1.token).then(ui.getGameSuccess)
     .catch(ui.getGameFailure)
-    const games = api.getGame(players.player1.token).then(ui.getGameSuccess)
-        .catch(ui.getGameFailure)
-    getWins(games)
   } else {
     $('.game-log').text('You must sign in to get your stats')
     return false
   }
+}
+
+const getWins = function (games) {
+  console.log('got wins?')
+  console.log('x')
 }
 
 let turn = 1
@@ -279,5 +279,6 @@ const addHandlers = () => {
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  getWins
 }
