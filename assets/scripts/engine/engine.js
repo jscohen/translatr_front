@@ -8,6 +8,9 @@ const startNewGame = function () {
   event.preventDefault()
   $('.gamecell').empty()
   $('.gamecell').css('background-color', 'white')
+  if (games.gameStarted === true) {
+    $('.gamecell').on('click', playTurn)
+  }
   api.newGame().then(ui.newGameSuccess)
   .catch(ui.newGameFailure)
 }
@@ -30,7 +33,7 @@ const playTurn = function () {
   if (players.player2 === undefined) {
     $('.game-log').text('You need two players to play')
     return false
-  } else if (games.game.game === undefined) {
+  } else if (games.gameStarted !== true) {
     $('.game-log').text('Please click the start game button to play')
     return false
   }
