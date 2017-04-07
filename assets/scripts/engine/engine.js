@@ -254,6 +254,14 @@ const checkCheatMode = function (gameArr, letter) {
   }
 }
 
+const getStats = function () {
+  event.preventDefault()
+  if (players.player1 !== undefined) {
+    api.getStats(players.player1).then(ui.getStatsSuccess)
+    .catch(ui.getStatsFail)
+  }
+}
+
 const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
   $('#gamestatus').on('submit', getGame)
@@ -261,6 +269,7 @@ const addHandlers = () => {
   $('#join-game').on('submit', p2joinGame)
   $('#cheat').on('submit', activateCheatMode)
   $('.updateGame').on('submit', updateGame)
+  $('#get-stats').on('submit', getStats)
 }
 
 module.exports = {
