@@ -68,6 +68,10 @@ navbar-fixed-top {
   overflow: hidden;
 }
 
+.dropdown {
+  margin-top: 100px;
+}
+
 @media (max-width: 500px) {
   .game-buttons {
     margin-left: 50px;
@@ -77,12 +81,16 @@ navbar-fixed-top {
   .btn-lg {
     font: 70%;
     height: 60%;
-    width: 30%;
+    width: 60%;
   }
-}
 
-.dropdown {
-  margin-top: 100px;
+  .dropdown {
+    margin-top: 200px;
+  }
+
+  .getGameID {
+    width: 40%;
+  }
 }
 
 .game-log {
