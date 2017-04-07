@@ -44,14 +44,15 @@ const joinGame = () => {
   })
 }
 
-const updateGame = () => {
+const updateGame = (data) => {
   console.log('Updating Game')
   return $.ajax({
     url: config.apiOrigin + '/games/' + games.game.game.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + players.player2.token
-    }
+      Authorization: 'Token token=' + players.player1.token
+    },
+    data
   })
 }
 

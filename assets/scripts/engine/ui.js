@@ -43,6 +43,7 @@ const updateGameSuccess = (game) => {
 }
 
 const updateGameFail = (error) => {
+  console.log('fail')
   console.error(error)
 }
 

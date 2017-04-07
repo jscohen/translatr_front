@@ -3,7 +3,6 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const games = require('./games.js')
 const players = require('../auth/players.js')
-const getFormFields = require(`../../../lib/get-form-fields`)
 
 const startNewGame = function () {
   event.preventDefault()
@@ -51,8 +50,9 @@ const playTurn = function () {
     if (cheatMode === 'Cheater!!') {
       checkCheatMode(gameArr, X)
     }
+    const win = didYouWin(gameArr, X, p1Color)
     didYouWin(gameArr, X, p1Color)
-    // updateGame(cell, X)
+    updateGame(cell, X, win)
   } else if (games.gameStarted && turn % 2 === 0) {
     console.log(turn)
     doTurn(cell, '<h1>O</h1>', gameArr, turn, O)
@@ -60,10 +60,12 @@ const playTurn = function () {
     if (cheatMode === 'Cheater!!') {
       checkCheatMode(gameArr, O)
     }
-    didYouWin(gameArr, O, p2Color)
-    // updateGame()
+    const win = didYouWin(gameArr, O, p2Color)
+    didYouWin(gameArr, X, p1Color)
+    updateGame(cell, O, win)
   }
   turn = whoseTurn(turn)
+  $(this).off('click', playTurn)
 }
 
 const whoseTurn = function (counter) {
@@ -71,9 +73,19 @@ const whoseTurn = function (counter) {
   return counter
 }
 
-const updateGame = function () {
-  const data = getFormFields(this)
-  api.updateGame(data).this(ui.updateGameSuccess)
+const updateGame = function (cell, letter, win) {
+  cell = cell.substring(5) / 1
+  const gameUpdate = {
+    'game': {
+      'cell': {
+        'index': cell,
+        'value': letter
+      },
+      'over': win
+    }
+  }
+  console.log(gameUpdate)
+  api.updateGame(gameUpdate).then(ui.updateGameSuccess)
   .catch(ui.updateGameFail)
 }
 
@@ -118,21 +130,21 @@ const p2joinGame = function () {
 
 const didYouWin = function (gameArr, letter, style) {
   if (gameArr[0] === letter && gameArr[0] === gameArr[1] && gameArr[1] === gameArr[2]) {
-    gameover(letter, style)
+    return gameover(letter, style)
   } else if (gameArr[1] === letter && gameArr[4] === letter && gameArr[7] === letter) {
-    gameover(letter, style)
+    return gameover(letter, style)
   } else if (gameArr[0] === letter && gameArr[3] === letter && gameArr[6] === letter) {
-    gameover(letter, style)
+    return gameover(letter, style)
   } else if (gameArr[2] === letter && gameArr[5] === letter && gameArr[8] === letter) {
-    gameover(letter, style)
+    return gameover(letter, style)
   } else if (gameArr[3] === letter && gameArr[4] === letter && gameArr[5] === letter) {
-    gameover(letter, style)
+    return gameover(letter, style)
   } else if (gameArr[6] === letter && gameArr[7] === letter && gameArr[8] === letter) {
-    gameover(letter, style)
+    return gameover(letter, style)
   } else if (gameArr[0] === letter && gameArr[4] === letter && gameArr[8] === letter) {
-    gameover(letter, style)
+    return gameover(letter, style)
   } else if (gameArr[2] === letter && gameArr[4] === letter && gameArr[6] === letter) {
-    gameover(letter, style)
+    return gameover(letter, style)
   } else {
     checkForCatsGame(letter, style, gameArr)
   }
@@ -154,11 +166,13 @@ const gameover = function (letter, style) {
     $('.gamecell').css('background-color', style)
     $('.gamecell').empty()
     $('.gamecell').off('click', playTurn)
+    return true
   } else {
     $('.game-log').text(players.player2.email + ' is the winner!')
     $('.gamecell').css('background-color', style)
     $('.gamecell').empty()
     $('.gamecell').off('click', playTurn)
+    return true
   }
 }
 
