@@ -18,9 +18,8 @@ const startNewGame = function () {
 const getGame = function () {
   if (players.player2 !== undefined) {
     event.preventDefault()
-    const game = api.getGame(players.player2.token)
-    console.log(game)
-    getWins(game)
+    api.getGame(players.player2.token).then(ui.getGameSuccess)
+    .catch(ui.getGameFailure)
   } else if (players.player1 !== undefined) {
     event.preventDefault()
     api.getGame(players.player1.token).then(ui.getGameSuccess)
@@ -31,9 +30,32 @@ const getGame = function () {
   }
 }
 
-const getWins = function (games) {
+const getWins = function (data) {
   console.log('got wins?')
-  console.log('x')
+  const games = data.games
+  const obj = {}
+  const X = 'X'
+  const O = 'O'
+  let win = false
+  let winCount = 0
+  games.forEach(function (item) {
+    obj.game = item.id
+    obj.cells = item.cells
+    console.log(item)
+    if (item.player_x.email === players.player1.email) {
+      win = didYouWin(item.cells, X)
+      if (win) { winCount += 1 }
+    } else if (item.player_o.email === players.player2.email) {
+      win = didYouWin(item.cells, O)
+      if (win) { winCount += 1 }
+    }
+  })
+  console.log(winCount)
+  if (players.player2 !== undefined) {
+    $('.game-log').text(players.player2.email + ' has ' + winCount + ' wins')
+  } else {
+    $('.game-log').text(players.player1.email + ' has ' + winCount + ' wins')
+  }
 }
 
 let turn = 1
