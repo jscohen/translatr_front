@@ -3,6 +3,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const games = require('./games.js')
 const players = require('../auth/players.js')
+const getFormFields = require(`../../../lib/get-form-fields`)
 
 const startNewGame = function () {
   event.preventDefault()
@@ -280,12 +281,25 @@ const checkCheatMode = function (gameArr, letter) {
   }
 }
 
+const getAGame = function () {
+  event.preventDefault()
+  if (players.player1 === undefined) {
+    $('.game-log').text('You must sign in to get game results')
+    return false
+  }
+  const data = getFormFields(this)
+  const gameID = data.gameid.id
+  api.getAGame(gameID).then(ui.gameIDSuccess)
+  .catch(ui.gameIDFailure)
+}
+
 const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
   $('#gamestatus').on('submit', getGame)
   $('.gamecell').on('click', playTurn)
   $('#cheat').on('submit', activateCheatMode)
   $('.updateGame').on('submit', updateGame)
+  $('#get-a-game').on('submit', getAGame)
 }
 
 module.exports = {
