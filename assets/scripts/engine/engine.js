@@ -21,12 +21,6 @@ const getGame = function () {
   .catch(ui.getGameFailure)
 }
 
-const killGames = function () {
-  event.preventDefault()
-  api.killGames().then(ui.destroyGamesSuccess)
-  .catch(ui.destroyGamesFailure)
-}
-
 let turn = 1
 
 const playTurn = function () {
@@ -263,7 +257,6 @@ const checkCheatMode = function (gameArr, letter) {
 const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
   $('#gamestatus').on('submit', getGame)
-  $('#kill-games').on('submit', killGames)
   $('.gamecell').on('click', playTurn)
   $('#join-game').on('submit', p2joinGame)
   $('#cheat').on('submit', activateCheatMode)
