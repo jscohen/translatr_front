@@ -3,7 +3,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const games = require('./games.js')
 const players = require('../auth/players.js')
-const watcher = require('../watch/gameWatcher')
+// const watcher = require('../watch/gameWatcher')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
 // Start a new game function
@@ -91,14 +91,14 @@ const playTurn = function () {
     return false
   }
 
-  // Set the game watcher to communicate across browsers - FEATURE IN PROGRESS
+  /* Set the game watcher to communicate across browsers - FEATURE IN PROGRESS
   const gameWatcher = watcher.resourceWatcher('http://localhost:7165/:id/watch', {
     Authorization: 'Token token=' + players.player1.token,
     timeout: 120
   })
 
   gameWatcher.on('change', test)
-
+  */
   const test = function () {
     console.log('testing testing')
   }
