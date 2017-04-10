@@ -6,13 +6,23 @@ const games = require('./games.js')
 // This is the API call to create a new game
 // The first player's token is used as authorization
 const newGame = () => {
-  return $.ajax({
-    url: config.apiOrigin + '/games/',
-    method: 'POST',
-    headers: {
-      Authorization: 'Token token=' + players.player1.token
-    }
-  })
+  if (players.player2.token === undefined) {
+    return $.ajax({
+      url: config.apiOrigin + '/games/',
+      method: 'POST',
+      headers: {
+        Authorization: 'Token token=' + players.player1.token
+      }
+    })
+  } else {
+    return $.ajax({
+      url: config.apiOrigin + '/games/',
+      method: 'POST',
+      headers: {
+        Authorization: 'Token token=' + players.player2.token
+      }
+    })
+  }
 }
 
 // API call to get all games for a players

@@ -221,8 +221,10 @@ const addCell = function (cellNum, array, letter) {
 const styleCell = function (cell, letter) {
   if (letter === 'X') {
     $(cell).css('background-color', '#eeceff')
+    $(cell).text(letter)
   } else {
     $(cell).css('background-color', '#aabbcc')
+    $(cell).text(letter)
   }
 }
 
