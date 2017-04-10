@@ -53,6 +53,8 @@ const getAGame = (id) => {
 // This function uses the game ID and player 2's token to assign player 2 to
 // the current game
 const joinGame = () => {
+  console.log(games.game.game.id)
+  console.log(players.player2.token)
   return $.ajax({
     url: config.apiOrigin + '/games/' + games.game.game.id,
     method: 'PATCH',
@@ -70,7 +72,7 @@ const updateGame = (data) => {
     url: config.apiOrigin + '/games/' + games.game.game.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + players.player1.token
+      Authorization: 'Token token=' + players.player2.token
     },
     data
   })

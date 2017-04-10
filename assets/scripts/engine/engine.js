@@ -91,18 +91,6 @@ const playTurn = function () {
     return false
   }
 
-  /* Set the game watcher to communicate across browsers - FEATURE IN PROGRESS
-  const gameWatcher = watcher.resourceWatcher('http://localhost:7165/:id/watch', {
-    Authorization: 'Token token=' + players.player1.token,
-    timeout: 120
-  })
-
-  gameWatcher.on('change', test)
-  */
-  const test = function () {
-    console.log('testing testing')
-  }
-
   // Assing local variables to help ID players
   const X = 'X'
   const O = 'O'
