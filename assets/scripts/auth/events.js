@@ -33,7 +33,7 @@ const onSignIn = function (event) {
 // Calls API to Delete the user
 const onSignOut = function (event) {
   event.preventDefault()
-  if (players.player1 === undefined) {
+  if (players.player === undefined) {
     $('.game-log').text('No one is signed in')
     return false
   }
@@ -49,16 +49,7 @@ const onSignOut = function (event) {
 const onChangePW = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  let playerID = 0
-  let playerToken = ''
-  if (players.player2 === undefined) {
-    playerID = players.player1.id
-    playerToken = players.player1.token
-  } else {
-    playerID = players.player2.id
-    playerToken = players.player2.token
-  }
-  api.changePW(data, playerID, playerToken).then(ui.changePWSuccess)
+  api.changePW(data).then(ui.changePWSuccess)
   .catch(ui.changePWFailure)
 }
 

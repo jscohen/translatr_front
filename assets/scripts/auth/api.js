@@ -38,12 +38,12 @@ const signOut = () => {
 
 // Change password AJAX call: takes input from modal and patches the players'
 // record on the server with the new pw
-const changePW = (data, playerID, playerToken) => {
+const changePW = (data) => {
   return $.ajax({
-    url: config.apiOrigin + '/change-password/' + playerID,
+    url: config.apiOrigin + '/change-password/' + players.player.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + playerToken
+      Authorization: 'Token token=' + players.player.token
     },
     data
   })
