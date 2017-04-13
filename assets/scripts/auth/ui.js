@@ -21,6 +21,7 @@ const signInSuccess = (data) => {
   $('.changePWNav').show()
   $('.signInNav').hide()
   $('.signUpNav').hide()
+  $('.dropdown').show()
   console.log(data)
   players.player = data.user
   $('.game-log').text('Welcome ' + players.player.email + '!  Click on the Start Game button to play')
@@ -43,6 +44,7 @@ const signOutSuccess = () => {
   $('.changePWNav').hide()
   $('.signInNav').show()
   $('.signUpNav').show()
+  $('.dropdown').hide()
 }
 
 // This function runs if change passwords succeeds

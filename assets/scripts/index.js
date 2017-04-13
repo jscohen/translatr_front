@@ -21,5 +21,6 @@ $(() => {
   $('.signOutNav').hide()
   $('.changePWNav').hide()
   engine.addHandlers()
+  $('.dropdown').hide()
 })
 require('./example')
