@@ -23,7 +23,7 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  api.signIn(data).then(ui.signUpSuccess)
+  api.signIn(data).then(ui.signInSuccess)
   .catch(ui.signInFailure)
 }
 

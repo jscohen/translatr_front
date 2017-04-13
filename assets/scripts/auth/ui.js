@@ -4,7 +4,6 @@
 'use strict'
 
 const players = require('./players')
-const api = require('./api.js')
 
 // This function runs on a successful sign up or sign-in
 const signUpSuccess = (data) => {
@@ -17,10 +16,17 @@ const signUpSuccess = (data) => {
     $('.game-log').text('Welcome ' + players.player.email + '.  Please sign in to play')
   }
   // Sice someone is signed in, we need the sign out and change pw buttons to show
-  $('.signOutNav').show()
-  $('.changePWNav').show()
+  $('.signUpNav').hide()
 }
 
+const signInSuccess = (data) => {
+  $('.signInModal').modal('hide')
+  $('.signOutNav').show()
+  $('.changePWNav').show()
+
+  players.player === data.user
+  $('.game-log').text('Welcome ' + players.player.email + '!  Click on the Start Game button to play')
+}
 // This function runs if there is a problem with sign up
 const signUpFailure = () => {
   $('.game-log').text('You are already signed up, or entered the wrong password, or you have not signed up yet')
@@ -56,6 +62,7 @@ const changePWFailure = () => {
 module.exports = {
   signUpSuccess,
   signUpFailure,
+  signInSuccess,
   signInFailure,
   signOutSuccess,
   changePWSuccess,
