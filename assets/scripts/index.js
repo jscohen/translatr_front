@@ -22,6 +22,5 @@ $(() => {
   $('.changePWNav').hide()
   engine.addHandlers()
   $('.dropdown').hide()
-  $('#log').css('margin-top', '100px')
 })
 require('./example')
