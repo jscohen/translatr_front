@@ -10,11 +10,7 @@ const signUpSuccess = (data) => {
   // Hide the modal after its use
   $('.signUpModal').modal('hide')
 
-  // Check to see which player is signing in and greet that player
-  if (players.player === undefined) {
-    players.player = data.user
-    $('.game-log').text('Welcome ' + players.player.email + '.  Please sign in to play')
-  }
+  $('.game-log').text('Welcome.  Please sign in to play')
   // Sice someone is signed in, we need the sign out and change pw buttons to show
   $('.signUpNav').hide()
 }
@@ -23,8 +19,10 @@ const signInSuccess = (data) => {
   $('#signInModal').modal('hide')
   $('.signOutNav').show()
   $('.changePWNav').show()
-
-  players.player === data.user
+  $('.signInNav').hide()
+  $('.signUpNav').hide()
+  console.log(data)
+  players.player = data.user
   $('.game-log').text('Welcome ' + players.player.email + '!  Click on the Start Game button to play')
 }
 // This function runs if there is a problem with sign up
