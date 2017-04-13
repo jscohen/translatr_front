@@ -39,8 +39,10 @@ const signInFailure = () => {
 const signOutSuccess = () => {
   $('.game-log').text('You have signed out')
   players.player = undefined
-  $('signOutNav').hide()
+  $('.signOutNav').hide()
   $('.changePWNav').hide()
+  $('.signInNav').show()
+  $('.signUpNav').show()
 }
 
 // This function runs if change passwords succeeds
