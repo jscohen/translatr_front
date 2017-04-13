@@ -20,7 +20,7 @@ const signUpSuccess = (data) => {
 }
 
 const signInSuccess = (data) => {
-  $('.signInModal').modal('hide')
+  $('#signInModal').modal('hide')
   $('.signOutNav').show()
   $('.changePWNav').show()
 
