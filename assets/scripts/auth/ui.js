@@ -11,12 +11,9 @@ const signUpSuccess = (data) => {
   $('.signUpModal').modal('hide')
 
   // Check to see which player is signing in and greet that player
-  if (players.player1 === undefined) {
-    players.player1 = data.user
-    $('.game-log').text('Hello ' + players.player1.email)
-  } else if (players.player2 === undefined) {
-    players.player2 = data.user
-    $('.game-log').text('Hello ' + players.player2.email)
+  if (players.player === undefined) {
+    players.player = data.user
+    $('.game-log').text('Welcome ' + players.player.email)
   }
   // Sice someone is signed in, we need the sign out and change pw buttons to show
   $('.signOutNav').show()
@@ -36,11 +33,9 @@ const signInFailure = () => {
 // This function runs if you sign out successfully
 const signOutSuccess = () => {
   $('.game-log').text('You have signed out')
-  if (players.player2 === undefined) {
-    players.player1 = undefined
-  } else {
-    players.player2 = undefined
-  }
+  players.player = undefined
+  $('signOutNav').hide()
+  $('.changePWNav').hide()
 }
 
 // This function runs if change passwords succeeds
