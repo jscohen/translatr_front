@@ -4,6 +4,7 @@
 'use strict'
 
 const players = require('./players')
+const api = require('./api.js')
 
 // This function runs on a successful sign up or sign-in
 const signUpSuccess = (data) => {
@@ -13,7 +14,7 @@ const signUpSuccess = (data) => {
   // Check to see which player is signing in and greet that player
   if (players.player === undefined) {
     players.player = data.user
-    $('.game-log').text('Welcome ' + players.player.email)
+    $('.game-log').text('Welcome ' + players.player.email + '.  Please sign in to play')
   }
   // Sice someone is signed in, we need the sign out and change pw buttons to show
   $('.signOutNav').show()
