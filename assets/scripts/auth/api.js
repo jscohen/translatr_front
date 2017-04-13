@@ -27,23 +27,13 @@ const signIn = (data) => {
 // If there are two players, the other will be signed in
 // Identifies the player by checking if there is a second player
 const signOut = () => {
-  if (players.player2 === undefined) {
-    return $.ajax({
-      url: config.apiOrigin + '/sign-out/' + players.player1.id,
-      method: 'DELETE',
-      headers: {
-        Authorization: 'Token token=' + players.player1.token
-      }
-    })
-  } else {
-    return $.ajax({
-      url: config.apiOrigin + '/sign-out/' + players.player2.id,
-      method: 'DELETE',
-      headers: {
-        Authorization: 'Token token=' + players.player2.token
-      }
-    })
-  }
+  return $.ajax({
+    url: config.apiOrigin + '/sign-out/' + players.player.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + players.player.token
+    }
+  })
 }
 
 // Change password AJAX call: takes input from modal and patches the players'
