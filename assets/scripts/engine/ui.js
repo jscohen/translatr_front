@@ -1,7 +1,5 @@
 'use strict'
 const games = require('./games.js')
-const api = require('./api')
-const players = require('../auth/players.js')
 
 // Success function for new game Created
 // Log the creation of the game and set local game object variable to true

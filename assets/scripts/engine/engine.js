@@ -346,5 +346,6 @@ const addHandlers = () => {
 
 module.exports = {
   addHandlers,
-  getWins
+  getWins,
+  playTurn
 }

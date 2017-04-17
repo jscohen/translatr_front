@@ -39,6 +39,7 @@ const signInFailure = () => {
 
 // This function runs if you sign out successfully
 const signOutSuccess = () => {
+  const req = require('../engine/engine.js')
   $('.game-log').text('You have signed out')
   players.player = undefined
   $('.signOutNav').hide()
@@ -47,6 +48,7 @@ const signOutSuccess = () => {
   $('.signUpNav').show()
   $('.dropdown').hide()
   $('#log').css('margin-top', '100px')
+  $('.gamecell').off('click', req.playTurn)
 }
 
 // This function runs if change passwords succeeds
