@@ -6,23 +6,13 @@ const games = require('./games.js')
 // This is the API call to create a new game
 // The first player's token is used as authorization
 const newGame = () => {
-  if (players.player2.token === undefined) {
-    return $.ajax({
-      url: config.apiOrigin + '/games/',
-      method: 'POST',
-      headers: {
-        Authorization: 'Token token=' + players.player1.token
-      }
-    })
-  } else {
-    return $.ajax({
-      url: config.apiOrigin + '/games/',
-      method: 'POST',
-      headers: {
-        Authorization: 'Token token=' + players.player2.token
-      }
-    })
-  }
+  return $.ajax({
+    url: config.apiOrigin + '/games/',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + players.player.token
+    }
+  })
 }
 
 // API call to get all games for a players
@@ -44,7 +34,7 @@ const getAGame = (id) => {
     url: config.apiOrigin + '/games/' + id,
     method: 'GET',
     headers: {
-      Authorization: 'Token token=' + players.player1.token
+      Authorization: 'Token token=' + players.player.token
     }
   })
 }
@@ -53,13 +43,11 @@ const getAGame = (id) => {
 // This function uses the game ID and player 2's token to assign player 2 to
 // the current game
 const joinGame = () => {
-  console.log(games.game.game.id)
-  console.log(players.player2.token)
   return $.ajax({
     url: config.apiOrigin + '/games/' + games.game.game.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + players.player2.token
+      Authorization: 'Token token=' + players.player.token
     }
   })
 }
@@ -72,7 +60,7 @@ const updateGame = (data) => {
     url: config.apiOrigin + '/games/' + games.game.game.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + players.player2.token
+      Authorization: 'Token token=' + players.player.token
     },
     data
   })
