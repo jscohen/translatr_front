@@ -111,7 +111,7 @@ const playTurn = function () {
       checkCheatMode(gameArr, O)
     }
     const win = didYouWin(gameArr, O, p2Color)
-    didYouWin(gameArr, X, p1Color)
+    didYouWin(gameArr, O, p2Color)
     updateGame(cell, O, win)
   }
 
@@ -240,6 +240,14 @@ const gameover = function (letter, style) {
     // Log the winner, change cells to their color, clear contents of the game cells
     // And remove the click handlers
     $('.game-log').text(players.player.email + ' is the winner!')
+    $('.gamecell').css('background-color', style)
+    $('.gamecell').empty()
+    $('.gamecell').off('click', playTurn)
+    return true
+  } else if (letter === 'O') {
+    // Log the winner, change cells to their color, clear contents of the game cells
+    // And remove the click handlers
+    $('.game-log').text('Player 0 is the winner!')
     $('.gamecell').css('background-color', style)
     $('.gamecell').empty()
     $('.gamecell').off('click', playTurn)
