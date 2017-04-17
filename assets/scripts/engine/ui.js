@@ -10,7 +10,6 @@ const newGameSuccess = (data) => {
   $('.game-log').text('Game started!  Lets Go!')
   games.game = data
   games.gameStarted = true
-  api.joinGame().then(joinGameSuccess).catch(joinGameFailure)
 }
 
 // Log an error if a new game can't be created
@@ -29,17 +28,6 @@ const getGameFailure = () => {
   $('.game-log').text('Something went wrong getting your games')
 }
 
-// If player 2 joined succesfully, set the local game object and log it
-const joinGameSuccess = () => {
-  games.game.game.player_o = players.player2
-  $('.game-log').text(players.player2.email + ' is now in the game')
-}
-
-// Log an error if join game fails
-const joinGameFailure = () => {
-  $('.game-log').text('Player 2 could not join')
-}
-
 // When the game gets updated on the API, do nothing
 const updateGameSuccess = (game) => {
   return true
@@ -50,33 +38,11 @@ const updateGameFail = () => {
   return false
 }
 
-// For individual games, go to the showAGame function to
-// show the result of that game
-const gameIDSuccess = (data) => {
-  const engine = require('./engine.js')
-
-  const arr = data.game.cells
-  const id = data.game.id
-  const player1 = data.game.player_x.email
-  const player2 = data.game.player_o.email
-
-  engine.showAGame(arr, id, player1, player2)
-}
-
-// If the Game ID is wrong, log the failure
-const gameIDFailure = () => {
-  $('.game-log').text('Did you type in the incorrect game number?')
-}
-
 module.exports = {
   newGameSuccess,
   newGameFailure,
   getGameSuccess,
   getGameFailure,
-  joinGameSuccess,
-  joinGameFailure,
   updateGameSuccess,
-  updateGameFail,
-  gameIDSuccess,
-  gameIDFailure
+  updateGameFail
 }

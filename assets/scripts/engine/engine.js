@@ -4,7 +4,6 @@ const ui = require('./ui.js')
 const games = require('./games.js')
 const players = require('../auth/players.js')
 // const watcher = require('../watch/gameWatcher')
-const getFormFields = require(`../../../lib/get-form-fields`)
 
 // Start a new game function
 // Called when the start new game button is clicked
@@ -65,10 +64,7 @@ let turn = 1
 // Main game logic function.  It is invoked on clicks to the game board
 const playTurn = function () {
   // Abort if a game hasn't been started or there is only one player
-  if (players.player2 === undefined) {
-    $('.game-log').text('You need two players to play')
-    return false
-  } else if (games.gameStarted !== true) {
+  if (games.gameStarted !== true) {
     $('.game-log').text('Please click the start game button to play')
     return false
   }
@@ -93,7 +89,7 @@ const playTurn = function () {
     doTurn(cell, '<h1>X</h1>', gameArr, turn, X)
 
     // Put the move on the game log
-    $('.game-log').text(players.player1.email + ' played an X in ' + cell)
+    $('.game-log').text(players.player.email + ' played an X in ' + cell)
 
     // Check if Cheat Mode is on, if it is use it to look for a winning cell
     if (cheatMode === 'Cheater!!') {
@@ -110,7 +106,7 @@ const playTurn = function () {
     // Same logic for player o
   } else if (games.gameStarted && turn % 2 === 0) {
     doTurn(cell, '<h1>O</h1>', gameArr, turn, O)
-    $('.game-log').text(players.player2.email + ' played an O in ' + cell)
+    $('.game-log').text('Player 0 played an O in ' + cell)
     if (cheatMode === 'Cheater!!') {
       checkCheatMode(gameArr, O)
     }
@@ -334,39 +330,6 @@ const checkCheatMode = function (gameArr, letter) {
   }
 }
 
-// Function for API call to get the results of an individual game
-const getAGame = function () {
-  event.preventDefault()
-
-  // If no one is signed in, abort
-  if (players.player1 === undefined) {
-    $('.game-log').text('You must sign in to get game results')
-    return false
-  }
-
-  // Get the ID from the form fields and call the API
-  const data = getFormFields(this)
-  const gameID = data.gameid.id
-  api.getAGame(gameID).then(ui.gameIDSuccess)
-  .catch(ui.gameIDFailure)
-}
-
-// When the show a game button is clicked, this functions logs the results
-const showAGame = function (arr, id, player1, player2) {
-  // Reuse the game logic to see if the game has a winner
-  const xWinner = didYouWin(arr, 'X')
-  const oWinner = didYouWin(arr, 'O')
-
-  // Log the results
-  if (xWinner) {
-    $('.game-log').text('Game #' + id + ' was between ' + player1 + ' and ' + player2 + '.  ' + player1 + ' was victorious')
-  } else if (oWinner) {
-    $('.game-log').text('Game #' + id + ' was between ' + player1 + ' and ' + player2 + '.  ' + player2 + ' was victorious')
-  } else {
-    $('.game-log').text('Game #' + id + ' was between ' + player1 + ' and ' + player2 + '.  The game was a draw')
-  }
-}
-
 // Event handlers stored and called on document ready in index.js
 const addHandlers = () => {
   $('#newgame').on('submit', startNewGame)
@@ -374,11 +337,9 @@ const addHandlers = () => {
   $('.gamecell').on('click', playTurn)
   $('#cheat').on('submit', activateCheatMode)
   $('.updateGame').on('submit', updateGame)
-  $('#get-a-game').on('submit', getAGame)
 }
 
 module.exports = {
   addHandlers,
-  getWins,
-  showAGame
+  getWins
 }

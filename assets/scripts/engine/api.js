@@ -40,19 +40,6 @@ const getAGame = (id) => {
   })
 }
 
-// Player 2 join game API call
-// This function uses the game ID and player 2's token to assign player 2 to
-// the current game
-const joinGame = () => {
-  return $.ajax({
-    url: config.apiOrigin + '/games/' + games.game.game.id,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + players.player.token
-    }
-  })
-}
-
 // Update Game API call
 // Uses game ID to find the game, and player 1 token to authorize
 // The data field sends the data from the local game object to the server
@@ -71,7 +58,6 @@ const updateGame = (data) => {
 module.exports = {
   newGame,
   getGame,
-  joinGame,
   updateGame,
   getAGame
 }
