@@ -27,19 +27,9 @@ const startNewGame = function () {
 // To show how many wins they have
 const getGame = function () {
   // Perform the API call based on who is signed in
-  if (players.player2 !== undefined) {
-    event.preventDefault()
-    api.getGame(players.player2.token).then(ui.getGameSuccess)
-    .catch(ui.getGameFailure)
-  } else if (players.player1 !== undefined) {
-    event.preventDefault()
-    api.getGame(players.player1.token).then(ui.getGameSuccess)
-    .catch(ui.getGameFailure)
-  } else {
-    // If no one is signed in, abort
-    $('.game-log').text('You must sign in to get your stats')
-    return false
-  }
+  event.preventDefault()
+  api.getGame(players.player.token).then(ui.getGameSuccess)
+  .catch(ui.getGameFailure)
 }
 
 // This function contains the logic to get a player's total wins
