@@ -64,7 +64,10 @@ let turn = 1
 // Main game logic function.  It is invoked on clicks to the game board
 const playTurn = function () {
   // Abort if a game hasn't been started or there is only one player
-  if (games.gameStarted !== true) {
+  if (players.player === undefined) {
+    $('.game-log').text('Please sign in to play a game')
+    return false
+  } else if (games.gameStarted !== true) {
     $('.game-log').text('Please click the start game button to play')
     return false
   }
