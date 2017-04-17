@@ -107,9 +107,6 @@ const playTurn = function () {
   } else if (games.gameStarted && turn % 2 === 0) {
     doTurn(cell, '<h1>O</h1>', gameArr, turn, O)
     $('.game-log').text('Player 0 played an O in ' + cell)
-    if (cheatMode === 'Cheater!!') {
-      checkCheatMode(gameArr, O)
-    }
     const win = didYouWin(gameArr, O, p2Color)
     didYouWin(gameArr, O, p2Color)
     updateGame(cell, O, win)
