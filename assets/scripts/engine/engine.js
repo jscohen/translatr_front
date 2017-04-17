@@ -28,7 +28,7 @@ const startNewGame = function () {
 const getGame = function () {
   // Perform the API call based on who is signed in
   event.preventDefault()
-  api.getGame(players.player.token).then(ui.getGameSuccess)
+  api.getGame().then(ui.getGameSuccess)
   .catch(ui.getGameFailure)
 }
 
@@ -40,7 +40,6 @@ const getWins = function (data) {
   const games = data.games
   const obj = {}
   const X = 'X'
-  const O = 'O'
   let win = false
   let winCount = 0
 
@@ -49,23 +48,16 @@ const getWins = function (data) {
   games.forEach(function (item) {
     obj.game = item.id
     obj.cells = item.cells
-    if (item.player_x.email === players.player1.email) {
+    if (item.player_x.email === players.player.email) {
       // Call the win logic function used in the main game to see if this particular game
       // Was won by player one.  If so, increment win count
       win = didYouWin(item.cells, X)
-      if (win) { winCount += 1 }
-    } else if (item.player_o.email === players.player2.email) {
-      win = didYouWin(item.cells, O)
       if (win) { winCount += 1 }
     }
   })
 
   // Determine who is active and log the win results in the game log
-  if (players.player2 !== undefined) {
-    $('.game-log').text(players.player2.email + ' has ' + winCount + ' wins')
-  } else {
-    $('.game-log').text(players.player1.email + ' has ' + winCount + ' wins')
-  }
+  $('.game-log').text(players.player.email + ' has ' + winCount + ' wins')
 }
 
 let turn = 1
@@ -251,13 +243,7 @@ const gameover = function (letter, style) {
   if (letter === 'X') {
     // Log the winner, change cells to their color, clear contents of the game cells
     // And remove the click handlers
-    $('.game-log').text(players.player1.email + ' is the winner!')
-    $('.gamecell').css('background-color', style)
-    $('.gamecell').empty()
-    $('.gamecell').off('click', playTurn)
-    return true
-  } else {
-    $('.game-log').text(players.player2.email + ' is the winner!')
+    $('.game-log').text(players.player.email + ' is the winner!')
     $('.gamecell').css('background-color', style)
     $('.gamecell').empty()
     $('.gamecell').off('click', playTurn)

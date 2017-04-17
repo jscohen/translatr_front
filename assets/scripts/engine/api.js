@@ -17,12 +17,13 @@ const newGame = () => {
 
 // API call to get all games for a players
 // The token is used to identify the player
-const getGame = (token) => {
+const getGame = () => {
+  console.log('test')
   return $.ajax({
     url: config.apiOrigin + '/games/',
     method: 'GET',
     headers: {
-      Authorization: 'Token token=' + token
+      Authorization: 'Token token=' + players.player.token
     }
   })
 }
