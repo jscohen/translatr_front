@@ -3,7 +3,7 @@
 
 'use strict'
 
-const players = require('./players')
+const users = require('./users')
 
 // This function runs on a successful sign up or sign-in
 const signUpSuccess = (data) => {
@@ -16,7 +16,8 @@ const signUpSuccess = (data) => {
 }
 
 const signInSuccess = (data) => {
-  console.log(data)
+  users.user = data.user
+  console.log(users.user)
 }
 
 // This function runs if there is a problem with sign up
@@ -32,7 +33,6 @@ const signInFailure = () => {
 // This function runs if you sign out successfully
 const signOutSuccess = () => {
   $('.game-log').text('You have signed out')
-  players.player = undefined
   $('.signOutNav').hide()
   $('.changePWNav').hide()
   $('.signInNav').show()

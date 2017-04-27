@@ -4,7 +4,7 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
-const players = require('./players')
+const users = require('./users')
 
 // Sign Up function
 // Takes data from a modal, accessed via getFormFields
@@ -33,7 +33,7 @@ const onSignIn = function (event) {
 // Calls API to Delete the user
 const onSignOut = function (event) {
   event.preventDefault()
-  if (players.player === undefined) {
+  if (users.user === undefined) {
     $('.game-log').text('No one is signed in')
     return false
   }

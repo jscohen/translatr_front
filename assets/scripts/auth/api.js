@@ -1,6 +1,6 @@
 'use strict'
 
-const players = require('./players.js')
+const users = require('./users.js')
 const config = require('../config')
 
 // Sign up AJAX Call
@@ -29,10 +29,10 @@ const signIn = (data) => {
 // Identifies the player by checking if there is a second player
 const signOut = () => {
   return $.ajax({
-    url: config.apiOrigin + '/sign-out/' + players.player.id,
+    url: config.apiOrigin + '/sign-out/' + users.user.id,
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + players.player.token
+      Authorization: 'Token token=' + users.user.token
     }
   })
 }
@@ -40,11 +40,12 @@ const signOut = () => {
 // Change password AJAX call: takes input from modal and patches the players'
 // record on the server with the new pw
 const changePW = (data) => {
+  console.log(users.user)
   return $.ajax({
-    url: config.apiOrigin + '/change-password/' + players.player.id,
+    url: config.apiOrigin + '/change-password/' + users.user.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + players.player.token
+      Authorization: 'Token token=' + users.user.token
     },
     data
   })
