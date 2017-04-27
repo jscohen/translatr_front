@@ -30,6 +30,13 @@ const addArtist = (data) => {
   })
 }
 
+const getArtists = () => {
+  return $.ajax({
+    url: config.apiOrigin + '/artists',
+    method: 'GET'
+  })
+}
+
 module.exports = {
-  getAlbum, addAlbum, addArtist
+  getAlbum, addAlbum, addArtist, getArtists
 }

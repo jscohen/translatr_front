@@ -4,7 +4,7 @@
 
 'use strict'
 
-const albums = {
+const artists = {
 }
 
-module.export = albums
+module.export = artists

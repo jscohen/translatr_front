@@ -34,12 +34,19 @@ const onAddArtist = function (event) {
   .catch(ui.addArtistFailure)
 }
 
+const onGetArtists = function (event) {
+  event.preventDefault()
+  api.getArtists().then(ui.getArtistSuccess)
+  .catch(ui.getArtistFailure)
+}
+
 // Click handlers get input from the html elements when they are clicked
 const addHandlers = () => {
   $('#get-album').on('submit', onGetAlbum)
   $('#album-by-user').on('submit', getUserAlbums)
   $('#add-album').on('submit', onAddAlbum)
   $('#add-artist').on('submit', onAddArtist)
+  $('#get-artists').on('submit', onGetArtists)
 }
 
 // Exports for use in main index file
