@@ -32,13 +32,7 @@ const signInFailure = () => {
 
 // This function runs if you sign out successfully
 const signOutSuccess = () => {
-  $('.game-log').text('You have signed out')
-  $('.signOutNav').hide()
-  $('.changePWNav').hide()
-  $('.signInNav').show()
-  $('.signUpNav').show()
-  $('.dropdown').hide()
-  $('#log').css('margin-top', '100px')
+  console.log('Success')
 }
 
 // This function runs if change passwords succeeds
