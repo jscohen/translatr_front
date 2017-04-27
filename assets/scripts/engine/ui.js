@@ -1,5 +1,6 @@
 const albums = require('./albums')
 const artist = require('./artist')
+const users = require('../auth/users')
 
 const getAlbumSuccess = (data) => {
   console.log('success!!')
@@ -23,8 +24,11 @@ const addArtistFailure = (data) => {
 const getArtistSuccess = (data) => {
   console.log(data)
   console.log('success')
+  console.log(data.artists[0].user_id)
   for (let i = 0; i < data.artists.length; i++) {
-    $('.artists').append('<li>' + data.artists[i].name + '</li>')
+    if (data.artists[i].user_id === users.user.user.id) {
+      $('.artists').append('<li>' + data.artists[i].name + '</li>')
+    }
   }
 }
 
