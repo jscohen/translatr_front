@@ -1,6 +1,14 @@
+const albums = require('./albums')
+
 const getAlbumSuccess = (data) => {
-  console.log(data)
-  console.log('test')
+  console.log('success!!')
+  albums.album = data
 }
 
-module.exports = getAlbumSuccess
+const getAlbumFailure = (data) => {
+  console.log('failed!')
+}
+
+module.exports = {
+  getAlbumSuccess, getAlbumFailure
+}

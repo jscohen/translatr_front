@@ -16,7 +16,7 @@ const signUpSuccess = (data) => {
 }
 
 const signInSuccess = (data) => {
-  users.user = data.user
+  users.user = data
   console.log(users.user)
 }
 
