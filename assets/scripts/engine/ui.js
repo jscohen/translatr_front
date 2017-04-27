@@ -24,9 +24,9 @@ const addArtistFailure = (data) => {
 const getArtistSuccess = (data) => {
   console.log(data)
   console.log('success')
-  console.log(data.artists[0].user_id)
+  console.log(data.artists[0].user.id)
   for (let i = 0; i < data.artists.length; i++) {
-    if (data.artists[i].user_id === users.user.user.id) {
+    if (data.artists[i].user.id === users.user.user.id) {
       $('.artists').append('<li>' + data.artists[i].name + '</li>')
     }
   }
