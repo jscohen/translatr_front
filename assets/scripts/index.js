@@ -17,8 +17,4 @@ const authEvents = require('./auth/events.js')
 // On Document Ready
 $(() => {
   authEvents.addHandlers()
-  $('.signOutNav').hide()
-  $('.changePWNav').hide()
-  $('.dropdown').hide()
 })
-require('./example')
