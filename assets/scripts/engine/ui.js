@@ -9,6 +9,15 @@ const getAlbumFailure = (data) => {
   console.log('failed!')
 }
 
+const addArtistSuccess = (data) => {
+  console.log(data)
+  console.log('Success')
+}
+
+const addArtistFailure = (data) => {
+  console.log(data.error)
+}
+
 module.exports = {
-  getAlbumSuccess, getAlbumFailure
+  getAlbumSuccess, getAlbumFailure, addArtistSuccess, addArtistFailure
 }
