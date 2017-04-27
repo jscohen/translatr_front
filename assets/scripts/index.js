@@ -13,14 +13,12 @@ $(() => {
 // use require without a reference to ensure a file is bundled
 
 const authEvents = require('./auth/events.js')
-const engine = require('./engine/engine.js')
 
 // On Document Ready
 $(() => {
   authEvents.addHandlers()
   $('.signOutNav').hide()
   $('.changePWNav').hide()
-  engine.addHandlers()
   $('.dropdown').hide()
 })
 require('./example')
