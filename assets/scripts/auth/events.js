@@ -13,7 +13,6 @@ const players = require('./players')
 // if it works, and a failure function if there is an error
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log('test')
   const data = getFormFields(this)
   api.signUp(data).then(ui.signUpSuccess)
   .catch(ui.signUpFailure)

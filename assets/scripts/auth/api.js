@@ -6,6 +6,7 @@ const config = require('../config')
 // Sign up AJAX Call
 // Takes in form data and creates a new user in the game-api
 const signUp = (data) => {
+  console.log(config.apiOrigin)
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
     method: 'POST',

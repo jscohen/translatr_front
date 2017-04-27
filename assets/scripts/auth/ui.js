@@ -16,17 +16,9 @@ const signUpSuccess = (data) => {
 }
 
 const signInSuccess = (data) => {
-  $('#signInModal').modal('hide')
-  $('.signOutNav').show()
-  $('.changePWNav').show()
-  $('.signInNav').hide()
-  $('.signUpNav').hide()
-  $('.dropdown').show()
-  $('#log').css('margin-top', '20px')
   console.log(data)
-  players.player = data.user
-  $('.game-log').text('Welcome ' + players.player.email + '!  Click on the Start Game button to play')
 }
+
 // This function runs if there is a problem with sign up
 const signUpFailure = () => {
   $('.game-log').text('You are already signed up, or entered the wrong password, or you have not signed up yet')
