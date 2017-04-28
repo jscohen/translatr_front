@@ -45,6 +45,13 @@ const addSong = (data) => {
   })
 }
 
+const getLyrics = () => {
+  return $.ajax({
+    url: 'http://api.musixmatch.com/ws/1.1/track.search?apikey=ddaaba14dee2f996db5626c25b66564b&q_artist=laura%20pausini&q_track=la%20solitudine&f_has_lyrics=1&page_size=1',
+    method: 'GET'
+  })
+}
+
 module.exports = {
-  getAlbum, addAlbum, addArtist, getArtists, addSong
+  getAlbum, addAlbum, addArtist, getArtists, addSong, getLyrics
 }

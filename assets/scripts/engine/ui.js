@@ -46,6 +46,23 @@ const addAlbumFailure = (data) => {
   console.log('Failed')
 }
 
+const getLyricsSuccess = (data) => {
+  console.log(data)
+}
+
+const getLyricsFailure = (data) => {
+  console.log(data.error)
+}
+
 module.exports = {
-  getAlbumSuccess, getAlbumFailure, addArtistSuccess, addArtistFailure, getArtistSuccess, getArtistFailure, addAlbumFailure, addAlbumSuccess
+  getAlbumSuccess,
+  getAlbumFailure,
+  addArtistSuccess,
+  addArtistFailure,
+  getArtistSuccess,
+  getArtistFailure,
+  addAlbumFailure,
+  addAlbumSuccess,
+  getLyricsFailure,
+  getLyricsSuccess
 }
