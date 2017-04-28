@@ -19,7 +19,7 @@
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <h1>Translatr</h1>
+            <h1 class="header">Translatr</h1>
           </div>
               <ul class="nav navbar-nav navbar-right">
                 <li class="signUpNav">
@@ -29,11 +29,7 @@
                   <button type="button" class="btn btn-primary btn-top" data-toggle="modal" data-dismiss="modal" data-target="#signInModal">Sign In</button>
                 </li>
                 <li class="changePWNav">
-                  <form id="change-password">
-                    <input type="password" name="passwords[old]" id="change-password-oldpw" placeholder="Enter Current Password">
-                    <input type="password" name="passwords[new]" id="change-password-newpw" placeholder="Enter New Password">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Change Password">
-                  </form>
+                  <button type="button" class="btn btn-primary btn-top" data-toggle="modal" data-dismiss="modal" data-target="#changePWModal">Change PW</button>
                 </li>
                 <li class="signOut">
                   <form id="sign-out">
@@ -43,29 +39,31 @@
               </ul>
             </div>
             </nav>
-]            </header>
+            </header>
 
-    <form id="get-album">
-      <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Albums">
-    </form>
+    <div class="row-1">
+      <div class="col-md-4">
+      <form id="album-by-user">
+        <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Albums">
+      </form>
+      </div>
 
-    <form id="album-by-user">
-      <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Albums by User">
-    </form>
+    <div class="col-md-4">
+      <form id="add-album">
+        <input type="text" name="album[name]" id="add-album-name" placeholder="Enter Album Name">
+        <input type="text" name="album[artist_id]" id="add-album-name" placeholder="Enter Artist ID">
+        <input type="text" name="album[song_id]" id="add-album-name" placeholder="Enter Song ID">
+        <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add an Album">
+      </form>
+    </div>
 
-    <form id="add-album">
-      <input type="text" name="album[name]" id="add-album-name" placeholder="Enter Album Name">
-      <input type="text" name="album[artist_id]" id="add-album-name" placeholder="Enter Artist ID">
-      <input type="text" name="album[song_id]" id="add-album-name" placeholder="Enter Song ID">
-      <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add an Album">
-    </form>
-
-    <form id="add-artist">
-      <input type="text" name="artist[name]" id="add-artist-name" placeholder="Enter Artist Name">
-      <input type="text" name="artist[genre]" id="add-artist-genre" placeholder="Enter Artist Genre">
-      <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add an Artist">
-    </form>
-
+    <div col="col-md-4">
+      <form id="add-artist">
+        <input type="text" name="artist[name]" id="add-artist-name" placeholder="Enter Artist Name">
+        <input type="text" name="artist[genre]" id="add-artist-genre" placeholder="Enter Artist Genre">
+        <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add an Artist">
+      </form>
+    </div>
     <div>
       <h2>Artist Name: <span class="artist_name"></span></h2>
       <h3>Artist Genre: <span class="artist_genre"></span></h3>
@@ -92,6 +90,7 @@
     </form>
 
     <p class="lyrics"></p>
+  </div>
 
   <div class="modal fade signUpModal" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
@@ -127,6 +126,27 @@
         <input type="text" name="credentials[email]" id="sign-in-email" placeholder="Enter Email/Username">
         <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Enter Password">
         <input type="submit" class="btn btn-primary" name="submit" value="Sign In">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade signUpModal" id="changePWModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="exampleModalLabel">Sign Up</h4>
+    </div>
+    <div class="modal-body">
+      <form id="change-password">
+        <input type="password" name="passwords[old]" id="change-password-oldpw" placeholder="Enter Current Password">
+        <input type="password" name="passwords[new]" id="change-password-newpw" placeholder="Enter New Password">
+        <input type="submit" class="btn btn-primary" name="submit" value="Change Password">
       </form>
     </div>
     <div class="modal-footer">
