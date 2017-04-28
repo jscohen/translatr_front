@@ -27,7 +27,7 @@ const getArtistSuccess = (data) => {
   console.log(data.artists[0].user.id)
   for (let i = 0; i < data.artists.length; i++) {
     if (data.artists[i].user.id === users.user.user.id) {
-      $('.artists').append('<li>' + data.artists[i].name + '</li>')
+      $('.artists').append('<li>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</li>')
     }
   }
 }
