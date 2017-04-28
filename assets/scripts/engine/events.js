@@ -11,7 +11,6 @@ const onGetAlbum = function (event) {
 }
 
 const getUserAlbums = function () {
-  event.preventDefault()
   console.log('test')
   console.log(users.user.user.id)
   for (let i = 0; i < albums.album.albums.length; i++) {
@@ -56,8 +55,7 @@ const getLyrics = function (event) {
 
 // Click handlers get input from the html elements when they are clicked
 const addHandlers = () => {
-  $('#get-album').on('submit', onGetAlbum)
-  $('#album-by-user').on('submit', getUserAlbums)
+  $('#album-by-user').on('submit', onGetAlbum)
   $('#add-album').on('submit', onAddAlbum)
   $('#add-artist').on('submit', onAddArtist)
   $('#get-artists').on('submit', onGetArtists)

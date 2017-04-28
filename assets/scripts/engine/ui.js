@@ -3,8 +3,10 @@ const artist = require('./artist')
 const users = require('../auth/users')
 
 const getAlbumSuccess = (data) => {
+  const events = require('./events')
   console.log('success!!')
   albums.album = data
+  events.getUserAlbums()
 }
 
 const getAlbumFailure = (data) => {

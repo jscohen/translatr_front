@@ -2,13 +2,6 @@
   margin-top: 100px;
 }
 
-.col-md-4 {
-}
-
-.getalbum {
-  width: 10%;
-}
-
 .make-album {
   margin-left: 215px;
   width: 75%;
@@ -26,18 +19,8 @@
   margin-left: 330px;
 }
 
-.get-artists {
-  margin-left: 50px;
-}
-
-.midbar {
-  width: 100%;
-}
-
 .show-artists {
-  clear :both;
   text-align: center;
-  margin-top: 60px;
 }
 
 li {
@@ -46,4 +29,12 @@ li {
 
 .artists li {
   text-decoration: none;
+}
+
+.row {
+  float:left;
+}
+
+.get-artists {
+  float: right;
 }
