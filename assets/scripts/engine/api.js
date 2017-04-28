@@ -13,7 +13,6 @@ const getAlbum = () => {
 }
 
 const addAlbum = (data) => {
-  console.log(config.apiOrigin)
   return $.ajax({
     url: config.apiOrigin + '/albums',
     method: 'POST',
@@ -37,6 +36,15 @@ const getArtists = () => {
   })
 }
 
+const addSong = (data) => {
+  console.log(data)
+  return $.ajax({
+    url: config.apiOrigin + '/songs',
+    method: 'POST',
+    data
+  })
+}
+
 module.exports = {
-  getAlbum, addAlbum, addArtist, getArtists
+  getAlbum, addAlbum, addArtist, getArtists, addSong
 }
