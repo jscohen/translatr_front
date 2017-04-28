@@ -48,6 +48,7 @@ const addAlbumFailure = (data) => {
 
 const getLyricsSuccess = (data) => {
   console.log(data)
+
 }
 
 const getLyricsFailure = (data) => {
