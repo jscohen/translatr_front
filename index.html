@@ -41,14 +41,9 @@
             </nav>
             </header>
 
-    <div class="row-1">
-      <div class="col-md-4">
-      <form id="album-by-user">
-        <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Albums">
-      </form>
-      </div>
+    <div class="row row-top">
 
-    <div class="col-md-4">
+    <div class="col-md-4 make-album">
       <form id="add-album">
         <input type="text" name="album[name]" id="add-album-name" placeholder="Enter Album Name">
         <input type="text" name="album[artist_id]" id="add-album-name" placeholder="Enter Artist ID">
@@ -56,34 +51,41 @@
         <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add an Album">
       </form>
     </div>
+  </div>
+      <div class="artist">
+        <form id="add-artist">
+          <input type="text" name="artist[name]" id="add-artist-name" placeholder="Enter Artist Name">
+          <input type="text" name="artist[genre]" id="add-artist-genre" placeholder="Enter Artist Genre">
+          <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add an Artist">
+        </form>
+      </div>
 
-    <div col="col-md-4">
-      <form id="add-artist">
-        <input type="text" name="artist[name]" id="add-artist-name" placeholder="Enter Artist Name">
-        <input type="text" name="artist[genre]" id="add-artist-genre" placeholder="Enter Artist Genre">
-        <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add an Artist">
+      <div class="song">
+        <form id="add-song">
+          <input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">
+          <input type="text" name="song[album]" id="add-song-album" placeholder="Enter Song Album">
+          <input type="text" name="song[artist_id]" id="add-artist-id" placeholder="Enter Artist ID">
+          <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add a Song">
+        </form>
+      </div>
+
+      <div class="midbar">
+      <div class="col-md-4 getalbum">
+      <form id="album-by-user">
+        <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Albums">
       </form>
-    </div>
-    <div>
-      <h2>Artist Name: <span class="artist_name"></span></h2>
-      <h3>Artist Genre: <span class="artist_genre"></span></h3>
-    </div>
+      </div>
 
-    <form id="get-artists">
-      <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get your artists">
-    </form>
-
-    <div>
-      <h2>My artists: </h2>
+      <div class="col-md-4 get-artists">
+        <form id="get-artists">
+          <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get your artists">
+        </form>
+      </div>
+    </div>
+    <div class="show-artists">
+      <h4>My artists: </h4>
       <ul class="artists"></ul>
     </div>
-
-    <form id="add-song">
-      <input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">
-      <input type="text" name="song[album]" id="add-song-album" placeholder="Enter Song Album">
-      <input type="text" name="song[artist_id]" id="add-artist-id" placeholder="Enter Artist ID">
-      <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add a Song">
-    </form>
 
     <form id="get-lyrics">
       <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Lyrics">
