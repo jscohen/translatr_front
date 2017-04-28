@@ -8,16 +8,13 @@ const users = require('./users')
 // This function runs on a successful sign up or sign-in
 const signUpSuccess = (data) => {
   // Hide the modal after its use
-  $('.signUpModal').modal('hide')
-
-  $('.game-log').text('Welcome.  Please sign in to play')
-  // Sice someone is signed in, we need the sign out and change pw buttons to show
-  $('.signUpNav').hide()
+  $('#signUpModal').modal('hide')
 }
 
 const signInSuccess = (data) => {
   users.user = data
   console.log(users.user)
+  $('#signInModal').modal('hide')
 }
 
 // This function runs if there is a problem with sign up

@@ -14,30 +14,36 @@
 <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
 <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
   </head>
-  <body>
-    <h1>Test</h1>
-    <form id="sign-up">
-      <input type="text" name="credentials[email]" id="sign-up-email" placeholder="Enter Email/Username">
-      <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Enter Password">
-      <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Confirm PW">
-      <input type="submit" name="submit" value="Sign Up">
-    </form>
-
-    <form id="sign-in">
-      <input type="text" name="credentials[email]" id="sign-in-email" placeholder="Enter Email/Username">
-      <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Enter Password">
-      <input type="submit" class="btn btn-primary" name="submit" value="Sign In">
-    </form>
-
-    <form id="change-password">
-      <input type="password" name="passwords[old]" id="change-password-oldpw" placeholder="Enter Current Password">
-      <input type="password" name="passwords[new]" id="change-password-newpw" placeholder="Enter New Password">
-      <input type="submit" class="btn btn-primary" name="submit" value="Change Password">
-    </form>
-
-    <form id="sign-out">
-      <input type="submit" class="btn btn-primary btn-top" name="submit" value="Sign Out">
-    </form>
+  <body class="container-fluid">
+    <header>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <h1>Translatr</h1>
+          </div>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="signUpNav">
+                  <button type="button" class="btn btn-primary btn-top" data-toggle="modal" data-dismiss="modal" data-target="#signUpModal">Sign Up</button>
+                </li>
+                <li class="signInNav">
+                  <button type="button" class="btn btn-primary btn-top" data-toggle="modal" data-dismiss="modal" data-target="#signInModal">Sign In</button>
+                </li>
+                <li class="changePWNav">
+                  <form id="change-password">
+                    <input type="password" name="passwords[old]" id="change-password-oldpw" placeholder="Enter Current Password">
+                    <input type="password" name="passwords[new]" id="change-password-newpw" placeholder="Enter New Password">
+                    <input type="submit" class="btn btn-primary" name="submit" value="Change Password">
+                  </form>
+                </li>
+                <li class="signOut">
+                  <form id="sign-out">
+                    <input type="submit" class="btn btn-primary btn-top" name="submit" value="Sign Out">
+                  </form>
+                </li>
+              </ul>
+            </div>
+            </nav>
+]            </header>
 
     <form id="get-album">
       <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Albums">
@@ -86,5 +92,49 @@
     </form>
 
     <p class="lyrics"></p>
+
+  <div class="modal fade signUpModal" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form id="sign-up">
+          <input type="text" name="credentials[email]" id="sign-up-email" placeholder="Enter Email/Username">
+          <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Enter Password">
+          <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Confirm PW">
+          <input type="submit" class="btn btn-primary" name="submit" value="Sign Up">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade signUpModal" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="exampleModalLabel">Sign Up</h4>
+    </div>
+    <div class="modal-body">
+      <form id="sign-in">
+        <input type="text" name="credentials[email]" id="sign-in-email" placeholder="Enter Email/Username">
+        <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Enter Password">
+        <input type="submit" class="btn btn-primary" name="submit" value="Sign In">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
   </body>
 </html>
