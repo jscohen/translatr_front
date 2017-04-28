@@ -23,7 +23,10 @@ const getUserAlbums = function () {
 
 const onAddAlbum = function () {
   event.preventDefault()
-  api.addAlbum().then(ui.addAlbumSuccess)
+  const data = getFormFields(this)
+  data.album.user_id = users.user.user.id
+  console.log(data)
+  api.addAlbum(data).then(ui.addAlbumSuccess)
   .catch(ui.addAlbumFailure)
 }
 
