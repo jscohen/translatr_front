@@ -34,6 +34,8 @@ const onAddAlbum = function () {
 const onAddArtist = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
+  console.log(data)
+  data.artist.user_id = users.user.user.id
   api.addArtist(data).then(ui.addArtistSuccess)
   .catch(ui.addArtistFailure)
 }
