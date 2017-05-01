@@ -1,34 +1,20 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# Tic-Tac-Toe Project
+# Recommendr
 
- - Live app: [tic-tac-toe](https://jscohen.github.io/tic-tac-toe/)
- - Repo: [tic-tac-toe](https://github.com/jscohen/tic-tac-toe)
+ - Live app: [Recommendr](https://jscohen.github.io/translatr_front/)
+ - Front End Repo: [Recommendr](https://github.com/jscohen/translatr_front)
+ - Back End Repo: [Recommendr](https://github.com/jscohen/translatr_backend)
 
-## Dependencies
+## About Recommendr
 
-Install with `npm install`.
-
--   [Webpack](https://webpack.github.io)
--   [Bootstrap](http://getbootstrap.com)
--   [Handlebars.js](http://handlebarsjs.com)
-
-Requires the game-api rails server on the back end.
-Activate with the command 'bundle exec rails server'
-
-## About Tic Tac Toe
-
-[tic-tac-toe] is a simple game between two players where each player marks a space on a 3 X 3 board with an X or an O.  If any player gets three in a row, they win.  Games can end in draws if no one wins.
-
-Tic-tac-toe is build in node.js with the premade game-api in rails.  It is a singe page application, meaning that the entire user experience takes place in one markup file with no page refreshes.  This is done via multiple AJAX calls to the game-api server.
-
-My implementatiom of tic-tac-toe has a few interesting features.  Firstly, you can cheat.  If you click the cheat mode button, any winning patterns available on the board will be shown to you.  In addition, you can easily access your games history through the See Your Win Total button.  Clicking this button will show you how many games you've won.  In addition, you can get an overview of any game you've played by entering a game ID in the game menu and clicking the See Results of Any Game button.
-
-The game functions via a log that shows every action the users take and displays warnings, issues and victory messages.  The log is inserted via jQuery into an empty span element inside an h3 element.
+[Recommendr] is a great way to organize your music and learn about new artists.  The app consists of a back end with user, song, artist and album objects.  One user can have many songs or ablums, one artist can have many albums, and one album can have one song.  Users can create new artists, albums or songs through the front end buttons.  In addition, there is a full user authentication system for users.  Once you've added an artist, you can select the recommend feature, which will list other artists of the same genre from the Recommendr database.
 
 ## Project Planning
 
-I planned for this project by creating some simple wireframes for the front page and by mapping out the game logic visually on paper.  The final product turned out to be quite different than the wireframes, which are admittedly not my area of expertise.  The visuals were generally the same, but the game logic turned out to be more complex than I had expected.
+This project turned out much differently than I originally planned.  At first, I wanted to make an app that would translate song lyrics from one language to another.  However, the only feasible way to do translation in our time frame was to use a third party API, none of which would work in the framework of my app.  I improvised by creating the recommendation engine, which gives the user artist recommendations based on their input.  Although I could not make the translating feature, the basic inputs of the app stayed the same so there wasn't much refactoring.
+
+Although I planned out the resource relationships and made mockups in advance, I should have more thoroughly researched the feasability of creating a translator.  However, the recommendation feature uses the same engine.
 
 [Wireframe](http://i.imgur.com/vfEc5af.jpg)
 
@@ -36,24 +22,25 @@ I planned for this project by creating some simple wireframes for the front page
 
 ### User Stories
 
- - I want to play tic tac toe with my friends
- - I want to be able to see a record of all my wins whenever I want
- - I want to be able to see the results of any game I play
- - I want to cheat because I am devious
+ - I want to categorize my music based on album, song and artist
+ - I want to see the albums, songs and artists that I have already entered
+ - I want to get recommendations for new artists based on my input to the app
+
 
 ### User Stories (stretch)
- - I want to be able to play with friends across devices
- - I would like to be able to play this game on a smartphone
+ - I would like to be able to use this app on a smartphone
 
 ## Development Process
 
-This is my first full stack app, and I decided to begin with the basics.  I started a markup branch to complete the basic html layout of my page.  I completed this fairly quickly and moved onto the CSS styling.  At first, I only did basic, necessary styling.
+This is my first full stack app, and I decided to begin with the user authentication.  I used the same platform and logic for it as with my tic tac toe game, so it was not difficult to implement.  I tested it on the backend with curl scripts until there was full CRUD functionality.
 
-The next step was to tackle the API actions for users.  I didn't have any experience in AJAX before this class, but our prior lessons provided great examples.  I set up a sign up, sign in, sign out and change password feature with error checks.  I also greated a global object to store the two players in for future use.  I'm not sure if that's good practice, but it was easier than making tons of API calls to get user info.  The most difficult thing about the user API features were testing them.  Since I didn't know AJAX beyond what we had covered in class, I had to do some very thorough testing processes to make sure everything was right.  I set it up so two users can be online, both stored locally, and no more.  Having two users online is required to start the game.
+The next step was to create the album, song and artist resources which were the bulk of the functionality.  I began by scaffolding each resource and building CRUD functionality for each one at a time.  After each resource had full CRUD functionality, I established the relationships with migrations.  Due to my unfamiliarity with rails syntax, I sometimes established the wrong relationship by accident and had to roll back.  The final relationships are:
 
-The next step was working with the game API.  This was provided to us but we didn't create it.  This was probably my biggest challenge in the project because I'm not great at APIs yet.  Using the user API features as examples, I created a Create New Game feature, Get a Game feature, Show Wins feature, and created a background process in the New Game feature to sign in the second user as player o.  These features were difficult because I probably made them more complex than necessary, and ran into a lot of bugs.  It was very helpful to test them out in curl beforehand.
+Album belongs to Artist and user
+One User has many albums
+One Artist has many albums
 
-Finally, I worked on the game logic.  The game logic is just a programming challenge, which I have more experience with than APIs.  I created a function that could check any array to see if it was a winner, and I used that function for not only the game logic, but also the Get A Game and Show Your Wins features.  I also implemented Cheat Mode which was a bit easier than expected; it is just a function that uses jQuery to put CSS into cells that would win the game for the current player.
+Albums have many songs
 
 ### Stretch Goals
 
