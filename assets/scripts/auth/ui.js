@@ -19,12 +19,12 @@ const signInSuccess = (data) => {
 
 // This function runs if there is a problem with sign up
 const signUpFailure = () => {
-  $('.game-log').text('You are already signed up, or entered the wrong password, or you have not signed up yet')
+  $('.debug').text('There was an issue with your signup')
 }
 
 // This function runs if there is a probelm with sign in
 const signInFailure = () => {
-  $('.game-log').text('You are already signed up, or entered the wrong password, or you have not signed up yet')
+  $('.sign_in_debug').text('There was a problem signing you in')
 }
 
 // This function runs if you sign out successfully
