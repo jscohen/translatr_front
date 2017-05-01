@@ -59,14 +59,5 @@ I probably will not complete the additional challenge of getting this app into m
 I stuck to the tech we've covered almost exclusively, the only tech I added was a pair of Google custom fonts.
 
 [Google Fonts](https://fonts.google.com/)
-
-## Next Steps
-
- - Build Mobile Functionality
- - Build multiple device functionality
- - Check for more bugs and errors
-
- ## [License](LICENSE)
-
  1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
  2.  All software code is licensed under GNU GPLv3.
