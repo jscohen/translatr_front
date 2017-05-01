@@ -2,19 +2,6 @@
   margin-top: 100px;
 }
 
-.make-album {
-  margin-left: 215px;
-  width: 75%;
-}
-
-.artist {
-  margin-left: 215px;
-}
-
-.song {
-  margin-left: 215px;
-}
-
 .midbar {
   margin-left: 330px;
 }
@@ -32,9 +19,29 @@ li {
 }
 
 .row {
-  float:left;
+  float: left;
+}
+
+.makealbum {
+  float: left;
+  width: 100%;
+}
+
+.row2 {
+  clear: both;
+}
+
+.getalbum {
+  width: 33%;
+  margin: 20px
 }
 
 .get-artists {
-  float: right;
+  width: 75%;
+  margin: 20px;
+}
+
+.lyrics {
+  width: 33%;
+  margin: 20px;
 }

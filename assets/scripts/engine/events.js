@@ -16,6 +16,7 @@ const getUserAlbums = function () {
   for (let i = 0; i < albums.album.albums.length; i++) {
     if (users.user.user.id === albums.album.albums[i].user.id) {
       console.log(albums.album.albums[i])
+      $('.show-albums').append('<li>' + albums.album.albums[i].name + '</li>')
     }
   }
 }
@@ -37,6 +38,7 @@ const onAddArtist = function (event) {
 }
 
 const onGetArtists = function (event) {
+  console.log('test')
   event.preventDefault()
   api.getArtists().then(ui.getArtistSuccess)
   .catch(ui.getArtistFailure)

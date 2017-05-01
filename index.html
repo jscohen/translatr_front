@@ -43,7 +43,7 @@
 
     <div class="row row-top">
 
-    <div class="col-md-4 make-album">
+    <div class="make-album">
       <form id="add-album">
         <input type="text" name="album[name]" id="add-album-name" placeholder="Enter Album Name">
         <input type="text" name="album[artist_id]" id="add-album-name" placeholder="Enter Artist ID">
@@ -52,6 +52,7 @@
       </form>
     </div>
   </div>
+  <div class="row">
       <div class="artist">
         <form id="add-artist">
           <input type="text" name="artist[name]" id="add-artist-name" placeholder="Enter Artist Name">
@@ -59,7 +60,8 @@
           <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add an Artist">
         </form>
       </div>
-
+</div>
+<div class="row">
       <div class="song">
         <form id="add-song">
           <input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">
@@ -68,20 +70,17 @@
           <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add a Song">
         </form>
       </div>
-
-      <div class="row">
-        <div class="col-md-6 getalbum">
+</div>
+      <div class="row row2">
+        <div class="getalbum col-md-6">
         <form id="album-by-user">
           <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Albums">
         </form>
-        </div>
-        <div class="col-md-6">
-          <form id="get-lyrics">
-            <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Lyrics">
-          </form>
+          <ul class="show-albums"></ul>
         </div>
       </div>
-
+      <br />
+      <div class="row">
         <div class="col-md-6 get-artists">
           <form id="get-artists">
             <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get your artists">
@@ -91,10 +90,16 @@
           <ul class="artists"></ul>
         </div>
       </div>
-
+      </div>
+      <div class="row">
+      <div class="col-md-6 lyrics">
+        <form id="get-lyrics">
+          <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Lyrics">
+        </form>
+      </div>
+    </div>
 
     <p class="lyrics"></p>
-  </div>
   <div class="modal fade signUpModal" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
