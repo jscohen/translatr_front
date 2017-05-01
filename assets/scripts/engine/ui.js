@@ -56,6 +56,15 @@ const getLyricsFailure = (data) => {
   console.log(data.error)
 }
 
+const getSongsSuccess = (data) => {
+  console.log('success')
+  console.log(data)
+}
+
+const getSongsFailure = (data) => {
+  console.log(data.error)
+}
+
 module.exports = {
   getAlbumSuccess,
   getAlbumFailure,
@@ -66,5 +75,7 @@ module.exports = {
   addAlbumFailure,
   addAlbumSuccess,
   getLyricsFailure,
-  getLyricsSuccess
+  getLyricsSuccess,
+  getSongsSuccess,
+  getSongsFailure
 }

@@ -58,6 +58,11 @@ const getLyrics = function (event) {
   api.getLyrics().then(ui.getLyricsSuccess).catch(ui.getLyricsFailure)
 }
 
+const onGetSongs = function (event) {
+  event.preventDefault()
+  api.getSongs().then(ui.getSongsSuccess).catch(ui.getSongsFailure)
+}
+
 // Click handlers get input from the html elements when they are clicked
 const addHandlers = () => {
   $('#album-by-user').on('submit', onGetAlbum)
@@ -66,6 +71,7 @@ const addHandlers = () => {
   $('#get-artists').on('submit', onGetArtists)
   $('#add-song').on('submit', onAddSong)
   $('#get-lyrics').on('submit', getLyrics)
+  $('#get-songs').on('submit', onGetSongs)
 }
 
 // Exports for use in main index file
