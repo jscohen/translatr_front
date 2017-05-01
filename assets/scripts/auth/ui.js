@@ -9,12 +9,16 @@ const users = require('./users')
 const signUpSuccess = (data) => {
   // Hide the modal after its use
   $('#signUpModal').modal('hide')
+  $('.changePWNav').show()
+  $('.signOut').show()
 }
 
 const signInSuccess = (data) => {
   users.user = data
   console.log(users.user)
   $('#signInModal').modal('hide')
+  $('.changePWNav').show()
+  $('.signOut').show()
 }
 
 // This function runs if there is a problem with sign up
@@ -29,20 +33,21 @@ const signInFailure = () => {
 
 // This function runs if you sign out successfully
 const signOutSuccess = () => {
-  console.log('Success')
+  $('.changePWNav').hide()
+  $('.signOut').hide()
+}
+
+const signOutFailure = () => {
+  console.log('error')
 }
 
 // This function runs if change passwords succeeds
 const changePWSuccess = (data) => {
-  $('#changePWModal').modal('hide')
-  $('.game-log').text('Your password has successfully been changed')
 }
 
 // This function runs if change password fails
 const changePWFailure = () => {
-  $('#changePWModal').modal('hide')
-  $('.game-log').text('There was an error - please try again')
-  $('.changePWNav').modal('hide')
+  $('.pw_debug').text('There was a problem changing your password')
 }
 
 // Export these functions for use
@@ -53,5 +58,6 @@ module.exports = {
   signInFailure,
   signOutSuccess,
   changePWSuccess,
-  changePWFailure
+  changePWFailure,
+  signOutFailure
 }

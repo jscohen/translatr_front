@@ -28,11 +28,12 @@ const signIn = (data) => {
 // If there are two players, the other will be signed in
 // Identifies the player by checking if there is a second player
 const signOut = () => {
+  console.log(users.user.user.id)
   return $.ajax({
-    url: config.apiOrigin + '/sign-out/' + users.user.id,
+    url: config.apiOrigin + '/sign-out/' + users.user.user.id,
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + users.user.token
+      Authorization: 'Token token=' + users.user.user.token
     }
   })
 }
@@ -42,10 +43,10 @@ const signOut = () => {
 const changePW = (data) => {
   console.log(users.user)
   return $.ajax({
-    url: config.apiOrigin + '/change-password/' + users.user.id,
+    url: config.apiOrigin + '/change-password/' + users.user.user.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + users.user.token
+      Authorization: 'Token token=' + users.user.user.token
     },
     data
   })

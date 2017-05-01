@@ -33,10 +33,6 @@ const onSignIn = function (event) {
 // Calls API to Delete the user
 const onSignOut = function (event) {
   event.preventDefault()
-  if (users.user === undefined) {
-    $('.game-log').text('No one is signed in')
-    return false
-  }
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
@@ -59,6 +55,8 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePW)
+  $('.changePWNav').hide()
+  $('.signOut').hide()
 }
 
 // Exports for use in main index file
