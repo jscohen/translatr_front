@@ -17,6 +17,7 @@ const addArtistSuccess = (data) => {
   console.log(data)
   console.log('Success')
   artist.artist = data
+  $('#recommender').show()
 }
 
 const addArtistFailure = (data) => {
