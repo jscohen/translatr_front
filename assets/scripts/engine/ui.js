@@ -27,11 +27,26 @@ const getArtistSuccess = (data) => {
   console.log(data)
   console.log('success')
   console.log(data.artists[0].user.id)
+  $('.artists').children().remove()
   for (let i = 0; i < data.artists.length; i++) {
     if (data.artists[i].user.id === users.user.user.id) {
       $('.artists').append('<li>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</li>')
     }
   }
+}
+
+const getRecommenderSuccess = (data) => {
+  let topTen = 0
+  for (let i = 0; i < data.artists.length; i++) {
+    if (data.artists[i].genre === artist.artist.artist.genre && topTen <= 10) {
+      $('.recommendations').append('<li>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</li>')
+      topTen += 1
+    }
+  }
+}
+
+const getRecommenderFailure = (data) => {
+  console.log(data.error)
 }
 
 const getArtistFailure = (data) => {
@@ -47,14 +62,6 @@ const addAlbumFailure = (data) => {
   console.log(data.error)
   console.log('Failed')
 }
-
-// const getLyricsSuccess = (data) => {
-//   console.log(data)
-// }
-//
-// const getLyricsFailure = (data) => {
-//   console.log(data.error)
-// }
 
 const getSongsSuccess = (data) => {
   console.log(data)
@@ -80,8 +87,8 @@ module.exports = {
   getArtistFailure,
   addAlbumFailure,
   addAlbumSuccess,
-  getLyricsFailure,
-  getLyricsSuccess,
   getSongsSuccess,
-  getSongsFailure
+  getSongsFailure,
+  getRecommenderFailure,
+  getRecommenderSuccess
 }

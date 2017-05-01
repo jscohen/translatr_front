@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Translatr</title>
+    <title>Recommendr</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Do not add `link` tags unless you know what you are doing -->
@@ -19,7 +19,7 @@
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <h1 class="header">Translatr</h1>
+            <h1 class="header">Recommendr</h1>
           </div>
               <ul class="nav navbar-nav navbar-right">
                 <li class="signUpNav">
@@ -92,6 +92,12 @@
             <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Your Songs">
           </form>
           <p class="show-songs">Your Songs:</p>
+        </div>
+        <div class="col-md-6 songs">
+          <form id="recommender">
+            <input type="submit" class="btn btn-primary btn-top" name="submit" value="You might like...">
+          </form>
+          <span class="recommendations"></span>
         </div>
       </div>
 
