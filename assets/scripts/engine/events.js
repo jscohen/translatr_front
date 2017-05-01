@@ -55,11 +55,6 @@ const onAddSong = function (event) {
   api.addSong(data).then(ui.addSongSuccess).catch(ui.addSongFailure)
 }
 
-const getLyrics = function (event) {
-  event.preventDefault()
-  api.getLyrics().then(ui.getLyricsSuccess).catch(ui.getLyricsFailure)
-}
-
 const onGetSongs = function (event) {
   event.preventDefault()
   api.getSongs().then(ui.getSongsSuccess).catch(ui.getSongsFailure)

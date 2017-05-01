@@ -48,13 +48,13 @@ const addAlbumFailure = (data) => {
   console.log('Failed')
 }
 
-const getLyricsSuccess = (data) => {
-  console.log(data)
-}
-
-const getLyricsFailure = (data) => {
-  console.log(data.error)
-}
+// const getLyricsSuccess = (data) => {
+//   console.log(data)
+// }
+//
+// const getLyricsFailure = (data) => {
+//   console.log(data.error)
+// }
 
 const getSongsSuccess = (data) => {
   console.log(data)
