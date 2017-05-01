@@ -42,9 +42,17 @@ One Artist has many albums
 
 Albums have many songs
 
+Songs belong to artists, users and albums
+An artist can have many songs
+A user can have many songs
+An album can have many songs
+
+Artists have many songs
+One user can have many artists
+
 ### Stretch Goals
 
-Althought it is late, I still hope to try to get in a couple of stretch goals: to play on different devices using the html event handler on the game-api and playing on a smartphone.  I'm in the early stages of these challenges and probably won't complete them.
+I probably will not complete the additional challenge of getting this app into mobile form.
 
 ## Additional Tech
 
