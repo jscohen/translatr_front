@@ -76,6 +76,7 @@ const addHandlers = () => {
   $('#get-songs').on('submit', onGetSongs)
   $('#recommender').on('submit', onRecommend)
   $('#recommender').hide()
+  $('.everything').hide()
 }
 
 // Exports for use in main index file

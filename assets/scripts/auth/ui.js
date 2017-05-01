@@ -11,6 +11,7 @@ const signUpSuccess = (data) => {
   $('#signUpModal').modal('hide')
   $('.changePWNav').show()
   $('.signOut').show()
+  $('.everything').show()
 }
 
 const signInSuccess = (data) => {
@@ -19,6 +20,7 @@ const signInSuccess = (data) => {
   $('#signInModal').modal('hide')
   $('.changePWNav').show()
   $('.signOut').show()
+  $('.everything').show()
 }
 
 // This function runs if there is a problem with sign up
@@ -35,6 +37,7 @@ const signInFailure = () => {
 const signOutSuccess = () => {
   $('.changePWNav').hide()
   $('.signOut').hide()
+  $('.everything').hide()
 }
 
 const signOutFailure = () => {
