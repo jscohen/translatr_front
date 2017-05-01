@@ -50,6 +50,8 @@ const onGetArtists = function (event) {
 const onAddSong = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
+  data.song.user_id = users.user.user.id
+  console.log(data)
   api.addSong(data).then(ui.addSongSuccess).catch(ui.addSongFailure)
 }
 

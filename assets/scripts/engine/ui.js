@@ -57,8 +57,14 @@ const getLyricsFailure = (data) => {
 }
 
 const getSongsSuccess = (data) => {
-  console.log('success')
   console.log(data)
+  console.log(users.user.user.id)
+  for (let i = 0; i < data.songs.length; i++) {
+    if (data.songs[i].user.id === users.user.user.id) {
+      $('.show-songs').append('<li>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + '</li>')
+      console.log('test')
+    }
+  }
 }
 
 const getSongsFailure = (data) => {
