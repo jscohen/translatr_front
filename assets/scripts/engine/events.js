@@ -67,10 +67,10 @@ const onRecommend = function (event) {
 }
 
 const onGetLyrics = function (event) {
+  const data = getFormFields(this)
   event.preventDefault()
-  api.getLyrics().then(ui.getLyricsSuccess).catch(ui.getLyricsFailure)
+  api.getLyrics(data).then(ui.getLyricsSuccess).catch(ui.getLyricsFailure)
 }
-
 
 // Click handlers get input from the html elements when they are clicked
 const addHandlers = () => {

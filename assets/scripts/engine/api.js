@@ -52,10 +52,11 @@ const getSongs = () => {
   })
 }
 
-const getLyrics = () => {
+const getLyrics = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/lyrics',
-    method: 'GET'
+    method: 'GET',
+    data
   })
 }
 
