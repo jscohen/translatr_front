@@ -47,11 +47,10 @@ const getRecommenderFailure = (data) => {
 }
 
 const getArtistFailure = (data) => {
-  console.log('failure')
+  $('.artists').text('There was a problem getting your artists')
 }
 
 const addAlbumSuccess = (data) => {
-  console.log(data)
   $('.album_msg').text('You added album ' + data.album.name + ' with an id of ' + data.album.id)
 }
 
@@ -60,12 +59,9 @@ const addAlbumFailure = (data) => {
 }
 
 const getSongsSuccess = (data) => {
-  console.log(data)
-  console.log(users.user.user.id)
   for (let i = 0; i < data.songs.length; i++) {
     if (data.songs[i].user_id === users.user.user.id) {
       $('.show-songs').append('<li>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + '</li>')
-      console.log('test')
     }
   }
 }
@@ -79,7 +75,7 @@ const addSongFailure = (data) => {
 }
 
 const getSongsFailure = (data) => {
-  console.log(data.error)
+  $('.show-songs').text('There was a problem getting your songs')
 }
 
 const getLyricsSuccess = (data) => {
@@ -95,7 +91,7 @@ const getLyricsSuccess = (data) => {
 }
 
 const getLyricsFailure = (data) => {
-  console.log(data.error)
+  $('.add_lyrics').text('There was a problem getting your lyrics')
 }
 
 module.exports = {
