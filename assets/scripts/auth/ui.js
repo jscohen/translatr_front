@@ -9,8 +9,6 @@ const users = require('./users')
 const signUpSuccess = (data) => {
   // Hide the modal after its use
   $('#signUpModal').modal('hide')
-  $('.changePWNav').show()
-  $('.signOut').show()
 }
 
 const signInSuccess = (data) => {
