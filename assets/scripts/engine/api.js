@@ -1,7 +1,6 @@
 const config = require('../config')
 
 const getAlbum = () => {
-  console.log('test')
   return $.ajax({
     url: config.apiOrigin + '/albums/',
     method: 'GET'
@@ -17,7 +16,6 @@ const addAlbum = (data) => {
 }
 
 const addArtist = (data) => {
-  console.log(config.apiOrigin)
   return $.ajax({
     url: config.apiOrigin + '/artists',
     method: 'POST',
@@ -33,7 +31,6 @@ const getArtists = () => {
 }
 
 const addSong = (data) => {
-  console.log(data)
   return $.ajax({
     url: config.apiOrigin + '/songs',
     method: 'POST',

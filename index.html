@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Recommendr</title>
+    <title>Translatr</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Do not add `link` tags unless you know what you are doing -->
@@ -18,7 +18,7 @@
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <h1 class="header">Recommendr</h1>
+            <h1 class="header">Translatr</h1>
           </div>
               <ul class="nav navbar-nav navbar-right">
                 <li class="signUpNav">
@@ -48,6 +48,7 @@
         <input type="text" name="album[artist_id]" id="add-album-name" placeholder="Enter Artist ID">
         <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add an Album">
       </form>
+      <span class="album_msg"></span>
     </div>
       <div class="artist">
         <form id="add-artist">
@@ -55,6 +56,7 @@
           <input type="text" name="artist[genre]" id="add-artist-genre" placeholder="Enter Artist Genre">
           <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add an Artist">
         </form>
+        <span class="artist_msg"></span>
         </div>
       <div class="song">
         <form id="add-song">
@@ -63,6 +65,7 @@
           <input type="text" name="song[artist_id]" id="add-artist-id" placeholder="Enter Artist ID">
           <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add a Song">
         </form>
+        <span class="song_msg"></span>
       </div>
     </div>
       <div class="row row2">

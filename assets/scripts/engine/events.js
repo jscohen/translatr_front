@@ -12,9 +12,6 @@ const onGetAlbum = function (event) {
 }
 
 const getUserAlbums = function () {
-  console.log('test')
-  console.log(users.user.user.id)
-  console.log(albums.album.albums)
   for (let i = 0; i < albums.album.albums.length; i++) {
     if (users.user.user.id === albums.album.albums[i].user.id) {
       console.log(albums.album.albums[i])
@@ -28,7 +25,6 @@ const onAddAlbum = function () {
   event.preventDefault()
   const data = getFormFields(this)
   data.album.user_id = users.user.user.id
-  console.log(data)
   api.addAlbum(data).then(ui.addAlbumSuccess)
   .catch(ui.addAlbumFailure)
 }
@@ -36,14 +32,12 @@ const onAddAlbum = function () {
 const onAddArtist = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
   data.artist.user_id = users.user.user.id
   api.addArtist(data).then(ui.addArtistSuccess)
   .catch(ui.addArtistFailure)
 }
 
 const onGetArtists = function (event) {
-  console.log('test')
   event.preventDefault()
   api.getArtists().then(ui.getArtistSuccess)
   .catch(ui.getArtistFailure)
@@ -53,7 +47,6 @@ const onAddSong = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   data.song.user_id = users.user.user.id
-  console.log(data)
   api.addSong(data).then(ui.addSongSuccess).catch(ui.addSongFailure)
 }
 
@@ -70,14 +63,12 @@ const onRecommend = function (event) {
 
 const onGetLyrics = function (event) {
   const data = getFormFields(this)
-  console.log(data)
   event.preventDefault()
   api.getLyrics(data).then(ui.getLyricsSuccess).catch(ui.getLyricsFailure)
 }
 
 const translate = function (event) {
   event.preventDefault()
-  console.log(lyrics.lyric)
   let wordCount = 0
   for (let i = 0; i < lyrics.lyric.length; i++) {
     if (wordCount === 5) {

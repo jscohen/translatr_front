@@ -5,30 +5,25 @@ const lyrics = require('./lyrics')
 
 const getAlbumSuccess = (data) => {
   const events = require('./events')
-  console.log('success!!')
   albums.album = data
   events.getUserAlbums()
 }
 
 const getAlbumFailure = (data) => {
-  console.log('failed!')
-}
-
-const addArtistSuccess = (data) => {
-  console.log(data)
-  console.log('Success')
-  artist.artist = data
-  $('#recommender').show()
-}
-
-const addArtistFailure = (data) => {
   console.log(data.error)
 }
 
+const addArtistSuccess = (data) => {
+  artist.artist = data
+  $('#recommender').show()
+  $('.artist_msg').text('You added ' + data.artist.name + ' with an ID of ' + data.artist.id)
+}
+
+const addArtistFailure = (data) => {
+  $('.artist_msg').text('There was a problem adding this artist')
+}
+
 const getArtistSuccess = (data) => {
-  console.log(data)
-  console.log('success')
-  console.log(data.artists[0].user.id)
   $('.artists').children().remove()
   for (let i = 0; i < data.artists.length; i++) {
     if (data.artists[i].user.id === users.user.user.id) {
@@ -48,7 +43,7 @@ const getRecommenderSuccess = (data) => {
 }
 
 const getRecommenderFailure = (data) => {
-  console.log(data.error)
+  $('.recommendations').text('There was an error with your recommendations')
 }
 
 const getArtistFailure = (data) => {
@@ -57,12 +52,11 @@ const getArtistFailure = (data) => {
 
 const addAlbumSuccess = (data) => {
   console.log(data)
-  console.log('Success')
+  $('.album_msg').text('You added album ' + data.album.name + ' with an id of ' + data.album.id)
 }
 
 const addAlbumFailure = (data) => {
-  console.log(data.error)
-  console.log('Failed')
+  $('.album_msg').text('There was a problem with adding your album')
 }
 
 const getSongsSuccess = (data) => {
@@ -74,6 +68,14 @@ const getSongsSuccess = (data) => {
       console.log('test')
     }
   }
+}
+
+const addSongSuccess = (data) => {
+  $('.song_msg').text('You added ' + data.song.name + ' with an ID of ' + data.song.id)
+}
+
+const addSongFailure = (data) => {
+  $('.song_msg').text('There was a problem adding your song')
 }
 
 const getSongsFailure = (data) => {
@@ -112,5 +114,7 @@ module.exports = {
   getRecommenderFailure,
   getRecommenderSuccess,
   getLyricsFailure,
-  getLyricsSuccess
+  getLyricsSuccess,
+  addSongSuccess,
+  addSongFailure
 }
