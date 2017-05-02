@@ -1,6 +1,7 @@
 const albums = require('./albums')
 const artist = require('./artist')
 const users = require('../auth/users')
+const lyrics = require('./lyrics')
 
 const getAlbumSuccess = (data) => {
   const events = require('./events')
@@ -68,7 +69,7 @@ const getSongsSuccess = (data) => {
   console.log(data)
   console.log(users.user.user.id)
   for (let i = 0; i < data.songs.length; i++) {
-    if (data.songs[i].user.id === users.user.user.id) {
+    if (data.songs[i].user_id === users.user.user.id) {
       $('.show-songs').append('<li>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + '</li>')
       console.log('test')
     }
@@ -81,12 +82,13 @@ const getSongsFailure = (data) => {
 
 const getLyricsSuccess = (data) => {
   console.log(data)
-  for (let i = 0; i < data.lyrics[0].text.length; i++) {
-    if (data.lyrics[0].text[i] == '\n') {
+  lyrics.lyric = data.lyric.translation
+  for (let i = 0; i < data.lyric.text.length; i++) {
+    if (data.lyric.text[i] === '\n') {
       $('.add_lyrics').append('<br />')
     }
     else {
-      $('.add_lyrics').append(data.lyrics[0].text[i])
+      $('.add_lyrics').append(data.lyric.text[i])
     }
   }
 }

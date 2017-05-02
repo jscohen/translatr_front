@@ -1,5 +1,4 @@
 const config = require('../config')
-const users = require('../auth/users')
 
 const getAlbum = () => {
   console.log('test')

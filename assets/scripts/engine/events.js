@@ -3,6 +3,7 @@ const ui = require('./ui')
 const albums = require('./albums')
 const users = require('../auth/users')
 const getFormFields = require(`../../../lib/get-form-fields`)
+const lyrics = require('./lyrics')
 
 const onGetAlbum = function (event) {
   event.preventDefault()
@@ -74,6 +75,24 @@ const onGetLyrics = function (event) {
   api.getLyrics(data).then(ui.getLyricsSuccess).catch(ui.getLyricsFailure)
 }
 
+const translate = function (event) {
+  event.preventDefault()
+  console.log(lyrics.lyric)
+  let wordCount = 0
+  for (let i = 0; i < lyrics.lyric.length; i++) {
+    if (wordCount === 5) {
+      $('.add_translation').append('<br />' + lyrics.lyric[i])
+      wordCount = 0
+    } else if (lyrics.lyric[i] === ' ') {
+      wordCount += 1
+      $('.add_translation').append(lyrics.lyric[i])
+    } else {
+      console.log('test')
+      $('.add_translation').append(lyrics.lyric[i])
+    }
+  }
+}
+
 // Click handlers get input from the html elements when they are clicked
 const addHandlers = () => {
   $('#album-by-user').on('submit', onGetAlbum)
@@ -86,6 +105,7 @@ const addHandlers = () => {
   $('#recommender').hide()
   $('.everything').hide()
   $('#get-lyrics').on('submit', onGetLyrics)
+  $('#translate').on('submit', translate)
 }
 
 // Exports for use in main index file
