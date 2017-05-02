@@ -69,6 +69,7 @@ const onRecommend = function (event) {
 
 const onGetLyrics = function (event) {
   const data = getFormFields(this)
+  console.log(data)
   event.preventDefault()
   api.getLyrics(data).then(ui.getLyricsSuccess).catch(ui.getLyricsFailure)
 }
