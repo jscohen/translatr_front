@@ -11,7 +11,6 @@ const signUpSuccess = (data) => {
   $('#signUpModal').modal('hide')
   $('.changePWNav').show()
   $('.signOut').show()
-  $('.everything').show()
 }
 
 const signInSuccess = (data) => {

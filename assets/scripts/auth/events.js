@@ -4,7 +4,6 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
-const users = require('./users')
 
 // Sign Up function
 // Takes data from a modal, accessed via getFormFields
