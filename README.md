@@ -18,10 +18,8 @@ The relationships I actually made were more complex.  I had to create albums tha
 
 Finally, I realized later that I had to make a new resource for the translations.  I made the Lyric resource for this and set it to belong to song.  In the back end, I made two additional programs, lyrics-api.rb, and translate-api.rb, to handle the functionality.  This required a significant amount of improvisation as I had not used third party APIs in the past.  I used the musixmatch API to get song lyrics and the glosbe API to translate the lyrics.
 
-[Wireframe](http://i.imgur.com/vfEc5af.jpg)
-
 [Original Resource Relations](http://i.imgur.com/KpPiMIh.jpg)
-[Actual Resource Relations]
+[Actual Resource Relations](http://i.imgur.com/XdImP7V.jpg)
 
 ### User Stories
 
