@@ -93,7 +93,7 @@ const getLyricsSuccess = (data) => {
 }
 
 const getLyricsFailure = (data) => {
-  $('.add_lyrics').text('There was a problem getting your lyrics')
+  $('.add_lyrics').text('There was a problem getting your lyrics - check for non-ASCII characters')
 }
 
 module.exports = {
