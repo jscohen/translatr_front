@@ -20,7 +20,8 @@ Finally, I realized later that I had to make a new resource for the translations
 
 [Wireframe](http://i.imgur.com/vfEc5af.jpg)
 
-[Game logic mock-up](http://i.imgur.com/NGiAYz8.jpg)
+[Original Resource Relations](http://i.imgur.com/KpPiMIh.jpg)
+[Actual Resource Relations]
 
 ### User Stories
 
