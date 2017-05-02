@@ -77,8 +77,9 @@ const translate = function (event) {
     } else if (lyrics.lyric[i] === ' ') {
       wordCount += 1
       $('.add_translation').append(lyrics.lyric[i])
+    } else if (lyrics.lyric[i] === '*') {
+      break
     } else {
-      console.log('test')
       $('.add_translation').append(lyrics.lyric[i])
     }
   }
