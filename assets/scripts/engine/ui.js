@@ -83,11 +83,13 @@ const getSongsFailure = (data) => {
 const getLyricsSuccess = (data) => {
   console.log(data)
   lyrics.lyric = data.lyric.translation
-  for (let i = 0; i < data.lyric.text.length; i++) {
-    if (data.lyric.text[i] === '\n') {
+  const str = data.lyric.text.replace(/^[1-9]\d*$/, ' ')
+  console.log(str)
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '\n') {
       $('.add_lyrics').append('<br />')
     } else {
-      $('.add_lyrics').append(data.lyric.text[i])
+      $('.add_lyrics').append(str[i])
     }
   }
 }
