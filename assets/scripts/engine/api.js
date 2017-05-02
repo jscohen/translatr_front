@@ -52,6 +52,13 @@ const getSongs = () => {
   })
 }
 
+const getLyrics = () => {
+  return $.ajax({
+    url: config.apiOrigin + '/lyrics',
+    method: 'GET'
+  })
+}
+
 module.exports = {
-  getAlbum, addAlbum, addArtist, getArtists, addSong, getSongs
+  getAlbum, addAlbum, addArtist, getArtists, addSong, getSongs, getLyrics
 }

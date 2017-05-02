@@ -79,6 +79,22 @@ const getSongsFailure = (data) => {
   console.log(data.error)
 }
 
+const getLyricsSuccess = (data) => {
+  console.log(data)
+  for (let i = 0; i < data.lyrics[0].text.length; i++) {
+    if (data.lyrics[0].text[i] == '\n') {
+      $('.add_lyrics').append('<br />')
+    }
+    else {
+      $('.add_lyrics').append(data.lyrics[0].text[i])
+    }
+  }
+}
+
+const getLyricsFailure = (data) => {
+  console.log(data.error)
+}
+
 module.exports = {
   getAlbumSuccess,
   getAlbumFailure,
@@ -91,5 +107,7 @@ module.exports = {
   getSongsSuccess,
   getSongsFailure,
   getRecommenderFailure,
-  getRecommenderSuccess
+  getRecommenderSuccess,
+  getLyricsFailure,
+  getLyricsSuccess
 }
