@@ -18,7 +18,7 @@ const getUserAlbums = function () {
   for (let i = 0; i < albums.album.albums.length; i++) {
     if (users.user.user.id === albums.album.albums[0].user.id) {
       console.log(albums.album.albums[0])
-      $('.show-albums').append('Album: '+ i + ' Title: ' + albums.album.albums[0].name + ' Artist: ' + albums.album.albums[i].artist.name +
+      $('.show-albums').append('Album: ' + i + ' Title: ' + albums.album.albums[0].name + ' Artist: ' + albums.album.albums[i].artist.name +
       ' Songs: ' + albums.album.albums[i].songs.name + '<br />')
     }
   }

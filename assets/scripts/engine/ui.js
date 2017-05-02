@@ -86,8 +86,7 @@ const getLyricsSuccess = (data) => {
   for (let i = 0; i < data.lyric.text.length; i++) {
     if (data.lyric.text[i] === '\n') {
       $('.add_lyrics').append('<br />')
-    }
-    else {
+    } else {
       $('.add_lyrics').append(data.lyric.text[i])
     }
   }
