@@ -42,15 +42,16 @@ li {
   margin: 20px;
 }
 
-.lyrics {
-  width: 33%;
-  margin: 20px;
-}
-
 .songs {
   margin: 20px;
 }
 
-.recommender {
+.lyrics_row {
+  clear: both;
+  display: inline;
+  width: 50%;
+}
+
+.trans {
   float: right;
 }

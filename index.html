@@ -93,15 +93,32 @@
           <p class="show-songs"></p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6 songs recommender">
-          <form id="recommender">
-            <input type="submit" class="btn btn-primary btn-top" name="submit" value="You might like...">
-          </form>
-          <span class="recommendations"></span>
+        <div class="row">
+          <div class="col-md-6 songs recommender">
+            <form id="recommender">
+              <input type="submit" class="btn btn-primary btn-top" name="submit" value="You might like...">
+            </form>
+            <span class="recommendations"></span>
+          </div>
         </div>
-      </div>
+  <div class="row lyrics_row">
+  <div class="lyrics col-md-6">
+    <form id="get-lyrics">
+      <input type="text" name="lyrics[artist]" id="lyrics-artist" placeholder="Enter Artist Name">
+      <input type="text" name="lyrics[title]" id="lyrics-title" placeholder="Enter Song Title">
+      <input type="submit" class="btn btn-primary" name="submit" value="Get Lyrics">
+    </form>
+    <span class="add_lyrics"></span>
   </div>
+</div>
+  <div class="trans">
+      <form id="translate">
+        <input type="submit" class="btn btn-primary" name="submit" value="Translate Lyrics">
+      </form>
+    </div>
+</div>
+</div>
+
   <div class="modal fade signUpModal" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -125,14 +142,6 @@
   </div>
 </div>
 
-<div class="lyrics">
-  <form id="get-lyrics">
-    <input type="text" name="lyrics[artist]" id="lyrics-artist" placeholder="Enter Artist Name">
-    <input type="text" name="lyrics[title]" id="lyrics-title" placeholder="Enter Song Title">
-    <input type="submit" class="btn btn-primary" name="submit" value="Get Lyrics">
-  </form>
-  <span class="add_lyrics"></span>
-</div>
 <div class="modal fade signUpModal" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 <div class="modal-dialog" role="document">
   <div class="modal-content">
