@@ -27,7 +27,7 @@ const getArtistSuccess = (data) => {
   $('.artists').children().remove()
   for (let i = 0; i < data.artists.length; i++) {
     if (data.artists[i].user.id === users.user.user.id) {
-      $('.artists').append('<li>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</li>')
+      $('.artists').text(data.artists[i].name + ' Artist ID: ' + data.artists[i].id)
     }
   }
 }
@@ -36,7 +36,7 @@ const getRecommenderSuccess = (data) => {
   let topTen = 0
   for (let i = 0; i < data.artists.length; i++) {
     if (data.artists[i].genre === artist.artist.artist.genre && topTen <= 10) {
-      $('.recommendations').append('<li>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</li>')
+      $('.recommendations').text(data.artists[i].name + ' Artist ID: ' + data.artists[i].id)
       topTen += 1
     }
   }
@@ -61,7 +61,7 @@ const addAlbumFailure = (data) => {
 const getSongsSuccess = (data) => {
   for (let i = 0; i < data.songs.length; i++) {
     if (data.songs[i].user_id === users.user.user.id) {
-      $('.show-songs').append('<li>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + '</li>')
+      $('.show-songs').text('Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id)
     }
   }
 }
@@ -81,13 +81,14 @@ const getSongsFailure = (data) => {
 const getLyricsSuccess = (data) => {
   console.log(data)
   lyrics.lyric = data.lyric.translation
+  $('.add_lyrics').empty()
   for (let i = 0; i < data.lyric.text.length; i++) {
     if (data.lyric.text[i] === '\n') {
       $('.add_lyrics').append('<br />')
     } else if (data.lyric.text[i] === '*') {
       break
     } else {
-      $('.add_lyrics').append(data.lyric.text[i])
+      $('.add_lyrics').append('<span>' + data.lyric.text[i]+'</span>')
     }
   }
 }

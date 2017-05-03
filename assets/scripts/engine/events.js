@@ -15,7 +15,7 @@ const getUserAlbums = function () {
   for (let i = 0; i < albums.album.albums.length; i++) {
     if (users.user.user.id === albums.album.albums[i].user.id) {
       console.log(albums.album.albums[i])
-      $('.show-albums').append('Album: ' + i + ' Title: ' + albums.album.albums[i].name + ' Artist: ' + albums.album.albums[i].artist.name +
+      $('.show-albums').text('Album: ' + i + ' Title: ' + albums.album.albums[i].name + ' Artist: ' + albums.album.albums[i].artist.name +
       ' Songs: ' + albums.album.albums[i].songs.name + '<br />')
     }
   }
@@ -70,17 +70,18 @@ const onGetLyrics = function (event) {
 const translate = function (event) {
   event.preventDefault()
   let wordCount = 0
+  $('.add_translation').empty()
   for (let i = 0; i < lyrics.lyric.length; i++) {
     if (wordCount === 5) {
-      $('.add_translation').append('<br />' + lyrics.lyric[i])
+      $('.add_translation').append('<br />' + '<span>' + lyrics.lyric[i]+ '</span>')
       wordCount = 0
     } else if (lyrics.lyric[i] === ' ') {
       wordCount += 1
-      $('.add_translation').append(lyrics.lyric[i])
+      $('.add_translation').append('<span>' + lyrics.lyric[i] + '</span>')
     } else if (lyrics.lyric[i] === '*') {
       break
     } else {
-      $('.add_translation').append(lyrics.lyric[i])
+      $('.add_translation').append('<span>' + lyrics.lyric[i] + '</span>')
     }
   }
 }
