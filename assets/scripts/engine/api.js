@@ -1,5 +1,6 @@
 const config = require('../config')
 
+// AJAX Call to API to get all albums
 const getAlbum = () => {
   return $.ajax({
     url: config.apiOrigin + '/albums/',
@@ -7,6 +8,7 @@ const getAlbum = () => {
   })
 }
 
+// AJAX Call to API to add a new album
 const addAlbum = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/albums',
@@ -15,6 +17,7 @@ const addAlbum = (data) => {
   })
 }
 
+// AJAX Call to add a new artist
 const addArtist = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/artists',
@@ -23,6 +26,7 @@ const addArtist = (data) => {
   })
 }
 
+// AJAX Call to get all artists
 const getArtists = () => {
   return $.ajax({
     url: config.apiOrigin + '/artists',
@@ -30,6 +34,7 @@ const getArtists = () => {
   })
 }
 
+// AJAX call to add a song
 const addSong = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/songs',
@@ -38,6 +43,7 @@ const addSong = (data) => {
   })
 }
 
+// AJAX Call to get all songs
 const getSongs = () => {
   return $.ajax({
     url: config.apiOrigin + '/songs',
@@ -45,6 +51,7 @@ const getSongs = () => {
   })
 }
 
+// AJAX Call to get all song lyrics
 const getLyrics = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/lyrics',

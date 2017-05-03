@@ -3,26 +3,32 @@ const artist = require('./artist')
 const users = require('../auth/users')
 const lyrics = require('./lyrics')
 
+// If we have the albums, store them to a global object
+// Call the function that gets albums by user
 const getAlbumSuccess = (data) => {
   const events = require('./events')
   albums.album = data
   events.getUserAlbums()
 }
 
+// Throw an error if we can't get the albums
 const getAlbumFailure = (data) => {
-  console.log(data.error)
+  $('.album_msg').text(data.error)
 }
 
+// Show the recommender and append artist if successful
 const addArtistSuccess = (data) => {
   artist.artist = data
   $('#recommender').show()
   $('.artist_msg').text('You added ' + data.artist.name + ' with an ID of ' + data.artist.id)
 }
 
+// Throw error if we can't add artist
 const addArtistFailure = (data) => {
   $('.artist_msg').text('There was a problem adding this artist')
 }
 
+// Add artists if we can get them
 const getArtistSuccess = (data) => {
   $('.artists').children().remove()
   for (let i = 0; i < data.artists.length; i++) {
@@ -32,6 +38,7 @@ const getArtistSuccess = (data) => {
   }
 }
 
+// Populate the recommendations by getting other artists by genre
 const getRecommenderSuccess = (data) => {
   let topTen = 0
   for (let i = 0; i < data.artists.length; i++) {
@@ -42,22 +49,27 @@ const getRecommenderSuccess = (data) => {
   }
 }
 
+// Throw an error if the recommender doesn't work
 const getRecommenderFailure = (data) => {
   $('.recommendations').text('There was an error with your recommendations')
 }
 
+// Throw an error if we can't get artists
 const getArtistFailure = (data) => {
   $('.artists').text('There was a problem getting your artists')
 }
 
+// Show the album if success
 const addAlbumSuccess = (data) => {
   $('.album_msg').text('You added album ' + data.album.name + ' with an id of ' + data.album.id)
 }
 
+// Throw error if we can't add an album
 const addAlbumFailure = (data) => {
   $('.album_msg').text('There was a problem with adding your album')
 }
 
+// Show songs if we can get them
 const getSongsSuccess = (data) => {
   for (let i = 0; i < data.songs.length; i++) {
     if (data.songs[i].user_id === users.user.user.id) {
@@ -66,33 +78,40 @@ const getSongsSuccess = (data) => {
   }
 }
 
+// Show song we just added
 const addSongSuccess = (data) => {
   $('.song_msg').text('You added ' + data.song.name + ' with an ID of ' + data.song.id)
 }
 
+// Throw error if we can't add song
 const addSongFailure = (data) => {
   $('.song_msg').text('There was a problem adding your song')
 }
 
+// Throw error if we can't get songs
 const getSongsFailure = (data) => {
   $('.show-songs').text('There was a problem getting your songs')
 }
 
+// Add lyrics to the global object
 const getLyricsSuccess = (data) => {
   console.log(data)
   lyrics.lyric = data.lyric.translation
+  // Empty any lyrics currently in HTML
   $('.add_lyrics').empty()
+  // Iterate through lyrics and append them
   for (let i = 0; i < data.lyric.text.length; i++) {
     if (data.lyric.text[i] === '\n') {
       $('.add_lyrics').append('<br />')
     } else if (data.lyric.text[i] === '*') {
       break
     } else {
-      $('.add_lyrics').append('<span>' + data.lyric.text[i]+'</span>')
+      $('.add_lyrics').append('<span>' + data.lyric.text[i] + '</span>')
     }
   }
 }
 
+// Throw error if we can't get lyrics
 const getLyricsFailure = (data) => {
   $('.add_lyrics').text('There was a problem getting your lyrics - check for non-ASCII characters')
 }

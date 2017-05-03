@@ -13,7 +13,6 @@ const signUpSuccess = (data) => {
 
 const signInSuccess = (data) => {
   users.user = data
-  console.log(users.user)
   $('#signInModal').modal('hide')
   $('.changePWNav').show()
   $('.signOut').show()
@@ -38,7 +37,6 @@ const signOutSuccess = () => {
 }
 
 const signOutFailure = () => {
-  console.log('error')
 }
 
 // This function runs if change passwords succeeds

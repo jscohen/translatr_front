@@ -6,7 +6,6 @@ const config = require('../config')
 // Sign up AJAX Call
 // Takes in form data and creates a new user in the game-api
 const signUp = (data) => {
-  console.log(config.apiOrigin)
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
     method: 'POST',
@@ -28,7 +27,6 @@ const signIn = (data) => {
 // If there are two players, the other will be signed in
 // Identifies the player by checking if there is a second player
 const signOut = () => {
-  console.log(users.user.user.id)
   return $.ajax({
     url: config.apiOrigin + '/sign-out/' + users.user.user.id,
     method: 'DELETE',
@@ -41,7 +39,6 @@ const signOut = () => {
 // Change password AJAX call: takes input from modal and patches the players'
 // record on the server with the new pw
 const changePW = (data) => {
-  console.log(users.user)
   return $.ajax({
     url: config.apiOrigin + '/change-password/' + users.user.user.id,
     method: 'PATCH',
