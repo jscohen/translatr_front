@@ -43,6 +43,7 @@ const signOutFailure = () => {
 
 // This function runs if change passwords succeeds
 const changePWSuccess = (data) => {
+  $('#changePWModal').modal('hide')
 }
 
 // This function runs if change password fails
