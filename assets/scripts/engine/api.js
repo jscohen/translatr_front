@@ -60,6 +60,23 @@ const getLyrics = (data) => {
   })
 }
 
+// AJAX Call to get all song lyrics
+const updateAlbum = (data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/albums/' + data.album.id,
+    method: 'PATCH',
+    data
+  })
+}
+
+const deleteAlbum = (data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/albums/' + data.album.id,
+    method: 'DELETE',
+    data
+  })
+}
+
 module.exports = {
-  getAlbum, addAlbum, addArtist, getArtists, addSong, getSongs, getLyrics
+  getAlbum, addAlbum, addArtist, getArtists, addSong, getSongs, getLyrics, updateAlbum, deleteAlbum
 }

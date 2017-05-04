@@ -20,7 +20,7 @@ const getAlbumFailure = (data) => {
 const addArtistSuccess = (data) => {
   artist.artist = data
   $('#recommender').show()
-  $('.artist_msg').text('You added ' + data.artist.name + ' with an ID of ' + data.artist.id)
+  $('.artist_msg').append('<span>You added ' + data.artist.name + ' with an ID of ' + data.artist.id + '</span>')
 }
 
 // Throw error if we can't add artist
@@ -33,7 +33,7 @@ const getArtistSuccess = (data) => {
   $('.artists').children().remove()
   for (let i = 0; i < data.artists.length; i++) {
     if (data.artists[i].user.id === users.user.user.id) {
-      $('.artists').text(data.artists[i].name + ' Artist ID: ' + data.artists[i].id)
+      $('.artists').append('<span>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</span>')
     }
   }
 }
@@ -43,7 +43,7 @@ const getRecommenderSuccess = (data) => {
   let topTen = 0
   for (let i = 0; i < data.artists.length; i++) {
     if (data.artists[i].genre === artist.artist.artist.genre && topTen <= 10) {
-      $('.recommendations').text(data.artists[i].name + ' Artist ID: ' + data.artists[i].id)
+      $('.recommendations').append('<span>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</span>')
       topTen += 1
     }
   }
@@ -73,7 +73,7 @@ const addAlbumFailure = (data) => {
 const getSongsSuccess = (data) => {
   for (let i = 0; i < data.songs.length; i++) {
     if (data.songs[i].user_id === users.user.user.id) {
-      $('.show-songs').text('Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id)
+      $('.show-songs').append('<span>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + '</span>')
     }
   }
 }
@@ -116,6 +116,22 @@ const getLyricsFailure = (data) => {
   $('.add_lyrics').text('There was a problem getting your lyrics - check for non-ASCII characters')
 }
 
+const updateAlbumSuccess = (data) => {
+  $('.album_msg').text('You updated album ' + data.album.id + ' to be ' + data.album.name)
+}
+
+const updateAlbumFailure = (data) => {
+  $('.album_msg').text('There was a problem updating your album')
+}
+
+const deleteAlbumSuccess = (data) => {
+  $('.album_msg').text('Album deleted')
+}
+
+const deleteAlbumFail = (data) => {
+  $('.album_msg').text('Problem deleting album')
+}
+
 module.exports = {
   getAlbumSuccess,
   getAlbumFailure,
@@ -132,5 +148,9 @@ module.exports = {
   getLyricsFailure,
   getLyricsSuccess,
   addSongSuccess,
-  addSongFailure
+  addSongFailure,
+  updateAlbumSuccess,
+  updateAlbumFailure,
+  deleteAlbumSuccess,
+  deleteAlbumFail
 }

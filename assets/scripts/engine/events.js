@@ -115,6 +115,18 @@ const translate = function (event) {
   }
 }
 
+const updateAlbum = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  api.updateAlbum(data).then(ui.updateAlbumSuccess).catch(ui.updateAlbumFail)
+}
+
+const deleteAlbum = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.deleteAlbum(data).then(ui.deleteAlbumSuccess).catch(ui.deleteAlbumFail)
+}
+
 // Click handlers get input from the html elements when they are clicked
 const addHandlers = () => {
   $('#album-by-user').on('submit', onGetAlbum)
@@ -128,6 +140,8 @@ const addHandlers = () => {
   $('.everything').hide()
   $('#get-lyrics').on('submit', onGetLyrics)
   $('#translate').on('submit', translate)
+  $('#update-album').on('submit', updateAlbum)
+  $('#delete-album').on('submit', deleteAlbum)
 }
 
 // Exports for use in main index file
