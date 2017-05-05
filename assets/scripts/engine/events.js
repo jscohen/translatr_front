@@ -17,9 +17,9 @@ const onGetAlbum = function (event) {
 const getUserAlbums = function () {
   // Iterate through all the albums and append the ones linked to current
   // user to the HTML
+  $('.show-albums').empty()
   for (let i = 0; i < albums.album.albums.length; i++) {
     if (users.user.user.id === albums.album.albums[i].user.id) {
-      console.log(albums.album.albums[i])
       $('.show-albums').text('Album: ' + i + ' Title: ' + albums.album.albums[i].name + ' Artist: ' + albums.album.albums[i].artist.name +
       ' Songs: ' + albums.album.albums[i].songs.name + '<br />')
     }

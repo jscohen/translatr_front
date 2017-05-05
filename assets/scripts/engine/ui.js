@@ -20,7 +20,8 @@ const getAlbumFailure = (data) => {
 const addArtistSuccess = (data) => {
   artist.artist = data
   $('#recommender').show()
-  $('.artist_msg').append('<span>You added ' + data.artist.name + ' with an ID of ' + data.artist.id + '</span>')
+  $('.artist_msg').empty()
+  $('.artist_msg').append('<span>You added ' + data.artist.name + ' with an ID of ' + data.artist.id + '</span><br />')
 }
 
 // Throw error if we can't add artist
@@ -30,20 +31,21 @@ const addArtistFailure = (data) => {
 
 // Add artists if we can get them
 const getArtistSuccess = (data) => {
-  $('.artists').children().remove()
+  $('.artists').empty()
   for (let i = 0; i < data.artists.length; i++) {
     if (data.artists[i].user.id === users.user.user.id) {
-      $('.artists').append('<span>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</span>')
+      $('.artists').append('<span>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</span>' + '<br />')
     }
   }
 }
 
 // Populate the recommendations by getting other artists by genre
 const getRecommenderSuccess = (data) => {
+  $('.recommendations').empty()
   let topTen = 0
   for (let i = 0; i < data.artists.length; i++) {
     if (data.artists[i].genre === artist.artist.artist.genre && topTen <= 10) {
-      $('.recommendations').append('<span>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</span>')
+      $('.recommendations').append('<span>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</span>' + '<br />')
       topTen += 1
     }
   }
@@ -71,9 +73,10 @@ const addAlbumFailure = (data) => {
 
 // Show songs if we can get them
 const getSongsSuccess = (data) => {
+  $('.show-songs').empty()
   for (let i = 0; i < data.songs.length; i++) {
     if (data.songs[i].user_id === users.user.user.id) {
-      $('.show-songs').append('<span>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + '</span>')
+      $('.show-songs').append('<span>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + '</span>' + '<br />')
     }
   }
 }
