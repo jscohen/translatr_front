@@ -87,5 +87,5 @@ const deleteAlbum = (data) => {
 }
 
 module.exports = {
-  getAlbum, addAlbum, addArtist, getArtists, addSong, getSongs, getLyrics, updateAlbum, deleteAlbum
+  getAlbum, addAlbum, addArtist, getArtists, addSong, getSongs, getLyrics, updateAlbum, deleteAlbum, updateSong
 }

@@ -131,7 +131,7 @@ const updateSong = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   data.song.user_id = users.user.user_id
-  api.updateAlbum(data).then(ui.updateAlbumSuccess).catch(ui.updateAlbumFailure)
+  api.updateSong(data).then(ui.updateSongSuccess).catch(ui.updateSongFailure)
 }
 
 // Click handlers get input from the html elements when they are clicked
