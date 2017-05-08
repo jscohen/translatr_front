@@ -123,7 +123,7 @@ const updateAlbumSuccess = (data) => {
   $('.album_msg').text('You updated album ' + data.album.id + ' to be ' + data.album.name)
 }
 
-const updateAlbumFailure = (data) => {
+const updateAlbumFail = (data) => {
   $('.album_msg').text('There was a problem updating your album')
 }
 
@@ -153,7 +153,7 @@ module.exports = {
   addSongSuccess,
   addSongFailure,
   updateAlbumSuccess,
-  updateAlbumFailure,
+  updateAlbumFail,
   deleteAlbumSuccess,
   deleteAlbumFail
 }
