@@ -61,6 +61,15 @@ const getLyrics = (data) => {
 }
 
 // AJAX Call to get all song lyrics
+const updateSong = (data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/songs/' + data.song_id,
+    method: 'PATCH',
+    data
+  })
+}
+
+// AJAX Call to get all song lyrics
 const updateAlbum = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/albums/' + data.album.id,
