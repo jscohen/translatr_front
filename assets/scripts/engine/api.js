@@ -86,6 +86,14 @@ const deleteAlbum = (data) => {
   })
 }
 
+const deleteSong = (data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/songs/' + data.song.id,
+    method: 'DELETE',
+    data
+  })
+}
+
 module.exports = {
-  getAlbum, addAlbum, addArtist, getArtists, addSong, getSongs, getLyrics, updateAlbum, deleteAlbum, updateSong
+  getAlbum, addAlbum, addArtist, getArtists, addSong, getSongs, getLyrics, updateAlbum, deleteAlbum, updateSong, deleteSong
 }

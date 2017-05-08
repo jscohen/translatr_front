@@ -134,6 +134,13 @@ const updateSong = function (event) {
   api.updateSong(data).then(ui.updateSongSuccess).catch(ui.updateSongFailure)
 }
 
+const deleteSong = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  data.song.user_id = users.user.user_id
+  api.updateSong(data).then(ui.deleteSongSuccess).catch(ui.deleteSongFailure)
+}
+
 // Click handlers get input from the html elements when they are clicked
 const addHandlers = () => {
   $('#album-by-user').on('submit', onGetAlbum)
@@ -150,6 +157,7 @@ const addHandlers = () => {
   $('#update-album').on('submit', updateAlbum)
   $('#delete-album').on('submit', deleteAlbum)
   $('#update-song').on('submit', updateSong)
+  $('#delete-song').on('submit', deleteSong)
 }
 
 // Exports for use in main index file
