@@ -9,6 +9,8 @@ const getAlbumSuccess = (data) => {
   const events = require('./events')
   albums.album = data
   events.getUserAlbums()
+  console.log(data)
+  console.log(users)
 }
 
 // Throw an error if we can't get the albums
@@ -33,7 +35,7 @@ const addArtistFailure = (data) => {
 const getArtistSuccess = (data) => {
   $('.artists').empty()
   for (let i = 0; i < data.artists.length; i++) {
-    if (data.artists[i].user.id === users.user.user.id) {
+    if (data.artists[i].user_id === users.user.user.id) {
       $('.artists').append('<span>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</span>' + '<br />')
     }
   }

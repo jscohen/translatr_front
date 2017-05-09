@@ -19,7 +19,7 @@ const getUserAlbums = function () {
   // user to the HTML
   $('.show-albums').empty()
   for (let i = 0; i < albums.album.albums.length; i++) {
-    if (users.user.user.id === albums.album.albums[i].user.id) {
+    if (users.user.user.id === albums.album.albums[i].user_id) {
       $('.show-albums').text('Album: ' + i + ' Title: ' + albums.album.albums[i].name + ' Artist: ' + albums.album.albums[i].artist.name +
       ' Songs: ' + albums.album.albums[i].songs.name + '<br />')
     }
