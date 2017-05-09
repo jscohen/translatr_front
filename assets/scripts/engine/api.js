@@ -62,8 +62,9 @@ const getLyrics = (data) => {
 
 // AJAX Call to get all song lyrics
 const updateSong = (data) => {
+  console.log(data)
   return $.ajax({
-    url: config.apiOrigin + '/songs/' + data.song.song_id,
+    url: config.apiOrigin + '/songs/' + data.song.id,
     method: 'PATCH',
     data
   })
@@ -88,7 +89,7 @@ const deleteAlbum = (data) => {
 
 const deleteSong = (data) => {
   return $.ajax({
-    url: config.apiOrigin + '/songs/' + data.song.song_id,
+    url: config.apiOrigin + '/songs/' + data.song.id,
     method: 'DELETE',
     data
   })

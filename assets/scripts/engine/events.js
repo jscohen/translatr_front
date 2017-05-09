@@ -115,9 +115,9 @@ const translate = function (event) {
   }
 }
 
-const updateAlbum = function (event) {
+const updateAlbum = function (i, event) {
+  console.log(i)
   const data = getFormFields(this)
-  event.preventDefault()
   api.updateAlbum(data).then(ui.updateAlbumSuccess).catch(ui.updateAlbumFail)
 }
 
@@ -127,11 +127,7 @@ const deleteAlbum = function (event) {
   api.deleteAlbum(data).then(ui.deleteAlbumSuccess).catch(ui.deleteAlbumFail)
 }
 
-const updateSong = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
-  data.song.user_id = users.user.user.id
-  console.log(data)
+const updateSong = function (data) {
   api.updateSong(data).then(ui.updateSongSuccess).catch(ui.updateSongFailure)
 }
 
@@ -163,5 +159,5 @@ const addHandlers = () => {
 
 // Exports for use in main index file
 module.exports = {
-  addHandlers, getUserAlbums
+  addHandlers, getUserAlbums, updateSong
 }

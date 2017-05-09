@@ -2,6 +2,7 @@ const albums = require('./albums')
 const artist = require('./artist')
 const users = require('../auth/users')
 const lyrics = require('./lyrics')
+const getFormFields = require(`../../../lib/get-form-fields`)
 
 // If we have the albums, store them to a global object
 // Call the function that gets albums by user
@@ -9,8 +10,6 @@ const getAlbumSuccess = (data) => {
   const events = require('./events')
   albums.album = data
   events.getUserAlbums()
-  console.log(data)
-  console.log(users)
 }
 
 // Throw an error if we can't get the albums
@@ -75,14 +74,26 @@ const addAlbumFailure = (data) => {
 
 // Show songs if we can get them
 const getSongsSuccess = (data) => {
+  const events = require('./events')
   $('.show-songs').empty()
   for (let i = 0; i < data.songs.length; i++) {
     if (data.songs[i].user_id === users.user.user.id) {
-      $('.show-songs').append('<span>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + '</span>' + '<br />')
+      $('.show-songs').append('<span>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id +
+      '<form id=' + i + '>' +
+      '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
+      '<input type="text" name="song[album]" id="add-song-album" placeholder="Enter Album Name">' +
+      '<input type="submit" id=' + i + ' class="btn btn-primary btn-top" name="submit" value="Update a Song">' +
+      '</form></span>' + '<br />')
+      $('#' + i).on('submit', function () {
+        event.preventDefault()
+        const songs = getFormFields(this)
+        songs.song.id = data.songs[i].id
+        songs.song.user_id = users.user.user.id
+        events.updateSong(songs)
+      })
     }
   }
 }
-
 // Show song we just added
 const addSongSuccess = (data) => {
   $('.song_msg').text('You added ' + data.song.name + ' with an ID of ' + data.song.id)
