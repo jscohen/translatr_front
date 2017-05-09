@@ -17,6 +17,8 @@ const signInSuccess = (data) => {
   $('.changePWNav').show()
   $('.signOut').show()
   $('.everything').show()
+  $('.signUpNav').hide()
+  $('.signInNav').hide()
 }
 
 // This function runs if there is a problem with sign up
@@ -34,6 +36,8 @@ const signOutSuccess = () => {
   $('.changePWNav').hide()
   $('.signOut').hide()
   $('.everything').hide()
+  $('.signUpNav').show()
+  $('.signInNav').show()
 }
 
 const signOutFailure = () => {
