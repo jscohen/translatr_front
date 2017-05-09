@@ -138,7 +138,7 @@ const deleteAlbumFail = (data) => {
 }
 
 const updateSongSuccess = (data) => {
-  $('.song_msg').text('Song ' + data.song_id + ' has been updated')
+  $('.song_msg').text('Song ' + data.song.name + ' has been updated')
 }
 
 const updateSongFailure = (data) => {
