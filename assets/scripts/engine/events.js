@@ -139,7 +139,7 @@ const deleteSong = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   data.song.user_id = users.user.user.id
-  api.updateSong(data).then(ui.deleteSongSuccess).catch(ui.deleteSongFailure)
+  api.deleteSong(data).then(ui.deleteSongSuccess).catch(ui.deleteSongFailure)
 }
 
 // Click handlers get input from the html elements when they are clicked
