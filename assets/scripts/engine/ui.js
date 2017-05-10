@@ -83,6 +83,8 @@ const getSongsSuccess = (data) => {
       '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
       '<input type="text" name="song[album]" id="add-song-album" placeholder="Enter Album Name">' +
       '<input type="submit" id=' + i + ' class="btn btn-primary btn-top" name="submit" value="Update a Song">' +
+      '</form>' +
+      '<form id =del' + i + '><input type="submit" class="btn btn-primary btn-top" name="submit" value="Delete This Song">' +
       '</form></span>' + '<br />')
       $('#' + i).on('submit', function () {
         event.preventDefault()
@@ -90,6 +92,16 @@ const getSongsSuccess = (data) => {
         songs.song.id = data.songs[i].id
         songs.song.user_id = users.user.user.id
         events.updateSong(songs)
+      })
+      $('#del' + i).on('submit', function () {
+        event.preventDefault()
+        const id = data.songs[i].id
+        const testData = {
+          'song': {
+            'user_id': users.user.user.id
+          }
+        }
+        events.deleteSong(id, testData)
       })
     }
   }
@@ -156,7 +168,9 @@ const updateSongFailure = (data) => {
   $('.song_msg').text('There was a problem updating your song')
 }
 
-const deleteSongSuccess = (data) => {
+const deleteSongSuccess = (id) => {
+  $('#' + id).children().hide()
+  console.log(id)
   $('.song_msg').text('You have successfully deleted this song')
 }
 

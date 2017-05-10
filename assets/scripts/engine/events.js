@@ -131,11 +131,8 @@ const updateSong = function (data) {
   api.updateSong(data).then(ui.updateSongSuccess).catch(ui.updateSongFailure)
 }
 
-const deleteSong = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
-  data.song.user_id = users.user.user.id
-  api.deleteSong(data).then(ui.deleteSongSuccess).catch(ui.deleteSongFailure)
+const deleteSong = function (id, data) {
+  api.deleteSong(id, data).then(ui.deleteSongSuccess(id)).catch(ui.deleteSongFailure)
 }
 
 // Click handlers get input from the html elements when they are clicked
@@ -159,5 +156,5 @@ const addHandlers = () => {
 
 // Exports for use in main index file
 module.exports = {
-  addHandlers, getUserAlbums, updateSong
+  addHandlers, getUserAlbums, updateSong, deleteSong
 }
