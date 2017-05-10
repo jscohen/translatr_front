@@ -113,7 +113,35 @@ const getSongsSuccess = (data) => {
 }
 // Show song we just added
 const addSongSuccess = (data) => {
+  const events = require('./events')
   $('.song_msg').text('You added ' + data.song.name + ' with an ID of ' + data.song.id)
+  if (($('.show-songs').has('span').length ? 'yes' : 'no') === 'yes') {
+    $('.show-songs').append('<span id = span' + data.song.id + '>Song Title: ' + data.song.name + ' Song ID: ' + data.song.id +
+    '<form id=' + data.song.id + '>' +
+    '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
+    '<input type="text" name="song[album]" id="add-song-album" placeholder="Enter Album Name">' +
+    '<input type="submit" id=' + data.song.id + ' class="btn btn-primary btn-top" name="submit" value="Update a Song">' +
+    '</form>' +
+    '<form id =del' + data.song.id + '><input type="submit" class="btn btn-primary btn-top" name="submit" value="Delete This Song">' +
+    '</form></span>' + '<br />')
+    $('#' + data.song.id).on('submit', function () {
+      event.preventDefault()
+      const songs = getFormFields(this)
+      songs.song.id = data.song.id
+      songs.song.user_id = users.user.user.id
+      events.updateSong(songs)
+    })
+    $('#del' + data.song.id).on('submit', function () {
+      event.preventDefault()
+      const id = data.song.id
+      const testData = {
+        'song': {
+          'user_id': users.user.user.id
+        }
+      }
+      events.deleteSong(id, testData)
+    })
+  }
 }
 
 // Throw error if we can't add song
@@ -128,7 +156,6 @@ const getSongsFailure = (data) => {
 
 // Add lyrics to the global object
 const getLyricsSuccess = (data) => {
-  console.log(data)
   lyrics.lyric = data.lyric.translation
   // Empty any lyrics currently in HTML
   $('.add_lyrics').empty()
@@ -167,6 +194,9 @@ const deleteAlbumFail = (data) => {
 
 const updateSongSuccess = (data) => {
   $('.song_msg').text('Song ' + data.song.name + ' has been updated')
+  const cache = $('#span' + data.song.id).children()
+  $('#span' + data.song.id).text('The song has been updated to be ' + data.song.name + ' by ' + data.song.artist + ' with an ID of ' + data.song.id)
+  .append(cache)
 }
 
 const updateSongFailure = (data) => {
@@ -174,7 +204,6 @@ const updateSongFailure = (data) => {
 }
 
 const deleteSongSuccess = (id) => {
-  console.log(id)
   $('#span' + id).hide()
   $('.song_msg').text('You have successfully deleted this song')
 }
