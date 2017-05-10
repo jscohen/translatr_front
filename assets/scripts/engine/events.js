@@ -70,6 +70,12 @@ const onGetSongs = function (event) {
   api.getSongs().then(ui.getSongsSuccess).catch(ui.getSongsFailure)
 }
 
+// This function is run when the get song button is pushed
+// It makes an API call to get the songs
+const onGetSongsNew = function () {
+  api.getSongs().then(ui.getSongsSuccess).catch(ui.getSongsFailure)
+}
+
 // This function is run when the recommend button is pushed
 // It makes an API call to get the songs by genre
 const onRecommend = function (event) {
@@ -156,5 +162,5 @@ const addHandlers = () => {
 
 // Exports for use in main index file
 module.exports = {
-  addHandlers, getUserAlbums, updateSong, deleteSong
+  addHandlers, getUserAlbums, updateSong, deleteSong, onGetSongsNew
 }

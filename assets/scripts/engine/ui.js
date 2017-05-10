@@ -2,6 +2,7 @@ const albums = require('./albums')
 const artist = require('./artist')
 const users = require('../auth/users')
 const lyrics = require('./lyrics')
+const songs = require('./songs')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
 // If we have the albums, store them to a global object
@@ -74,28 +75,30 @@ const addAlbumFailure = (data) => {
 
 // Show songs if we can get them
 const getSongsSuccess = (data) => {
+  console.log('test')
+  songs.song = data
   const events = require('./events')
   $('.show-songs').empty()
   console.log(data)
   console.log(users.user.user.id)
   for (let i = 0; i < data.songs.length; i++) {
     if (data.songs[i].user_id === users.user.user.id) {
-      $('.show-songs').append('<span>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id +
-      '<form id=' + i + '>' +
+      $('.show-songs').append('<span id = span' + data.songs[i].id + '>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id +
+      '<form id=' + data.songs[i].id + '>' +
       '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
       '<input type="text" name="song[album]" id="add-song-album" placeholder="Enter Album Name">' +
-      '<input type="submit" id=' + i + ' class="btn btn-primary btn-top" name="submit" value="Update a Song">' +
+      '<input type="submit" id=' + data.songs[i].id + ' class="btn btn-primary btn-top" name="submit" value="Update a Song">' +
       '</form>' +
-      '<form id =del' + i + '><input type="submit" class="btn btn-primary btn-top" name="submit" value="Delete This Song">' +
+      '<form id =del' + data.songs[i].id + '><input type="submit" class="btn btn-primary btn-top" name="submit" value="Delete This Song">' +
       '</form></span>' + '<br />')
-      $('#' + i).on('submit', function () {
+      $('#' + data.songs[i].id).on('submit', function () {
         event.preventDefault()
         const songs = getFormFields(this)
         songs.song.id = data.songs[i].id
         songs.song.user_id = users.user.user.id
         events.updateSong(songs)
       })
-      $('#del' + i).on('submit', function () {
+      $('#del' + data.songs[i].id).on('submit', function () {
         event.preventDefault()
         const id = data.songs[i].id
         const testData = {
@@ -172,6 +175,7 @@ const updateSongFailure = (data) => {
 
 const deleteSongSuccess = (id) => {
   console.log(id)
+  $('#span' + id).hide()
   $('.song_msg').text('You have successfully deleted this song')
 }
 
