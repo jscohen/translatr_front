@@ -13,6 +13,7 @@ const signUpSuccess = (data) => {
 
 const signInSuccess = (data) => {
   users.user = data
+  console.log(data)
   $('#signInModal').modal('hide')
   $('.changePWNav').show()
   $('.signOut').show()
@@ -38,6 +39,7 @@ const signOutSuccess = () => {
   $('.everything').hide()
   $('.signUpNav').show()
   $('.signInNav').show()
+  $('.show-songs').hide()
 }
 
 const signOutFailure = () => {

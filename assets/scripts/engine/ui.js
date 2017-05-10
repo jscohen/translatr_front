@@ -76,6 +76,8 @@ const addAlbumFailure = (data) => {
 const getSongsSuccess = (data) => {
   const events = require('./events')
   $('.show-songs').empty()
+  console.log(data)
+  console.log(users.user.user.id)
   for (let i = 0; i < data.songs.length; i++) {
     if (data.songs[i].user_id === users.user.user.id) {
       $('.show-songs').append('<span>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id +
@@ -169,7 +171,6 @@ const updateSongFailure = (data) => {
 }
 
 const deleteSongSuccess = (id) => {
-  $('#' + id).children().hide()
   console.log(id)
   $('.song_msg').text('You have successfully deleted this song')
 }
