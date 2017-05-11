@@ -193,10 +193,28 @@ const deleteAlbumFail = (data) => {
 }
 
 const updateSongSuccess = (data) => {
+  const events = require('./events')
   $('.song_msg').text('Song ' + data.song.name + ' has been updated')
   const cache = $('#span' + data.song.id).children()
   $('#span' + data.song.id).text('The song has been updated to be ' + data.song.name + ' by ' + data.song.artist + ' with an ID of ' + data.song.id)
   .append(cache)
+  $('#' + data.song.id).on('submit', function () {
+    event.preventDefault()
+    const songs = getFormFields(this)
+    songs.song.id = data.song.id
+    songs.song.user_id = users.user.user.id
+    events.updateSong(songs)
+  })
+  $('#del' + data.song.id).on('submit', function () {
+    event.preventDefault()
+    const id = data.song.id
+    const testData = {
+      'song': {
+        'user_id': users.user.user.id
+      }
+    }
+    events.deleteSong(id, testData)
+  })
 }
 
 const updateSongFailure = (data) => {
