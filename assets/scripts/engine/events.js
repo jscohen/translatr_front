@@ -95,27 +95,28 @@ const onGetLyrics = function (data) {
 // It places the translation of the song lyrics into HTML
 const translate = function (event) {
   event.preventDefault()
+  console.log(lyrics.lyric)
   let wordCount = 0
   // Empty the element so we don't add lyrics on top of each other
   $('.add_translation').empty()
   // Iterate through the translation
-  for (let i = 0; i < lyrics.lyric.length; i++) {
+  for (let i = 0; i < lyrics.lyric.translation.length; i++) {
     // There are no line breaks in the translation, so add line breaks
     // Every five words
     // Otherwise append the translation to HTML
     if (wordCount === 5) {
-      $('.add_translation').append('<br />' + '<span>' + lyrics.lyric[i] + '</span>')
+      $('.add_translation').append('<br />' + '<span>' + lyrics.lyric.translation[i] + '</span>')
       wordCount = 0
     // If you see a space, we know there is a word, so count the word
-    } else if (lyrics.lyric[i] === ' ') {
+    } else if (lyrics.lyric.translation[i] === ' ') {
       wordCount += 1
-      $('.add_translation').append('<span>' + lyrics.lyric[i] + '</span>')
+      $('.add_translation').append('<span>' + lyrics.lyric.translation[i] + '</span>')
     // Stop printing the translation once we hit the * character
     // To get rid of junk text
     } else if (lyrics.lyric[i] === '*') {
       break
     } else {
-      $('.add_translation').append('<span>' + lyrics.lyric[i] + '</span>')
+      $('.add_translation').append('<span>' + lyrics.lyric.translation[i] + '</span>')
     }
   }
 }

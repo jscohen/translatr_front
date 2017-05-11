@@ -2,6 +2,7 @@ const albums = require('./albums')
 const artist = require('./artist')
 const users = require('../auth/users')
 const songs = require('./songs')
+const lyrics = require('./lyrics')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
 // If we have the albums, store them to a global object
@@ -143,6 +144,7 @@ const getLyricsSuccess = (data) => {
       $('.add_lyrics').append('<span>' + data.lyric.text[i] + '</span>')
     }
   }
+  lyrics.lyric = data.lyric
 }
 
 // Throw error if we can't get lyrics
