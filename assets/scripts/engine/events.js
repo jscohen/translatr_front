@@ -137,7 +137,8 @@ const updateSong = function (data) {
   api.updateSong(data).then(ui.updateSongSuccess).catch(ui.updateSongFailure)
 }
 
-const deleteSong = function (id, data) {
+const deleteSong = function (id, data, event) {
+  event.preventDefault()
   api.deleteSong(id, data).then(ui.deleteSongSuccess(id)).catch(ui.deleteSongFailure)
 }
 
