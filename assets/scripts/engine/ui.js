@@ -230,7 +230,7 @@ const updateSongFailure = (data) => {
   $('.song_msg').text('There was a problem updating your song')
 }
 
-const deleteSongSuccess = (id) => {
+const deleteSongSuccess = () => {
   const events = require('./events')
   events.onGetSongsNew()
   $('.song_msg').text('You have successfully deleted this song')

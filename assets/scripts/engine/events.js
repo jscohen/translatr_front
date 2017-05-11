@@ -73,6 +73,7 @@ const onGetSongs = function (event) {
 // This function is run when the get song button is pushed
 // It makes an API call to get the songs
 const onGetSongsNew = function () {
+  console.log('test')
   api.getSongs().then(ui.getSongsSuccess).catch(ui.getSongsFailure)
 }
 
@@ -120,7 +121,6 @@ const translate = function (event) {
 }
 
 const updateAlbum = function (i, event) {
-  console.log(i)
   const data = getFormFields(this)
   api.updateAlbum(data).then(ui.updateAlbumSuccess).catch(ui.updateAlbumFail)
 }
@@ -136,7 +136,7 @@ const updateSong = function (data) {
 }
 
 const deleteSong = function (id, data) {
-  api.deleteSong(id, data).then(ui.deleteSongSuccess(id)).catch(ui.deleteSongFailure)
+  api.deleteSong(id, data).then(ui.deleteSongSuccess).catch(ui.deleteSongFailure)
 }
 
 // Click handlers get input from the html elements when they are clicked
