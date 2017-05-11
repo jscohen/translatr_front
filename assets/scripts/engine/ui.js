@@ -77,8 +77,7 @@ const getSongsSuccess = (data) => {
       '</form>' +
       '<form id =del' + data.songs[i].id + '><input type="submit" class="btn btn-primary btn-top" name="submit" value="Delete This Song">' +
       '</form></span>' + '<br />' +
-      '<form id=lyrics' + data.songs[i].id + '><input type="submit" class="btn btn-primary" name="submit" value="Get Lyrics">' +
-      '</form>' + '<form id="translate"><input type="submit" class="btn btn-primary" name="submit" value="Translate Lyrics"></form>'
+      '<form id=lyrics' + data.songs[i].id + '><input type="submit" class="btn btn-primary" name="submit" value="Get Lyrics">'
       )
       $('#' + data.songs[i].id).on('submit', function () {
         event.preventDefault()
