@@ -39,7 +39,10 @@ const signOutSuccess = () => {
   $('.everything').hide()
   $('.signUpNav').show()
   $('.signInNav').show()
-  $('.show-songs').hide()
+  $('.show-songs').empty()
+  $('.add_lyrics').empty()
+  $('.add_translation').empty()
+  $('.song_msg').empty()
 }
 
 const signOutFailure = () => {
