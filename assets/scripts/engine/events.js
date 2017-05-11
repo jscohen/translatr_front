@@ -86,9 +86,7 @@ const onRecommend = function (event) {
 
 // This function is run when the get lyrics button is pushed
 // It makes an API call to get the lyrics by song id
-const onGetLyrics = function (event) {
-  const data = getFormFields(this)
-  event.preventDefault()
+const onGetLyrics = function (data) {
   api.getLyrics(data).then(ui.getLyricsSuccess).catch(ui.getLyricsFailure)
 }
 
@@ -162,5 +160,5 @@ const addHandlers = () => {
 
 // Exports for use in main index file
 module.exports = {
-  addHandlers, getUserAlbums, updateSong, deleteSong, onGetSongsNew
+  addHandlers, getUserAlbums, updateSong, deleteSong, onGetSongsNew, onGetLyrics
 }

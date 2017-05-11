@@ -43,6 +43,8 @@ const signOutSuccess = () => {
   $('.add_lyrics').empty()
   $('.add_translation').empty()
   $('.song_msg').empty()
+  $('input:text').val('')
+  $('input:password').val('')
 }
 
 const signOutFailure = () => {
