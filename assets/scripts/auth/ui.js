@@ -53,11 +53,15 @@ const signOutFailure = () => {
 // This function runs if change passwords succeeds
 const changePWSuccess = (data) => {
   $('#changePWModal').modal('hide')
+  $('#change-password-oldpw').val('')
+  $('#change-password-newpw').val('')
 }
 
 // This function runs if change password fails
 const changePWFailure = () => {
   $('.pw_debug').text('There was a problem changing your password')
+  $('#change-password-oldpw').val('')
+  $('#change-password-newpw').val('')
 }
 
 // Export these functions for use

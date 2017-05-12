@@ -116,8 +116,47 @@ const getSongsSuccess = (data) => {
 }
 // Show song we just added
 const addSongSuccess = (data) => {
-  // const events = require('./events')
+  const events = require('./events')
+  // events.onGetSongsNew()
   $('.song_msg').text('You added ' + data.song.name + ' with an ID of ' + data.song.id)
+  $('.show-songs').append('<span id = span' + data.song.id + '>Song Title: ' + data.song.name + ' Song ID: ' + data.song.id +
+  '<form id=' + data.song.id + '>' +
+  '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
+  '<input type="text" name="song[album]" id="add-song-album" placeholder="Enter Album Name">' +
+  '<input type="submit" id=' + data.song.id + ' class="btn btn-primary btn-top" name="submit" value="Update a Song">' +
+  '</form>' +
+  '<form id =del' + data.song.id + '><input type="submit" class="btn btn-primary btn-top" name="submit" value="Delete This Song">' +
+  '</form></span>' + '<br />' +
+  '<form id=lyrics' + data.song.id + '><input type="submit" class="btn btn-primary" name="submit" value="Get Lyrics">'
+  )
+  $('#' + data.song.id).on('submit', function () {
+    event.preventDefault()
+    const songs = getFormFields(this)
+    songs.song.id = data.song.id
+    songs.song.user_id = users.user.user.id
+    events.updateSong(songs)
+  })
+  $('#del' + data.song.id).on('submit', function () {
+    event.preventDefault()
+    const id = data.song.id
+    const testData = {
+      'song': {
+        'user_id': users.user.user.id
+      }
+    }
+    events.deleteSong(id, testData)
+  })
+  $('#lyrics' + data.song.id).on('submit', function () {
+    event.preventDefault()
+    const lyricsData = {
+      'lyrics': {
+        'song_id': data.song.id,
+        'artist': data.song.artist,
+        'title': data.song.name
+      }
+    }
+    events.onGetLyrics(lyricsData)
+  })
 }
 
 // Throw error if we can't add song
