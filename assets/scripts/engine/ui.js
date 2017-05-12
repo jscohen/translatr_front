@@ -203,7 +203,8 @@ const getLyricsSuccess = (data) => {
 
 // Throw error if we can't get lyrics
 const getLyricsFailure = (data) => {
-  $('.add_lyrics').text('There was a problem getting your lyrics - check for non-ASCII characters')
+  $('.add_lyrics').text('There was a problem getting your lyrics.  If you entered a non-English song, check for non-ASCII characters.' +
+  'If you entered an English song, check your spelling and make sure the song, artist and album line up.')
 }
 
 const updateAlbumSuccess = (data) => {
