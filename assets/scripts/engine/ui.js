@@ -41,11 +41,6 @@ const getArtistSuccess = (data) => {
   }
 }
 
-// Throw an error if the recommender doesn't work
-const getRecommenderFailure = (data) => {
-  $('.recommendations').text('There was an error with your recommendations')
-}
-
 // Throw an error if we can't get artists
 const getArtistFailure = (data) => {
   $('.artists').text('There was a problem getting your artists')
@@ -75,9 +70,10 @@ const getSongsSuccess = (data) => {
     if (data.songs[i].user_id === users.user.user.id) {
       songsCount += 1
       // Append the song name for each song
-      $('.show-songs').append('<span id = span' + data.songs[i].id + '>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + ' on album ' + data.songs[i].album +
+      $('.show-songs').append('<span id = span' + data.songs[i].id + '>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + ' on album ' + data.songs[i].album + ' by ' + data.songs[i].artist +
       // Append HTML for updates
       '<form id=' + data.songs[i].id + '>' +
+      '<input type="text" name="song[artist]" id="add-song-name" placeholder="Enter Artist Name">' +
       '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
       '<input type="text" name="song[album]" id="add-song-album" placeholder="Enter Album Name">' +
       '<input type="submit" id=' + data.songs[i].id + ' class="btn btn-primary btn-top" name="submit" value="Update a Song">' +
@@ -137,8 +133,9 @@ const addSongSuccess = (data) => {
   $('#TEST').empty()
   $('.song_msg').text('You added ' + data.song.name + ' with an ID of ' + data.song.id)
   // Append all song data (see get songs)
-  $('.show-songs').append('<span id = span' + data.song.id + '>Song Title: ' + data.song.name + ' Song ID: ' + data.song.id + ' on album ' + data.song.album +
+  $('.show-songs').append('<span id = span' + data.song.id + '>Song Title: ' + data.song.name + ' Song ID: ' + data.song.id + ' on album ' + data.song.album + ' by ' + data.song.artist +
   '<form id=' + data.song.id + '>' +
+  '<input type="text" name="song[artist]" id="add-song-name" placeholder="Enter Artist Name">' +
   '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
   '<input type="text" name="song[album]" id="add-song-album" placeholder="Enter Album Name">' +
   '<input type="submit" id=' + data.song.id + ' class="btn btn-primary btn-top" name="submit" value="Update a Song">' +
@@ -227,7 +224,8 @@ const deleteAlbumFail = (data) => {
 
 const updateSongSuccess = (data) => {
   const events = require('./events')
-  $('.song_msg').text('Song ' + data.song.name + ' has been updated')
+  $('.song_msg').text('Song ' + data.song.name + ' by ' + data.song.artist + ' on ' + data.song.album + ' has been updated')
+  $('#span' + data.song.id).text('Song ' + data.song.name + ' by ' + data.song.artist + ' on ' + data.song.album + ' has been updated')
   events.onGetSongsNew()
 }
 
@@ -258,7 +256,6 @@ module.exports = {
   addAlbumSuccess,
   getSongsSuccess,
   getSongsFailure,
-  getRecommenderFailure,
   getLyricsFailure,
   getLyricsSuccess,
   addSongSuccess,
