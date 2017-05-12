@@ -8,7 +8,7 @@ const users = require('./users')
 // This function runs on a successful sign up or sign-in
 const signUpSuccess = (data) => {
   // Hide the modal after its use
-  $('#signUpModal').modal('hide')
+  $('.debug').text('Sign up successful!  You are ready to sign in')
 }
 
 // This function runs on a successful sign in
@@ -23,6 +23,7 @@ const signInSuccess = (data) => {
   $('.everything').show()
   $('.signUpNav').hide()
   $('.signInNav').hide()
+  $('#user-name').text('Welcome ' + users.user.user.email)
 }
 
 // This function runs if there is a problem with sign up
