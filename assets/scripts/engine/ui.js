@@ -75,7 +75,7 @@ const getSongsSuccess = (data) => {
     if (data.songs[i].user_id === users.user.user.id) {
       songsCount += 1
       // Append the song name for each song
-      $('.show-songs').append('<span id = span' + data.songs[i].id + '>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id +
+      $('.show-songs').append('<span id = span' + data.songs[i].id + '>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id + ' on album ' + data.songs[i].album +
       // Append HTML for updates
       '<form id=' + data.songs[i].id + '>' +
       '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
@@ -134,9 +134,10 @@ const getSongsSuccess = (data) => {
 const addSongSuccess = (data) => {
   const events = require('./events')
   // Show song info
+  $('#TEST').empty()
   $('.song_msg').text('You added ' + data.song.name + ' with an ID of ' + data.song.id)
   // Append all song data (see get songs)
-  $('.show-songs').append('<span id = span' + data.song.id + '>Song Title: ' + data.song.name + ' Song ID: ' + data.song.id +
+  $('.show-songs').append('<span id = span' + data.song.id + '>Song Title: ' + data.song.name + ' Song ID: ' + data.song.id + ' on album ' + data.song.album +
   '<form id=' + data.song.id + '>' +
   '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
   '<input type="text" name="song[album]" id="add-song-album" placeholder="Enter Album Name">' +
