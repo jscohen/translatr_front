@@ -1,58 +1,8 @@
 const api = require('./api')
 const ui = require('./ui')
-const albums = require('./albums')
 const users = require('../auth/users')
 const getFormFields = require(`../../../lib/get-form-fields`)
 const lyrics = require('./lyrics')
-
-// When the get album button is pushed, this function runs
-// It calls the API to get all albums
-const onGetAlbum = function (event) {
-  event.preventDefault()
-  api.getAlbum().then(ui.getAlbumSuccess)
-  .catch(ui.getAlbumFailure)
-}
-
-// This function is called if the GET request for all albums is successful
-const getUserAlbums = function () {
-  // Iterate through all the albums and append the ones linked to current
-  // user to the HTML
-  $('.show-albums').empty()
-  for (let i = 0; i < albums.album.albums.length; i++) {
-    if (users.user.user.id === albums.album.albums[i].user_id) {
-      $('.show-albums').text('Album: ' + i + ' Title: ' + albums.album.albums[i].name + ' Artist: ' + albums.album.albums[i].artist.name +
-      ' Songs: ' + albums.album.albums[i].songs.name + '<br />')
-    }
-  }
-}
-
-// This function is run when the add album button is pushed
-// It makes an API call to add an album
-const onAddAlbum = function () {
-  event.preventDefault()
-  const data = getFormFields(this)
-  data.album.user_id = users.user.user.id
-  api.addAlbum(data).then(ui.addAlbumSuccess)
-  .catch(ui.addAlbumFailure)
-}
-
-// This function is run when the add artist button is pushed
-// It makes an API call to add an artist
-const onAddArtist = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
-  data.artist.user_id = users.user.user.id
-  api.addArtist(data).then(ui.addArtistSuccess)
-  .catch(ui.addArtistFailure)
-}
-
-// This function is run when the get artist button is pushed
-// It makes an API call to get the artists
-const onGetArtists = function (event) {
-  event.preventDefault()
-  api.getArtists().then(ui.getArtistSuccess)
-  .catch(ui.getArtistFailure)
-}
 
 // This function is run when the add song button is pushed
 // It makes an API call to add the songs
@@ -75,14 +25,6 @@ const onGetSongs = function (event) {
 const onGetSongsNew = function () {
   console.log('test')
   api.getSongs().then(ui.getSongsSuccess).catch(ui.getSongsFailure)
-}
-
-// This function is run when the recommend button is pushed
-// It makes an API call to get the songs by genre
-const onRecommend = function (event) {
-  event.preventDefault()
-  api.getArtists().then(ui.getRecommenderSuccess)
-  .catch(ui.getRecommenderFailure)
 }
 
 // This function is run when the get lyrics button is pushed
@@ -121,45 +63,28 @@ const translate = function (event) {
   }
 }
 
-const updateAlbum = function (i, event) {
-  const data = getFormFields(this)
-  api.updateAlbum(data).then(ui.updateAlbumSuccess).catch(ui.updateAlbumFail)
-}
-
-const deleteAlbum = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
-  api.deleteAlbum(data).then(ui.deleteAlbumSuccess).catch(ui.deleteAlbumFail)
-}
-
+// When updating song, make the API call with passed data
 const updateSong = function (data) {
   api.updateSong(data).then(ui.updateSongSuccess).catch(ui.updateSongFailure)
 }
 
+// When deleting song, make the API call with passed data
 const deleteSong = function (id, data) {
   api.deleteSong(id, data).then(ui.deleteSongSuccess).catch(ui.deleteSongFailure)
 }
 
 // Click handlers get input from the html elements when they are clicked
 const addHandlers = () => {
-  $('#album-by-user').on('submit', onGetAlbum)
-  $('#add-album').on('submit', onAddAlbum)
-  $('#add-artist').on('submit', onAddArtist)
-  $('#get-artists').on('submit', onGetArtists)
   $('#add-song').on('submit', onAddSong)
   $('#get-songs').on('submit', onGetSongs)
-  $('#recommender').on('submit', onRecommend)
-  $('#recommender').hide()
   $('.everything').hide()
   $('#get-lyrics').on('submit', onGetLyrics)
   $('#translate').on('submit', translate)
-  $('#update-album').on('submit', updateAlbum)
-  $('#delete-album').on('submit', deleteAlbum)
   $('#update-song').on('submit', updateSong)
   $('#delete-song').on('submit', deleteSong)
 }
 
 // Exports for use in main index file
 module.exports = {
-  addHandlers, getUserAlbums, updateSong, deleteSong, onGetSongsNew, onGetLyrics
+  addHandlers, updateSong, deleteSong, onGetSongsNew, onGetLyrics
 }

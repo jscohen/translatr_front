@@ -1,60 +1,7 @@
-const albums = require('./albums')
-const artist = require('./artist')
 const users = require('../auth/users')
 const songs = require('./songs')
 const lyrics = require('./lyrics')
 const getFormFields = require(`../../../lib/get-form-fields`)
-
-// If we have the albums, store them to a global object
-// Call the function that gets albums by user
-const getAlbumSuccess = (data) => {
-  const events = require('./events')
-  albums.album = data
-  events.getUserAlbums()
-}
-
-// Throw an error if we can't get the albums
-const getAlbumFailure = (data) => {
-  $('.album_msg').text(data.error)
-}
-
-// Show the recommender and append artist if successful
-const addArtistSuccess = (data) => {
-  artist.artist = data
-  $('#recommender').show()
-  $('.artist_msg').empty()
-  $('.artist_msg').append('<span>You added ' + data.artist.name + ' with an ID of ' + data.artist.id + '</span><br />')
-}
-
-// Throw error if we can't add artist
-const addArtistFailure = (data) => {
-  $('.artist_msg').text('There was a problem adding this artist')
-}
-
-// Add artists if we can get them
-const getArtistSuccess = (data) => {
-  $('.artists').empty()
-  for (let i = 0; i < data.artists.length; i++) {
-    if (data.artists[i].user_id === users.user.user.id) {
-      $('.artists').append('<span>' + data.artists[i].name + ' Artist ID: ' + data.artists[i].id + '</span>' + '<br />')
-    }
-  }
-}
-
-// Throw an error if we can't get artists
-const getArtistFailure = (data) => {
-  $('.artists').text('There was a problem getting your artists')
-}
-
-// Show the album if success
-const addAlbumSuccess = (data) => {
-  $('.album_msg').text('You added album ' + data.album.name + ' with an id of ' + data.album.id)
-}
-
-// Throw error if we can't add an album
-const addAlbumFailure = (data) => {
-  $('.album_msg').text('There was a problem with adding your album')
-}
 
 // Show songs if we can get them
 const getSongsSuccess = (data) => {
@@ -144,6 +91,7 @@ const addSongSuccess = (data) => {
   '</form></span>' + '<br />' +
   '<form id=lyrics' + data.song.id + '><input type="submit" class="btn btn-primary" name="submit" value="Get Lyrics">'
   )
+  // Add update song event
   $('#' + data.song.id).on('submit', function () {
     event.preventDefault()
     const songs = getFormFields(this)
@@ -151,6 +99,7 @@ const addSongSuccess = (data) => {
     songs.song.user_id = users.user.user.id
     events.updateSong(songs)
   })
+  // Add delete song event
   $('#del' + data.song.id).on('submit', function () {
     event.preventDefault()
     const id = data.song.id
@@ -161,6 +110,7 @@ const addSongSuccess = (data) => {
     }
     events.deleteSong(id, testData)
   })
+  // Add lyrics event and data
   $('#lyrics' + data.song.id).on('submit', function () {
     event.preventDefault()
     const lyricsData = {
@@ -207,22 +157,8 @@ const getLyricsFailure = (data) => {
   'If you entered an English song, check your spelling and make sure the song, artist and album line up.')
 }
 
-const updateAlbumSuccess = (data) => {
-  $('.album_msg').text('You updated album ' + data.album.id + ' to be ' + data.album.name)
-}
-
-const updateAlbumFail = (data) => {
-  $('.album_msg').text('There was a problem updating your album')
-}
-
-const deleteAlbumSuccess = (data) => {
-  $('.album_msg').text('Album deleted')
-}
-
-const deleteAlbumFail = (data) => {
-  $('.album_msg').text('Problem deleting album')
-}
-
+// If update song call is a success, append the data to HTML
+// Then run get songs to refresh the list
 const updateSongSuccess = (data) => {
   const events = require('./events')
   $('.song_msg').text('Song ' + data.song.name + ' by ' + data.song.artist + ' on ' + data.song.album + ' has been updated')
@@ -230,41 +166,32 @@ const updateSongSuccess = (data) => {
   events.onGetSongsNew()
 }
 
+// Log an error if update song fails
 const updateSongFailure = (data) => {
   $('.song_msg').text('There was a problem updating your song')
 }
 
+// If delete song API is a success, run get songs to refresh list
 const deleteSongSuccess = () => {
   const events = require('./events')
   events.onGetSongsNew()
   $('.song_msg').text('You have successfully deleted this song')
 }
 
+// If delete song fails, log an error
 const deleteSongFailure = (data) => {
   $('.song_msg').text('There was a problem deleting this song')
 }
 
 module.exports = {
-  getAlbumSuccess,
   deleteSongSuccess,
   deleteSongFailure,
-  getAlbumFailure,
-  addArtistSuccess,
-  addArtistFailure,
-  getArtistSuccess,
-  getArtistFailure,
-  addAlbumFailure,
-  addAlbumSuccess,
   getSongsSuccess,
   getSongsFailure,
   getLyricsFailure,
   getLyricsSuccess,
   addSongSuccess,
   addSongFailure,
-  updateAlbumSuccess,
-  updateAlbumFail,
-  deleteAlbumSuccess,
-  deleteAlbumFail,
   updateSongSuccess,
   updateSongFailure
 }
