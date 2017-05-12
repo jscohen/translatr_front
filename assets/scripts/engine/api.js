@@ -79,6 +79,7 @@ const updateAlbum = (data) => {
   })
 }
 
+// AJAX Call to delete albums
 const deleteAlbum = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/albums/' + data.album.id,
@@ -87,6 +88,7 @@ const deleteAlbum = (data) => {
   })
 }
 
+// AJAX Call to delete songs
 const deleteSong = (id, data) => {
   return $.ajax({
     url: config.apiOrigin + '/songs/' + id,

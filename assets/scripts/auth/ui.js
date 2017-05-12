@@ -11,9 +11,12 @@ const signUpSuccess = (data) => {
   $('#signUpModal').modal('hide')
 }
 
+// This function runs on a successful sign in
 const signInSuccess = (data) => {
+  // Assign global user object
   users.user = data
-  console.log(data)
+  // Show sign out and change PW
+  // Hide sign up
   $('#signInModal').modal('hide')
   $('.changePWNav').show()
   $('.signOut').show()
@@ -34,6 +37,7 @@ const signInFailure = () => {
 
 // This function runs if you sign out successfully
 const signOutSuccess = () => {
+  // Hide and empty everything when signing out
   $('.changePWNav').hide()
   $('.signOut').hide()
   $('.everything').hide()
@@ -52,6 +56,7 @@ const signOutFailure = () => {
 
 // This function runs if change passwords succeeds
 const changePWSuccess = (data) => {
+  // Hide and clear the modal
   $('#changePWModal').modal('hide')
   $('#change-password-oldpw').val('')
   $('#change-password-newpw').val('')
@@ -59,6 +64,7 @@ const changePWSuccess = (data) => {
 
 // This function runs if change password fails
 const changePWFailure = () => {
+  // Log error and clear fields
   $('.pw_debug').text('There was a problem changing your password')
   $('#change-password-oldpw').val('')
   $('#change-password-newpw').val('')

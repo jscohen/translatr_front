@@ -65,21 +65,30 @@ const addAlbumFailure = (data) => {
 const getSongsSuccess = (data) => {
   songs.song = data
   const events = require('./events')
+  // Empty html of songs
   $('.show-songs').empty()
   let songsCount = 0
+
+  // Iterate through songs array
   for (let i = 0; i < data.songs.length; i++) {
+    // If the song's user ID matches the current user's ID
     if (data.songs[i].user_id === users.user.user.id) {
       songsCount += 1
+      // Append the song name for each song
       $('.show-songs').append('<span id = span' + data.songs[i].id + '>Song Title: ' + data.songs[i].name + ' Song ID: ' + data.songs[i].id +
+      // Append HTML for updates
       '<form id=' + data.songs[i].id + '>' +
       '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
       '<input type="text" name="song[album]" id="add-song-album" placeholder="Enter Album Name">' +
       '<input type="submit" id=' + data.songs[i].id + ' class="btn btn-primary btn-top" name="submit" value="Update a Song">' +
+      // Append HTML for deletes
       '</form>' +
       '<form id =del' + data.songs[i].id + '><input type="submit" class="btn btn-primary btn-top" name="submit" value="Delete This Song">' +
       '</form></span>' + '<br />' +
+      // Append HTML for lyrics
       '<form id=lyrics' + data.songs[i].id + '><input type="submit" class="btn btn-primary" name="submit" value="Get Lyrics">'
       )
+      // Set update event handler
       $('#' + data.songs[i].id).on('submit', function () {
         event.preventDefault()
         const songs = getFormFields(this)
@@ -87,9 +96,11 @@ const getSongsSuccess = (data) => {
         songs.song.user_id = users.user.user.id
         events.updateSong(songs)
       })
+      // Set delete event handler
       $('#del' + data.songs[i].id).on('submit', function () {
         event.preventDefault()
         const id = data.songs[i].id
+        // Create object data for delete song call
         const testData = {
           'song': {
             'user_id': users.user.user.id
@@ -97,8 +108,10 @@ const getSongsSuccess = (data) => {
         }
         events.deleteSong(id, testData)
       })
+      // Set lyrics event handler
       $('#lyrics' + data.songs[i].id).on('submit', function () {
         event.preventDefault()
+        // Create lyrics data
         const lyricsData = {
           'lyrics': {
             'song_id': data.songs[i].id,
@@ -110,15 +123,19 @@ const getSongsSuccess = (data) => {
       })
     }
   }
+  // Show error if no songs
   if (songsCount === 0) {
-    $('.show-songs').append('<span>You have not added any songs</span>')
+    $('.show-songs').append('<span id="TEST">You have not added any songs</span>')
+  } else {
+    $('#TEST').empty()
   }
 }
 // Show song we just added
 const addSongSuccess = (data) => {
   const events = require('./events')
-  // events.onGetSongsNew()
+  // Show song info
   $('.song_msg').text('You added ' + data.song.name + ' with an ID of ' + data.song.id)
+  // Append all song data (see get songs)
   $('.show-songs').append('<span id = span' + data.song.id + '>Song Title: ' + data.song.name + ' Song ID: ' + data.song.id +
   '<form id=' + data.song.id + '>' +
   '<input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">' +
