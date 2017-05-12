@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Translatr</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Do not add `link` tags unless you know what you are doing -->
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Indie+Flower|Revalia" rel="stylesheet">
+
+<!-- Do not add `script` tags unless you know what you are doing -->
+<script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+<script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+  <body class="container-fluid">
+    <header>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <h1 class="header">Translatr</h1>
+            <p id="user-name"></p>
+          </div>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="signUpNav">
+                  <button type="button" class="btn btn-primary btn-top" data-toggle="modal" data-dismiss="modal" data-target="#signUpModal">Sign Up</button>
+                </li>
+                <li class="signInNav">
+                  <button type="button" class="btn btn-primary btn-top" data-toggle="modal" data-dismiss="modal" data-target="#signInModal">Sign In</button>
+                </li>
+                <li class="changePWNav">
+                  <button type="button" class="btn btn-primary btn-top" data-toggle="modal" data-dismiss="modal" data-target="#changePWModal">Change PW</button>
+                </li>
+                <li class="signOut">
+                  <form id="sign-out">
+                    <input type="submit" class="btn btn-primary btn-top" name="submit" value="Sign Out">
+                  </form>
+                </li>
+              </ul>
+            </div>
+            </nav>
+            </header>
+
+    <div class="everything">
+    <div class="row-top">
+      <div class="song">
+        <form id="add-song">
+          <input type="text" name="song[artist]" id="add-song-name" placeholder="Enter Artist Name">
+          <input type="text" name="song[name]" id="add-song-name" placeholder="Enter Song Name">
+          <input type="text" name="song[album]" id="add-song-album" placeholder="Enter Album Name">
+          <input type="submit" class="btn btn-primary btn-top" name="submit" value="Add a Song">
+        </form>
+        <span class="song_msg"></span>
+      </div>
+    <div class="newrow">
+      <div class="songs">
+        <form id="get-songs">
+          <input type="submit" class="btn btn-primary btn-top" name="submit" value="Get Your Songs">
+        </form>
+        <p class="show-songs"></p>
+      </div>
+    </div>
+  </div>
+  <div class="row lyrics_row">
+    <form id="get-lyrics">
+    </form>
+    <span class="add_lyrics"></span>
+  </div>
+</div>
+  <div class="trans">
+      <form id="translate">
+        <input type="submit" class="btn btn-primary" name="submit" value="Translate Lyrics">
+      </form>
+      <span class="add_translation"></span>
+    </div>
+
+  <div class="modal fade signUpModal" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form id="sign-up">
+          <input type="text" name="credentials[email]" id="sign-up-email" placeholder="Enter Email/Username">
+          <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Enter Password">
+          <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Confirm PW">
+          <input type="submit" class="btn btn-primary" name="submit" value="Sign Up">
+        </form>
+        <span class="debug"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade signUpModal" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="exampleModalLabel">Sign In</h4>
+    </div>
+    <div class="modal-body">
+      <form id="sign-in">
+        <input type="text" name="credentials[email]" id="sign-in-email" placeholder="Enter Email/Username">
+        <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Enter Password">
+        <input type="submit" class="btn btn-primary" name="submit" value="Sign In">
+      </form>
+      <span class="sign_in_debug"></span>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade signUpModal" id="changePWModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="exampleModalLabel">Change Password</h4>
+    </div>
+    <div class="modal-body">
+      <form id="change-password">
+        <input type="password" name="passwords[old]" id="change-password-oldpw" placeholder="Enter Current Password">
+        <input type="password" name="passwords[new]" id="change-password-newpw" placeholder="Enter New Password">
+        <input type="submit" class="btn btn-primary" name="submit" value="Change Password">
+      </form>
+      <span class="pw_debug"></span>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+  </body>
+</html>
