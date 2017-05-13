@@ -2,7 +2,7 @@
 
 # Translatr
 
- - Live app: [Translater](https://jscohen.github.io/translatr_front/)
+ - Live app: [Translatr](https://jscohen.github.io/translatr_front/)
  - Front End Repo: [Translatr](https://github.com/jscohen/translatr_front)
  - Back End Repo: [Translatr](https://github.com/jscohen/translatr_backend)
  - Live app back end: [Translatr](https://boiling-gorge-32374.herokuapp.com/)
